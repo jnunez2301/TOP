@@ -1,16 +1,16 @@
-
-body{
-  display: grid;
-  min-height: 100vh;
-  place-content: center;
-  background-color: #F5FBEF;
-}
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: monospace;
 }
+body{
+  display: grid;
+  min-height: 100vh;
+  place-content: center;
+  background-color: #F5FBEF;
+}
+
 #todo-form{
   display: grid;
   max-width: 300px;
