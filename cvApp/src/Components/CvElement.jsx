@@ -1,15 +1,38 @@
-export const CvElement = () => {
-  return (
-    <section className="cv-element">
+/* eslint-disable react/prop-types */
+import { usePDF } from "react-to-pdf"
+
+
+export const CvElement = ({ inputValue }) => {
+    const { toPDF, targetRef } = usePDF({ filename: `CV.pdf` })
+
+    /* 
+    $("input").on("blur", function() {
+                // Interrumpimos el evento default
+                event.preventDefault();
+
+                // Eliminamos los espacios en blanco
+                $(this).val($.trim($(this).val()));
+            });
+    ctrl + alt + A */
+
+    return (
+        <div style={{ position: 'relative' }}>
+            <button
+                className="btn-download"
+                onClick={() => toPDF()}
+            >Download PDF</button>
+            {/* REMEMBER TO MAP THE INPUTVALUE */}
+            <section ref={targetRef} className="cv-element">
                 <div className="cv-title">
                     <div>
-                        <h2>Full name</h2>
-                        <p>josephine.meyers@mail.co.uk</p>
-                        <p>+44 3245 5521 5521</p>
-                        <p>London, UK</p>
+                        <h2>Cinamon Roll Shy</h2>
+                        <p>cinamonrollshy@sanrio.com</p>
+                        <p>+34 912 345 876</p>
+                        <p>Shukuru Town, Japan</p>
+                        <p>Passionate Sanrio character</p>
                     </div>
                     <figure>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe6AlOdAOVljUpTt0q8E_bUYPjh924yHHpczJZz3c&s" alt="profile-pic"/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe6AlOdAOVljUpTt0q8E_bUYPjh924yHHpczJZz3c&s" alt="profile-pic" />
                     </figure>
                 </div>
                 <div>
@@ -20,8 +43,8 @@ export const CvElement = () => {
                             <p>Country Adress</p>
                         </div>
                         <div>
-                            <p className="sub-title">University</p>
-                            <p>Degreee</p>
+                            <p className="sub-title">University of Sanrio</p>
+                            <p>Degreee on being the cutest Sanrio character</p>
                         </div>
                     </div>
                 </div>
@@ -33,12 +56,12 @@ export const CvElement = () => {
                             <p>Adress</p>
                         </div>
                         <div>
-                            <p className="sub-title">Company name</p>
+                            <p className="sub-title">Sanrio CO</p>
                             <ul>
-                                <li>Things you did</li>
-                                <li>Things you did</li>
-                                <li>Things you did</li>
-                                
+                                <li>Being the cutest</li>
+                                <li>Sleeping on the cutest position ever</li>
+                                <li>Doing skincare and cleaning the dishes uwu</li>
+
                             </ul>
                         </div>
                     </div>
@@ -53,11 +76,12 @@ export const CvElement = () => {
                                 <li>This is a very large thing to describe about my experience</li>
                                 <li>This is another very large thing to describe my previous experience</li>
                                 <li>More and more things to describe my prev experience</li>
-                                
+
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
-  )
+        </div>
+    )
 }

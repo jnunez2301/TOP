@@ -108,3 +108,12 @@ input:focus{
     gap: 15px;
     margin: .8rem 2rem;
 }
+.btn-download{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 32px 32px;
+    background-color: #78daeb;
+    font-weight: 800;
+    color: #0E374E;
+}
