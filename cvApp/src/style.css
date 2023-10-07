@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    display: grid;
+    min-height: 100vh;
+    background-color: #F3F4F6;
+}
+#root{
+    display: flex; 
+    margin: 1rem; 
+}
+ul{
+    list-style-type: none;
+}
+button{
+    padding: 5px 10px ;
+    border: none;
+    cursor: pointer;
+    background-color: #F5F5F5;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px #E0E0E4;
+    transition: all .3s ease-in-out;
+}
+button:hover{
+    background-color: rgba(218, 208, 208, 0.973)
+}
+label{
+    font-weight: 800;
+}
+input{
+    padding: 10px 15px;
+    width: 100%;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #F3F4F6;
+    box-shadow: 1px 1px 4px #E0E0E4;
+    outline: none !important;
+    transition: all .1s ease-in-out;
+}
+input:focus{
+    border: 3px solid #3B83F6;
+}
+.layout-item{
+    background-color: #FFFFFF;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 3px 1px 4px #E0E0E4;
+    margin: 16px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 350px;
+    flex-wrap: wrap;
+}
+.sub-title{
+    font-weight: 800;
+}
+
+.cv-element{
+    background-color: #FFFFFF;
+    width: 800px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.cv-title{
+    background-color: #0E374E;
+    color: #FFFFFF;
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+}
+.cv-title > figure{
+    background-color: #E0E0E4;
+    border: none;
+    border-radius: 100%;
+    width: 128px;
+    height: 128px;
+}
+.cv-title > figure > img{
+    border-radius: 100%;
+    width: 128px;
+    height: 128px;
+}
+
+.cv-title > figure > 
+.cv-title > h2{
+    margin-bottom: 16px;
+}
+.cv-part{
+    margin: 2rem;
+    background-color: #EEF1F3;
+    text-align: center;
+    padding: .3rem;
+    margin-bottom: 10px;
+}
+.cv-experience{
+    display: flex;
+    gap: 15px;
+    margin: .8rem 2rem;
+}
