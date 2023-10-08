@@ -32,9 +32,6 @@ button{
 button:hover{
     background-color: rgba(218, 208, 208, 0.973)
 }
-label{
-    font-weight: 800;
-}
 input{
     padding: 10px 15px;
     width: 100%;
@@ -110,10 +107,33 @@ input:focus{
 }
 .btn-download{
     position: absolute;
-    bottom: 0;
+    top: 0;
     right: 0;
     padding: 32px 32px;
     background-color: #78daeb;
     font-weight: 800;
     color: #0E374E;
+}
+#clear-load > button{
+    width: 100%;
+    padding: 10px 15px;
+}
+#clear{
+    background-color: #a43737;
+    color: #e4f1f3;
+}
+input::file-selector-button{
+    display: grid;
+    border: none;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    padding: 15px 25px;
+    box-shadow: 5px 1px 4px #E0E0E4;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    width: 100%;
+    margin: 5px;
+}
+input::file-selector-button:hover{
+    background-color: rgba(218, 208, 208, 0.973)
 }

@@ -16,16 +16,21 @@ export const CvElement = ({ cvInfo }) => {
                 $(this).val($.trim($(this).val()));
             });
     ctrl + alt + A */
+    const emptyField = ''
+
+    
 
     return (
-        <section ref={targetRef} className="cv-element" style={{ position: 'relative' }}>
-            <button
+        <div  style={{ position: 'relative' }}>
+             <button
                 className="btn-download"
                 onClick={() => toPDF()}
             >Download PDF</button>
+        <section ref={targetRef} className="cv-element">
+           
             {/* REMEMBER TO MAP THE INPUTVALUE */}
             {
-                cvInfo.map((cv, index) => (
+                [cvInfo].map((cv, index) => (
                     <React.Fragment key={index}>
                     <div className="cv-title">
                         <div>
@@ -40,10 +45,9 @@ export const CvElement = ({ cvInfo }) => {
                         </figure>
                     </div>
                     <div>
-                        <h3 className="cv-part">Education</h3>
-                        
-                            
+                        <h3 className="cv-part">Education</h3>    
                                 {
+                                    cv.education ?  
                                     cv.education.map((study, index) =>(
                                         <React.Fragment key={index}>
                                         <div className="cv-experience">
@@ -57,12 +61,14 @@ export const CvElement = ({ cvInfo }) => {
                                         </div>
                                         </div>
                                         </React.Fragment>
-                                    ))
+                                        
+                                    )): emptyField
                                 }
 
                         <div>
                             <h3 className="cv-part">Professional Experience</h3>
                             {
+                                cvInfo.experience ?
                                 cv.experience.map((work, index) => (
                                     <div key={index} className="cv-experience">
                                         <div>
@@ -74,7 +80,7 @@ export const CvElement = ({ cvInfo }) => {
                                             <p>{work.description}</p>
                                         </div>
                                     </div>
-                                ))
+                                )) : emptyField
                             }
                         </div>
                     </div>
@@ -82,5 +88,6 @@ export const CvElement = ({ cvInfo }) => {
                 ))
             }
         </section>
+        </div>
     )
 }
