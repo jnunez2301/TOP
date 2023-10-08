@@ -4,51 +4,28 @@ import { useState } from "react"
 
 const CvLayout = () => {
 
-   
+    const [showImg, setShowImg] = useState(true)
     const [inputValue, setInputValue] = useState({
-        name: 'Cinamon Roll Shy',
-        email: 'cinamonrollshy@sanrio.com',
-        phone: '+34 912 345 876',
-        adress: 'Shukuru Town, Japan',
-        titleDescription: 'Passionate Sanrio character',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe6AlOdAOVljUpTt0q8E_bUYPjh924yHHpczJZz3c&s',
+        name: '',
+        email: '',
+        phone: '',
+        adress: '',
+        titleDescription: '',
+        img: '',
         education: 
-            [{
-                title: 'Sanrio University',
-                description: 'Degree on being the cutest Sanrio Character',
-                previousDate: '05/2023',
-                currentDate: 'Present',
-                adress: 'Tokyo, Japan'
-            },
-            {
-                title: 'Sanrio HighSchool',
-                description: 'Degree on funniest student',
-                previousDate: '05/2019',
-                currentDate: '12/2022',
-                adress: 'Osaka, Japan'
-            }
-        ],
+            [],
         experience: 
-            [{
-                title: 'Cutest of Sanrio CO',
-                description: 'Working hard as always on being very cute',
-                previousDate: '10/2021',
-                currentDate: 'Present',
-                adress: 'Tokyo, Japan'
-            },
-            {
-                title: 'Funniest of Sanrio CO',
-                description: 'Working hard as always on being funny',
-                previousDate: '01/1999',
-                currentDate: 'present',
-                adress: 'Osaka, Japan'
-            }
-        ]}
+            []}
         )
+
+    const onShowImg = () =>{
+        setShowImg(!showImg)
+    }
 
     const handleName = (event) =>{
         if(event.target.value.trim().length > 0){
             setInputValue({
+                ...inputValue,
                 name: event.target.value,
             })
         }
@@ -93,6 +70,51 @@ const CvLayout = () => {
     const handleUpdate = (newInputValue) =>{
         setInputValue(newInputValue);
     }
+
+    const submitSchool = (event)=>{
+        event.preventDefault()
+        const schoolForm = {
+            title: event.target[0].value.trim(),
+            description: event.target[1].value.trim(),
+            previousDate: event.target[2].value.trim(),
+            currentDate: event.target[3].value.trim(),
+            adress: event.target[4].value.trim()
+        }
+
+        if(schoolForm.title.length > 0){
+
+        setInputValue({
+            ...inputValue,
+            education: [...inputValue.education, schoolForm]
+        })
+        event.target.reset();
+        }
+        
+    }
+
+    const submitJob = (event) =>{
+        event.preventDefault()
+        
+        const jobForm = {
+            title: event.target[0].value.trim(),
+            description: event.target[1].value.trim(),
+            previousDate: event.target[2].value.trim(),
+            currentDate: event.target[3].value.trim(),
+            adress: event.target[4].value.trim()
+        }
+
+        if(jobForm.title.length > 0){
+            setInputValue({
+                ...inputValue,
+                experience: [...inputValue.experience, jobForm]
+            })
+            event.target.reset()
+        }
+
+        
+    }
+
+
     return (
         <>
              <CvForm
@@ -105,8 +127,13 @@ const CvLayout = () => {
               setCvInfo={setInputValue}
               handleUpdate={handleUpdate}
               handleImageUpload={handleImageUpload}
+              submitSchool={submitSchool}
+              submitJob={submitJob}
+              onShowImg={onShowImg}
                  />
-             <CvElement cvInfo={inputValue}/>
+             <CvElement 
+             cvInfo={inputValue}
+             showImg={showImg}/>
 
         </>
     )

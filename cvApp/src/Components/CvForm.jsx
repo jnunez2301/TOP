@@ -6,9 +6,61 @@ import { JobExperience } from "./JobExperience"
 
 
 export const CvForm = ({
-     handleName, handleEmail, handlePhone, handleAdress, handleTitleDescription, handleUpdate, handleImageUpload }) => {
+    handleName, handleEmail, handlePhone, handleAdress, handleTitleDescription, handleUpdate, handleImageUpload,
+    submitSchool, submitJob, cvInfo, onShowImg }) => {
 
 
+        const initialState = {
+            name: 'Cinamon Roll',
+            email: 'cinamonrollshy@sanrio.com',
+            phone: '+34 912 345 876',
+            adress: 'Shukuru Town, Japan',
+            titleDescription: 'Passionate Sanrio character',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe6AlOdAOVljUpTt0q8E_bUYPjh924yHHpczJZz3c&s',
+            education: 
+                [{
+                    title: 'Sanrio University',
+                    description: 'Degree on being the cutest Sanrio Character',
+                    previousDate: '05/2023',
+                    currentDate: 'Present',
+                    adress: 'Tokyo, Japan'
+                },
+                {
+                    title: 'Sanrio HighSchool',
+                    description: 'Degree on funniest student',
+                    previousDate: '05/2019',
+                    currentDate: '12/2022',
+                    adress: 'Osaka, Japan'
+                }
+            ],
+            experience: 
+                [{
+                    title: 'Cutest of Sanrio CO',
+                    description: 'Working hard as always on being very cute',
+                    previousDate: '10/2021',
+                    currentDate: 'Present',
+                    adress: 'Tokyo, Japan'
+                },
+                {
+                    title: 'Funniest of Sanrio CO',
+                    description: 'Working hard as always on being funny',
+                    previousDate: '01/1999',
+                    currentDate: 'present',
+                    adress: 'Osaka, Japan'
+                }
+            ]}
+
+        const emptyInitialState = {
+            name: '',
+            email: '',
+            phone: '',
+            adress: '',
+            titleDescription: '',
+            img: '',
+            education: [],
+            experience: []
+        }
+            
 
     return (
         <aside className="cv-form">
@@ -17,8 +69,8 @@ export const CvForm = ({
                 <button>Customize</button>
             </div>
             <div className="layout-item" id="clear-load">
-                <button id="clear" onClick={() => handleUpdate({})}>Clear resume</button>
-                <button id="load" >Load example</button>
+                <button id="clear" onClick={() => handleUpdate(emptyInitialState)}>Clear resume</button>
+                <button id="load" onClick={() => handleUpdate(initialState)}>Load example</button>
             </div>
             <form className="layout-item">
                 <label htmlFor="name">Full name</label>
@@ -47,15 +99,18 @@ export const CvForm = ({
                     type="text" id="titleDescription" name="titleDescription" placeholder="I'm a fullstack developer..." />
                 <label htmlFor="profilePic">Upload your photo</label>
                 <input type="file"
-                id="profilePic"
-                name="profilePic"
-                accept="image/*"
-                onChange={event => handleImageUpload(event)}
-                 />
-
+                    id="profilePic"
+                    name="profilePic"
+                    accept="image/*"
+                    onChange={event => handleImageUpload(event)}
+                />
+                <div style={{display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <p>Don not want to upload a photo?</p>
+                    <button type="button" onClick={()=> onShowImg()}>Hide IMG</button>
+                </div>
             </form>
-            <Education />
-            <JobExperience />
+            <Education submitSchool={submitSchool} schools={cvInfo.education}/>
+            <JobExperience submitJob={submitJob} jobs={cvInfo.experience}/>
         </aside>
     )
 }

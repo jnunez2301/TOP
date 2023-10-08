@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import React from "react"
+import React from 'react'
 import { usePDF } from "react-to-pdf"
 
 
-export const CvElement = ({ cvInfo }) => {
+export const CvElement = ({ cvInfo, showImg }) => {
     const { toPDF, targetRef } = usePDF({ filename: `CV.pdf` })
+    
     // editMode, setEditMode = useState(false)
     // !editmode ? editBtn : <form>Your form to edit</form> 
     /* 
@@ -40,9 +41,11 @@ export const CvElement = ({ cvInfo }) => {
                             <p>{cv.adress}</p>
                             <p>{cv.titleDescription}</p>
                         </div>
+                        { showImg ? 
                         <figure>
                             <img src={cv.img} alt={cv.name} />
-                        </figure>
+                        </figure> : ''
+                        }
                     </div>
                     <div>
                         <h3 className="cv-part">Education</h3>    

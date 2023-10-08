@@ -1,8 +1,10 @@
-export const Education = () => {
+/* eslint-disable react/prop-types */
+export const Education = ({submitSchool, schools}) => {
+ 
   return (
     <div className="layout-item">
                     <h2>Education</h2>
-                    <form>
+                    <form onSubmit={submitSchool}>
                         <label htmlFor="school">School</label>
                         <input name="school" id="school" type="text" placeholder="Where you studied"/>
 
@@ -17,6 +19,8 @@ export const Education = () => {
 
                         <label htmlFor="location">Location</label>
                         <input type="text" name="location" id="location" placeholder="Where was it? City, Country..."/>
+
+                        <button>Submit</button>
                     </form>
     </div>
   )

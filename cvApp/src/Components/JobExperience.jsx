@@ -1,8 +1,38 @@
-export const JobExperience = () => {
+import { useState } from "react"
+
+/* eslint-disable react/prop-types */
+export const JobExperience = ({submitJob, jobs}) => {
+
+  const [hide, setHide] = useState(true)
+
+  
   return (
+    !hide ?
+    <div className="layout-item">
+    {
+      <ul >
+      {
+      jobs ? 
+      jobs.map((job, index) => (
+        
+          <li  key={index}>
+            <h3>{job.title}</h3>
+          <figure>
+            <img onClick={() => setHide(!hide)} src="/showIcon.svg" alt="showicon" />
+          </figure>
+          </li>
+        
+      ))
+      : ''
+    }
+      </ul>
+    }
+    </div>
+     :
+     
     <div className="layout-item">
                     <h2>Experience</h2>
-                    <form>
+                    <form onSubmit={submitJob}>
                         <label htmlFor="company">Company Name</label>
                         <input type="text" name="company" id="company" placeholder="Name of the company"/>
 
@@ -17,7 +47,10 @@ export const JobExperience = () => {
 
                         <label htmlFor="job-description">Description</label>
                         <input type="text" name="job-description" id="job-description" placeholder="What where you used to do on your job?"/>
+
+                        <button type="submit">Submit</button>
+                        <button type="button" onClick={() => setHide(!hide)}>Cancel</button>
                     </form>
-                </div>
+    </div>
   )
 }

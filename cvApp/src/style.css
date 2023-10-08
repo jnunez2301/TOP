@@ -18,6 +18,22 @@ body{
 }
 ul{
     list-style-type: none;
+    display: grid;
+    width: 100%;
+}
+li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+li > figure > img{
+    padding: 5px;
+    transition: all .3s ease-in-out;
+}
+li > figure> img:hover{
+   background-color: cyan;
+   border-radius: 100%;
+   
 }
 button{
     padding: 5px 10px ;
@@ -57,6 +73,12 @@ input:focus{
     align-items: center;
     width: 350px;
     flex-wrap: wrap;
+}
+.layout-item > form > button{
+    width: 100%;
+    padding: 10px 15px;
+    
+    
 }
 .sub-title{
     font-weight: 800;
@@ -102,14 +124,13 @@ input:focus{
 }
 .cv-experience{
     display: flex;
+    width: 100%;
     gap: 15px;
     margin: .8rem 2rem;
 }
 .btn-download{
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 32px 32px;
+    width: 100%;
+    padding: 16px 32px;
     background-color: #78daeb;
     font-weight: 800;
     color: #0E374E;
