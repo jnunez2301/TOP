@@ -65,7 +65,12 @@ export const CvForm = ({
     return (
         <aside className="cv-form">
             <div className="layout-item">
-                <button>Content</button>
+                <div>
+                    
+                    <button>
+                    <img src="/content.svg" alt="content" />
+                        Content</button>
+                </div>
                 <button>Customize</button>
             </div>
             <div className="layout-item" id="clear-load">
