@@ -56,27 +56,32 @@ const EditEducation = ({ showModal, hideModal, updateForm, education, schoolInde
             <input name="editSchool" id="editSchool" type="text" placeholder="Where you studied"
               onChange={handleTitleChange}
               value={educationInput.title}
+              required
             />
 
             <label htmlFor="editDegree">Edit Degree</label>
             <input type="text" name="editDegree" id="editDegree" placeholder="The name of your degree"
               onChange={handleDescriptionChange}
-              value={educationInput.description} />
+              value={educationInput.description}
+              required />
 
             <label htmlFor="edit-start-date">Edit Start Date</label>
             <input type="text" name="edit-start-date" id="edit-start-date" placeholder="When did you started? MM/YYYY"
               onChange={handlePreviousChange}
-              value={educationInput.previousDate} />
+              value={educationInput.previousDate}
+              required />
 
             <label htmlFor="edit-end-date">Edit End Date</label>
             <input type="text" name="edit-end-date" id="edit-end-date" placeholder="When did it end? MM/YYYY or Present"
               onChange={handleCurrentChange}
-              value={educationInput.currentDate} />
+              value={educationInput.currentDate}
+              required />
 
             <label htmlFor="edit-location">Edit Location</label>
             <input type="text" name="edit-location" id="edit-location" placeholder="Where was it? City, Country..."
               onChange={handleAddressChange}
-              value={educationInput.adress} />
+              value={educationInput.adress}
+              required />
 
             <button type="submit" onClick={() => hideModal()}>Submit</button>
             <button type="button" onClick={() => hideModal()}>Cancel</button>

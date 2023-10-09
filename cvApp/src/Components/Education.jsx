@@ -38,19 +38,19 @@ export const Education = ({submitSchool, schools, handleEditSchool}) => {
                     <h2>Education</h2>
                     <form onSubmit={submitSchool}>
                         <label htmlFor="school">School</label>
-                        <input name="school" id="school" type="text" placeholder="Where you studied"/>
+                        <input name="school" id="school" type="text" placeholder="Where you studied" required/>
 
                         <label htmlFor="degree">Degree</label>
-                        <input type="text" name="degree" id="degree" placeholder="The name of your degree"/>
+                        <input type="text" name="degree" id="degree" placeholder="The name of your degree" required/>
 
                         <label htmlFor="start-date">Start Date</label>
-                        <input type="text" name="start-date" id="start-date" placeholder="When did you started? MM/YYYY"/>
+                        <input type="text" name="start-date" id="start-date" placeholder="When did you started? MM/YYYY" required/>
 
                         <label htmlFor="end-date">End Date</label>
-                        <input type="text" name="end-date" id="end-date" placeholder="When did it end? MM/YYYY or Present"/>
+                        <input type="text" name="end-date" id="end-date" placeholder="When did it end? MM/YYYY or Present" required/>
 
                         <label htmlFor="location">Location</label>
-                        <input type="text" name="location" id="location" placeholder="Where was it? City, Country..."/>
+                        <input type="text" name="location" id="location" placeholder="Where was it? City, Country..." required/>
 
                         <button>Submit</button>
                         <button type="button" onClick={() => setHide(!hide)}>Cancel</button>

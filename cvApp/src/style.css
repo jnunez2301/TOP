@@ -87,8 +87,9 @@ input:focus{
     background-color: #FFFFFF;
     position: sticky;
     top: 1rem;
-    width: 800px;
-    margin: 1rem;
+    width: 100%;
+    min-width: 800px;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
 }

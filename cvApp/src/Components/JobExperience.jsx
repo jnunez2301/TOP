@@ -44,19 +44,19 @@ export const JobExperience = ({submitJob, jobs}) => {
                     <h2>Experience</h2>
                     <form onSubmit={submitJob}>
                         <label htmlFor="company">Company Name</label>
-                        <input type="text" name="company" id="company" placeholder="Name of the company"/>
+                        <input type="text" name="company" id="company" placeholder="Name of the company" required/>
 
                         <label htmlFor="position-title">Position title</label>
-                        <input type="text" name="position-title" id="position-title" placeholder="Which department did you work for?"/>
+                        <input type="text" name="position-title" id="position-title" placeholder="Which department did you work for?" required/>
 
                         <label htmlFor="job-start-date">Start Date</label>
-                        <input type="text" name="start-date-job" id="job-start-date" placeholder="When did you started? MM/YYYY"/>
+                        <input type="text" name="start-date-job" id="job-start-date" placeholder="When did you started? MM/YYYY" required/>
 
                         <label htmlFor="job-end-date">End Date</label>
-                        <input type="text" name="job-end-date" id="job-end-date" placeholder="When did it end? MM/YYYY or Present"/>
+                        <input type="text" name="job-end-date" id="job-end-date" placeholder="When did it end? MM/YYYY or Present" required/>
 
                         <label htmlFor="job-description">Description</label>
-                        <input type="text" name="job-description" id="job-description" placeholder="What where you used to do on your job?"/>
+                        <input type="text" name="job-description" id="job-description" placeholder="What where you used to do on your job?" required/>
 
                         <button type="submit">Submit</button>
                         <button type="button" onClick={() => setHide(!hide)}>Cancel</button>
