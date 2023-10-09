@@ -6,23 +6,12 @@ import { usePDF } from "react-to-pdf"
 export const CvElement = ({ cvInfo, showImg }) => {
     const { toPDF, targetRef } = usePDF({ filename: `CV.pdf` })
     
-    // editMode, setEditMode = useState(false)
-    // !editmode ? editBtn : <form>Your form to edit</form> 
-    /* 
-    $("input").on("blur", function() {
-                // Interrumpimos el evento default
-                event.preventDefault();
-
-                // Eliminamos los espacios en blanco
-                $(this).val($.trim($(this).val()));
-            });
-    ctrl + alt + A */
     const emptyField = ''
 
     
 
     return (
-        <div  style={{ position: 'relative' }}>
+        <div  style={{ position: 'relative', padding: '1rem' }}>
              <button
                 className="btn-download"
                 onClick={() => toPDF()}

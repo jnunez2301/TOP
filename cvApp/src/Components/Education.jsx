@@ -18,7 +18,8 @@ export const Education = ({submitSchool, schools, handleEditSchool}) => {
               <li key={index}>
                 <h3>{school.title}</h3>
                 <figure>
-                  <img onClick={() => handleEditSchool(index)} src="/edit.svg" alt="show-icon" />
+                  <img onClick={(event) => handleEditSchool(index, event)} src="/edit.svg" alt="show-icon" />
+                  
                 </figure>
               </li>
             ))
@@ -54,6 +55,7 @@ export const Education = ({submitSchool, schools, handleEditSchool}) => {
                         <button>Submit</button>
                         <button type="button" onClick={() => setHide(!hide)}>Cancel</button>
                       </form>
+                      
     </div>
   )
 }
