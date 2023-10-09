@@ -94,10 +94,10 @@ input:focus{
 }
 .modal-background{
     background-color: rgba(0, 0, 0, 0.8);
-    min-height: 100vh;
-    min-width: 100vw;
+    min-height: 100%;
+    min-width: 100%;
     z-index: 10;
-    position: absolute;
+    position: fixed;
     display: grid;
     place-content: center;
 }
@@ -113,9 +113,6 @@ input:focus{
     background-color: #FFFFFF;
     box-shadow: 3px 1px 4px #E0E0E4;
     width: 350px;
-    position: relative;
-    top: 25%;
-    left: 25%;
 }
 .cv-title{
     background-color: #0E374E;
