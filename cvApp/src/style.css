@@ -135,6 +135,20 @@ input:focus{
     font-weight: 800;
     color: #0E374E;
 }
+
+.btn-add{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: .3rem;
+}
+.btn-add > img{
+    cursor: pointer;
+    width: 32px;
+    height: auto;
+}
 #clear-load > button{
     width: 100%;
     padding: 10px 15px;

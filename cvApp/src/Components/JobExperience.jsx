@@ -5,14 +5,18 @@ export const JobExperience = ({submitJob, jobs}) => {
 
   const [hide, setHide] = useState(true)
 
+  /* const handleDelte = (index)=>{
+      return inputValue.jobs.filter(job => jobs !== index)
+  } */
   
   return (
-    !hide ?
+    hide ?
     <div className="layout-item">
     {
+      <>
       <ul >
       {
-      jobs ? 
+      jobs &&
       jobs.map((job, index) => (
         
           <li  key={index}>
@@ -23,10 +27,16 @@ export const JobExperience = ({submitJob, jobs}) => {
           </li>
         
       ))
-      : ''
-    }
+      }
+      
       </ul>
+      <figure className="btn-add">
+        <p>Add Experience</p>
+        <img onClick={()=> setHide(!hide)} src='/circlePlus.svg' alt="add-btn"/>
+      </figure>
+      </>
     }
+    
     </div>
      :
      

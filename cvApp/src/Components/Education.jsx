@@ -1,7 +1,37 @@
+import { useState } from "react"
+
 /* eslint-disable react/prop-types */
 export const Education = ({submitSchool, schools}) => {
- 
+  
+  const [hide, setHide] = useState(true)
+
+
+
   return (
+    hide ?
+    <div className="layout-item">
+      {
+        <>
+        <ul>
+          {
+            schools && schools.map((school, index)=>(
+              <li key={index}>
+                <h3>{school.title}</h3>
+                <figure>
+                  <img onClick={() => setHide(!hide)} src="/showIcon.svg" alt="show-icon" />
+                </figure>
+              </li>
+            ))
+          }
+        </ul>
+        <figure className="btn-add">
+          <p>Add Education</p>
+          <img onClick={() => setHide(!hide)} src="/circlePlus.svg" alt="add-btn" />
+        </figure>
+        </>
+      }
+    </div>
+    :
     <div className="layout-item">
                     <h2>Education</h2>
                     <form onSubmit={submitSchool}>
@@ -21,6 +51,7 @@ export const Education = ({submitSchool, schools}) => {
                         <input type="text" name="location" id="location" placeholder="Where was it? City, Country..."/>
 
                         <button>Submit</button>
+                        <button type="button" onClick={() => setHide(!hide)}>Cancel</button>
                     </form>
     </div>
   )
