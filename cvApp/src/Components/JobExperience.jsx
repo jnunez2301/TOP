@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 /* eslint-disable react/prop-types */
-export const JobExperience = ({submitJob, jobs}) => {
+export const JobExperience = ({submitJob, jobs, handleEditJob}) => {
 
   const [hide, setHide] = useState(true)
 
@@ -22,7 +22,7 @@ export const JobExperience = ({submitJob, jobs}) => {
           <li  key={index}>
             <h3>{job.title}</h3>
           <figure>
-            <img onClick={() => setHide(!hide)} src="/showIcon.svg" alt="showicon" />
+            <img onClick={(event) => handleEditJob(index, event)} src="/edit.svg" alt="showicon" />
           </figure>
           </li>
         

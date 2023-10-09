@@ -2,6 +2,7 @@ import { CvElement } from "../Components/CvElement"
 import { CvForm } from "../Components/CvForm"
 import { useState } from "react"
 import EditEducation from "../Components/EditEducation"
+import EditJob from "../Components/EditJob"
 
 const CvLayout = () => {
 
@@ -9,7 +10,8 @@ const CvLayout = () => {
 
     const [showModal, setShowModal] = useState('hidden')
 
-    const [schoolIndex, setSchoolindex] = useState(0)
+    const [schoolIndex, setSchoolindex] = useState(null)
+    const [jobIndex, setJobIndex] = useState(null)
 
     const [inputValue, setInputValue] = useState({
         name: '',
@@ -123,12 +125,21 @@ const CvLayout = () => {
     const handleEditSchool = (index) => {
         /* console.log(inputValue.education[index]); */
         setSchoolindex(index)
+        setJobIndex(null); // Reset the job index to avoid displaying job info
         setShowModal('visible')
     }
+
+    const handleEditJob = (index) => {
+        setJobIndex(index)
+        setSchoolindex(null); // Reset the school index to avoid displaying education info
+        setShowModal('visible')
+    }
+
     const hideModal = () => {
         setShowModal('hidden');
     }
-    const updateForm = (index, event) => {
+
+    const updateSchoolForm = (index, event) => {
         event.preventDefault()
 
         const updatedValue = {
@@ -138,15 +149,37 @@ const CvLayout = () => {
             currentDate: event.target[3].value.trim(),
             adress: event.target[4].value.trim()
         };
+
         const updatedEducation = [...inputValue.education];
         updatedEducation[index] = updatedValue;
-        console.log(updatedEducation);
 
         setInputValue({
             ...inputValue, 
             education: updatedEducation
         })
     }
+
+    const updateJobForm = (index, event) =>{
+
+        event.preventDefault()
+
+        const updatedValue = {
+            title: event.target[0].value.trim(),
+            description: event.target[1].value.trim(),
+            previousDate: event.target[2].value.trim(),
+            currentDate: event.target[3].value.trim(),
+            adress: event.target[4].value.trim()
+        };
+
+        const updatedJob = [...inputValue.experience];
+        updatedJob[index] = updatedValue
+
+        setInputValue({
+            ...inputValue,
+            experience: updatedJob
+        })
+    }
+   
     /* const handleDeleteEducation = (index) =>{
         const updatedInput = inputValue.filter(input => input.education !== )
     } */
@@ -168,6 +201,7 @@ const CvLayout = () => {
                 submitJob={submitJob}
                 onShowImg={onShowImg}
                 handleEditSchool={handleEditSchool}
+                handleEditJob={handleEditJob}
             />
             <CvElement
                 cvInfo={inputValue}
@@ -176,8 +210,15 @@ const CvLayout = () => {
                 showModal={showModal}
                 hideModal={hideModal}
                 education={inputValue.education[schoolIndex]}
-                updateForm={updateForm}
+                updateForm={updateSchoolForm}
                 schoolIndex={schoolIndex} />
+            <EditJob 
+                showModal={showModal}
+                hideModal={hideModal}
+                jobs={inputValue.experience[jobIndex]}
+                updatedJobForm={updateJobForm}
+                jobIndex={jobIndex}
+            />
         </>
     )
 }

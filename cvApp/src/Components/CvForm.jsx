@@ -10,7 +10,7 @@ import Customize from "./Customize"
 export const CvForm = ({
     handleName, handleEmail, handlePhone, handleAdress, handleTitleDescription, handleUpdate, handleImageUpload,
     submitSchool, submitJob, cvInfo, onShowImg,
-    handleEditSchool
+    handleEditSchool, handleEditJob
      }) => {
 
         const [content, setContent] = useState(true)
@@ -148,7 +148,10 @@ export const CvForm = ({
             schools={cvInfo.education}
             handleEditSchool={handleEditSchool}
             />
-            <JobExperience submitJob={submitJob} jobs={cvInfo.experience}/>
+            <JobExperience 
+            submitJob={submitJob} 
+            jobs={cvInfo.experience}
+            handleEditJob={handleEditJob}/>
             </>
              : <Customize />
              }
