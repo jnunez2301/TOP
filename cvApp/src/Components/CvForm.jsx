@@ -64,14 +64,32 @@ export const CvForm = ({
 
     return (
         <aside className="cv-form">
-            <div className="layout-item">
-                <div>
-                    
-                    <button>
+            <div className="layout-item"
+            style={{
+                display: 'flex',
+                justifyContent: 'center'
+            }}
+            >     
+                    <button style={{
+                        display: 'flex', 
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '1.3rem',
+                        }}>
                     <img src="/content.svg" alt="content" />
-                        Content</button>
-                </div>
-                <button>Customize</button>
+                    Content
+                    </button>
+                    <button style={{
+                        display: 'flex',
+                        flexDirection: 'column', 
+                        alignItems: 'center', 
+                        justifyContent: 'center',
+                        padding: '1.3rem'
+                        }}>
+                    <img src="/settings.svg" alt="settings" />
+                    Customize
+                    </button>
             </div>
             <div className="layout-item" id="clear-load">
                 <button id="clear" onClick={() => handleUpdate(emptyInitialState)}>Clear resume</button>
