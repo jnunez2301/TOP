@@ -55,8 +55,9 @@ export const JobExperience = ({submitJob, jobs, handleEditJob}) => {
                         <label htmlFor="job-end-date">End Date</label>
                         <input type="text" name="job-end-date" id="job-end-date" placeholder="When did it end? MM/YYYY or Present" required/>
 
-                        <label htmlFor="job-description">Description</label>
-                        <input type="text" name="job-description" id="job-description" placeholder="What where you used to do on your job?" required/>
+                        <label
+                        htmlFor="job-description">Description</label>
+                        <textarea type="text" name="job-description" id="job-description" placeholder="What where you used to do on your job?" required/>
 
                         <button type="submit">Submit</button>
                         <button type="button" onClick={() => setHide(!hide)}>Cancel</button>

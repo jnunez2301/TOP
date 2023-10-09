@@ -57,7 +57,7 @@ const EditJob = ({ showModal, hideModal, updatedJobForm, jobs, jobIndex }) => {
             value={jobInput.title}/>
 
             <label htmlFor="editDescription">Edit Description</label>
-            <input type="text" name="editDescription" id="editDescription" placeholder="What did you do on your work?"
+            <textarea type="text" name="editDescription" id="editDescription" placeholder="What did you do on your work?"
             onChange={handleDescriptionChange}
             value={jobInput.description}/>
             

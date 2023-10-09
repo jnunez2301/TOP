@@ -85,7 +85,7 @@ const CvLayout = () => {
         event.preventDefault()
         const schoolForm = {
             title: event.target[0].value.trim(),
-            description: event.target[1].value.trim(),
+            description: event.target[1].value,
             previousDate: event.target[2].value.trim(),
             currentDate: event.target[3].value.trim(),
             adress: event.target[4].value.trim()
@@ -107,7 +107,7 @@ const CvLayout = () => {
 
         const jobForm = {
             title: event.target[0].value.trim(),
-            description: event.target[1].value.trim(),
+            description: event.target[1].value,
             previousDate: event.target[2].value.trim(),
             currentDate: event.target[3].value.trim(),
             adress: event.target[4].value.trim()
