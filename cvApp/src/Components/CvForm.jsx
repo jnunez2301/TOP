@@ -1,14 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
+import { useState } from "react"
 import { Education } from "./Education"
 import { JobExperience } from "./JobExperience"
+import Customize from "./Customize"
 
 
 export const CvForm = ({
     handleName, handleEmail, handlePhone, handleAdress, handleTitleDescription, handleUpdate, handleImageUpload,
     submitSchool, submitJob, cvInfo, onShowImg }) => {
 
+        const [content, setContent] = useState(true)
 
         const initialState = {
             name: 'Cinamon Roll',
@@ -70,7 +73,9 @@ export const CvForm = ({
                 justifyContent: 'center'
             }}
             >     
-                    <button style={{
+                    <button
+                     onClick={() => setContent(true)}
+                     style={{
                         display: 'flex', 
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -80,7 +85,9 @@ export const CvForm = ({
                     <img src="/content.svg" alt="content" />
                     Content
                     </button>
-                    <button style={{
+                    <button 
+                    onClick={() => setContent(false)}
+                    style={{
                         display: 'flex',
                         flexDirection: 'column', 
                         alignItems: 'center', 
@@ -95,6 +102,8 @@ export const CvForm = ({
                 <button id="clear" onClick={() => handleUpdate(emptyInitialState)}>Clear resume</button>
                 <button id="load" onClick={() => handleUpdate(initialState)}>Load example</button>
             </div>
+            {content ? 
+            <>
             <form className="layout-item">
                 <label htmlFor="name">Full name</label>
                 <input
@@ -134,6 +143,10 @@ export const CvForm = ({
             </form>
             <Education submitSchool={submitSchool} schools={cvInfo.education}/>
             <JobExperience submitJob={submitJob} jobs={cvInfo.experience}/>
+            </>
+             : <Customize />
+             }
+            
         </aside>
     )
 }
