@@ -91,6 +91,7 @@ export const CvElement = ({ cvInfo, showImg }) => {
                 ))
             }
         </section>
+        
         </div>
     )
 }

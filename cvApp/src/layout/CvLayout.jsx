@@ -1,10 +1,14 @@
 import { CvElement } from "../Components/CvElement"
 import { CvForm } from "../Components/CvForm"
 import { useState } from "react"
+import EditEducation from "../Components/EditEducation"
 
 const CvLayout = () => {
 
     const [showImg, setShowImg] = useState(true)
+    
+    const [showModal, setShowModal] = useState('hidden')
+    
     const [inputValue, setInputValue] = useState({
         name: '',
         email: '',
@@ -110,9 +114,21 @@ const CvLayout = () => {
             })
             event.target.reset()
         }
-
-        
     }
+
+    const handleEditSchool = (index) => {
+        console.log(inputValue.education[index]);
+        setShowModal('visible')
+    }
+    const hideModal = () => {
+        setShowModal('hidden');
+    }
+    const updateForm = () =>{
+
+    }
+    /* const handleDeleteEducation = (index) =>{
+        const updatedInput = inputValue.filter(input => input.education !== )
+    } */
 
 
     return (
@@ -130,11 +146,16 @@ const CvLayout = () => {
               submitSchool={submitSchool}
               submitJob={submitJob}
               onShowImg={onShowImg}
+              handleEditSchool={handleEditSchool}
                  />
              <CvElement 
              cvInfo={inputValue}
              showImg={showImg}/>
-
+             <EditEducation 
+             showModal={showModal}
+             hideModal={hideModal}
+             education={inputValue.education}
+             updateForm={updateForm}/>
         </>
     )
 }

@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 /* eslint-disable react/prop-types */
-export const Education = ({submitSchool, schools}) => {
+export const Education = ({submitSchool, schools, handleEditSchool}) => {
   
   const [hide, setHide] = useState(true)
 
@@ -18,7 +18,7 @@ export const Education = ({submitSchool, schools}) => {
               <li key={index}>
                 <h3>{school.title}</h3>
                 <figure>
-                  <img onClick={() => setHide(!hide)} src="/showIcon.svg" alt="show-icon" />
+                  <img onClick={() => handleEditSchool(index)} src="/edit.svg" alt="show-icon" />
                 </figure>
               </li>
             ))
@@ -32,6 +32,7 @@ export const Education = ({submitSchool, schools}) => {
       }
     </div>
     :
+    
     <div className="layout-item">
                     <h2>Education</h2>
                     <form onSubmit={submitSchool}>
@@ -44,7 +45,7 @@ export const Education = ({submitSchool, schools}) => {
                         <label htmlFor="start-date">Start Date</label>
                         <input type="text" name="start-date" id="start-date" placeholder="When did you started? MM/YYYY"/>
 
-                        <label htmlFor="end-date-2">End Date</label>
+                        <label htmlFor="end-date">End Date</label>
                         <input type="text" name="end-date" id="end-date" placeholder="When did it end? MM/YYYY or Present"/>
 
                         <label htmlFor="location">Location</label>
@@ -52,7 +53,7 @@ export const Education = ({submitSchool, schools}) => {
 
                         <button>Submit</button>
                         <button type="button" onClick={() => setHide(!hide)}>Cancel</button>
-                    </form>
+                      </form>
     </div>
   )
 }

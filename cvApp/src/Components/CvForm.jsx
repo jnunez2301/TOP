@@ -9,7 +9,9 @@ import Customize from "./Customize"
 
 export const CvForm = ({
     handleName, handleEmail, handlePhone, handleAdress, handleTitleDescription, handleUpdate, handleImageUpload,
-    submitSchool, submitJob, cvInfo, onShowImg }) => {
+    submitSchool, submitJob, cvInfo, onShowImg,
+    handleEditSchool
+     }) => {
 
         const [content, setContent] = useState(true)
 
@@ -141,7 +143,11 @@ export const CvForm = ({
                     <button type="button" onClick={()=> onShowImg()}>Hide IMG</button>
                 </div>
             </form>
-            <Education submitSchool={submitSchool} schools={cvInfo.education}/>
+            <Education 
+            submitSchool={submitSchool}
+            schools={cvInfo.education}
+            handleEditSchool={handleEditSchool}
+            />
             <JobExperience submitJob={submitJob} jobs={cvInfo.experience}/>
             </>
              : <Customize />

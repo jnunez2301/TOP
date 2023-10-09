@@ -86,10 +86,37 @@ input:focus{
 
 .cv-element{
     background-color: #FFFFFF;
+    position: sticky;
+    top: 1rem;
     width: 800px;
     margin: 1rem;
     display: flex;
     flex-direction: column;
+}
+.modal-background{
+    background-color: rgba(0, 0, 0, 0.8);
+    min-height: 100vh;
+    min-width: 100vw;
+    z-index: 10;
+    position: absolute;
+    display: grid;
+    place-content: center;
+}
+.modal > form > input{
+    transition: none;
+}
+.modal > form > button{
+    transition: none;
+}
+.modal{
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 3px 1px 4px #E0E0E4;
+    width: 350px;
+    position: relative;
+    top: 25%;
+    left: 25%;
 }
 .cv-title{
     background-color: #0E374E;
