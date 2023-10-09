@@ -8,7 +8,8 @@ const CvLayout = () => {
 
     const [showImg, setShowImg] = useState(true)
 
-    const [showModal, setShowModal] = useState('hidden')
+    const [showSchoolModal, setShowSchoolModal] = useState('hidden')
+    const [showJobModal, setShowJobModal] = useState('hidden')
 
     const [schoolIndex, setSchoolindex] = useState(null)
     const [jobIndex, setJobIndex] = useState(null)
@@ -126,17 +127,20 @@ const CvLayout = () => {
         /* console.log(inputValue.education[index]); */
         setSchoolindex(index)
         setJobIndex(null); // Reset the job index to avoid displaying job info
-        setShowModal('visible')
+        setShowSchoolModal('visible')
     }
 
     const handleEditJob = (index) => {
         setJobIndex(index)
         setSchoolindex(null); // Reset the school index to avoid displaying education info
-        setShowModal('visible')
+        setShowJobModal('visible')
     }
 
     const hideModal = () => {
-        setShowModal('hidden');
+        setShowSchoolModal('hidden');
+    }
+    const hideJobModal = () =>{
+        setShowJobModal('hidden')
     }
 
     const updateSchoolForm = (index, event) => {
@@ -207,14 +211,14 @@ const CvLayout = () => {
                 cvInfo={inputValue}
                 showImg={showImg} />
             <EditEducation
-                showModal={showModal}
+                showModal={showSchoolModal}
                 hideModal={hideModal}
                 education={inputValue.education[schoolIndex]}
                 updateForm={updateSchoolForm}
                 schoolIndex={schoolIndex} />
             <EditJob 
-                showModal={showModal}
-                hideModal={hideModal}
+                showModal={showJobModal}
+                hideModal={hideJobModal}
                 jobs={inputValue.experience[jobIndex]}
                 updatedJobForm={updateJobForm}
                 jobIndex={jobIndex}
