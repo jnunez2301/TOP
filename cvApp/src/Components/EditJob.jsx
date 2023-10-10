@@ -59,6 +59,7 @@ const EditJob = ({ showModal, hideModal, updatedJobForm, jobs, jobIndex }) => {
             <label htmlFor="editDescription">Edit Description</label>
             <textarea type="text" name="editDescription" id="editDescription" placeholder="What did you do on your work?"
             onChange={handleDescriptionChange}
+            rows="4" cols="10"
             value={jobInput.description}/>
             
             <label htmlFor="editStart">Edit Start Date</label>

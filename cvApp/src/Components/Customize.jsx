@@ -1,14 +1,14 @@
 const Customize = () => {
 
-  /*
-    pseudo-code
-    const changePosition = (newString) =>{
-      return style.display('flex')
-    }
-  */
+  const cvElement = document.querySelector('.cv-element')
+
+  const handleVertical = () =>{
+    cvElement.style.flexDirection = 'row'
+  }
+
   return (
     <div className="layout-item">
-      Customize
+      <button onClick={() => handleVertical}>Flex Column</button>
     </div>
   )
 }
