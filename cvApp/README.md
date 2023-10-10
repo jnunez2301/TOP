@@ -1,6 +1,8 @@
 # CV Builder
 
 This is a simple CV builder project for basic Curriculums where you can edit the font, display the font on different ways and more.
+## To start the project use
+```yarn```
 
 ## React-to-pdf
 

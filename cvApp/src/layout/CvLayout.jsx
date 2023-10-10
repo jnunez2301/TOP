@@ -98,6 +98,7 @@ const CvLayout = () => {
                 education: [...inputValue.education, schoolForm]
             })
             event.target.reset();
+            alert('Task Completed!')
         }
 
     }
@@ -120,6 +121,7 @@ const CvLayout = () => {
                 experience: [...inputValue.experience, jobForm]
             })
             event.target.reset()
+            alert('Task Completed!')
         }
     }
 
@@ -138,9 +140,11 @@ const CvLayout = () => {
 
     const hideModal = () => {
         setShowSchoolModal('hidden');
+        alert('Task Completed!')
     }
     const hideJobModal = () =>{
         setShowJobModal('hidden')
+        alert('Task Completed!')
     }
 
     const updateSchoolForm = (index, event) => {
@@ -200,7 +204,6 @@ const CvLayout = () => {
                     education: updatedEducation,
                 });
                 hideModal(); // Hide the education modal if it's open
-                alert('Successfully deleted');
             }
         } else {
             console.error('Invalid index for deleting an education item.');
@@ -223,7 +226,6 @@ const CvLayout = () => {
                 experience: updatedExperience,
             });
             hideJobModal()
-            alert('Succesfully deleted')
             }
         } else {
             console.error("Invalid index for deleting a job.");
