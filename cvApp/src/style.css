@@ -189,6 +189,16 @@ input:focus{
     margin: .3rem;
     padding: 1rem;
 }
+.btn-edit{
+    padding: 10px;
+}
+.btn-delete{
+    background-color: #a43737;
+    color: white;
+}
+.btn-delete:hover{
+    background-color: #aa4040;
+}
 #clear-load > button{
     width: 100%;
     padding: 10px 15px;

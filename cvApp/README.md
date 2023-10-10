@@ -6,4 +6,3 @@ This is a simple CV builder project for basic Curriculums where you can edit the
 
 Decided to use this feature to be able to download the component CvElement.jsx so the user can have a copy of this CV.
 
-## Forgot the delete btn and i'm just going to move on from this.

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 /* eslint-disable react/prop-types */
-const EditEducation = ({ showModal, hideModal, updateForm, education, schoolIndex }) => {
+const EditEducation = ({ showModal, hideModal, updateForm, education, schoolIndex, handleDeleteEducation }) => {
 
 
 
@@ -83,8 +83,13 @@ const EditEducation = ({ showModal, hideModal, updateForm, education, schoolInde
               value={educationInput.adress}
               required />
 
-            <button type="submit" onClick={() => hideModal()}>Submit</button>
-            <button type="button" onClick={() => hideModal()}>Cancel</button>
+            <button className="btn-edit" type="submit" onClick={() => hideModal()}>Submit</button>
+            <button className="btn-edit" type="button" onClick={() => hideModal()}>Cancel</button>
+            <button className="btn-edit btn-delete" 
+            type="button"
+            onClick={() => handleDeleteEducation(schoolIndex)}>
+              Delete
+            </button>
           </form>
         </div>}
     </div>

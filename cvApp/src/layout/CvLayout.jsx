@@ -184,10 +184,51 @@ const CvLayout = () => {
         })
     }
    
-    /* const handleDeleteEducation = (index) =>{
-        const updatedInput = inputValue.filter(input => input.education !== )
-    } */
-
+    const handleDeleteEducation = (index) => {
+        // Make a copy of the current education array
+        const updatedEducation = [...inputValue.education];
+    
+        // Check if the index is valid
+        if (index >= 0 && index < updatedEducation.length) {
+            if (window.confirm('Do you want to delete this education item?')) {
+                // Remove the education item at the specified index
+                updatedEducation.splice(index, 1);
+    
+                // Update the state with the modified education array
+                setInputValue({
+                    ...inputValue,
+                    education: updatedEducation,
+                });
+                hideModal(); // Hide the education modal if it's open
+                alert('Successfully deleted');
+            }
+        } else {
+            console.error('Invalid index for deleting an education item.');
+        }
+    };
+    
+    const handleDeleteJob = (index) => {
+        // Make a copy of the current experience array
+        const updatedExperience = [...inputValue.experience];
+    
+        // Check if the index is valid
+        if (index >= 0 && index < updatedExperience.length) {
+            if(window.confirm('Do you want to delete this item?')){
+                // Remove the job at the specified index
+            updatedExperience.splice(index, 1);
+    
+            // Update the state with the modified experience array
+            setInputValue({
+                ...inputValue,
+                experience: updatedExperience,
+            });
+            hideJobModal()
+            alert('Succesfully deleted')
+            }
+        } else {
+            console.error("Invalid index for deleting a job.");
+        }
+    };
 
     return (
         <>
@@ -215,13 +256,15 @@ const CvLayout = () => {
                 hideModal={hideModal}
                 education={inputValue.education[schoolIndex]}
                 updateForm={updateSchoolForm}
-                schoolIndex={schoolIndex} />
+                schoolIndex={schoolIndex}
+                handleDeleteEducation={handleDeleteEducation} />
             <EditJob 
                 showModal={showJobModal}
                 hideModal={hideJobModal}
                 jobs={inputValue.experience[jobIndex]}
                 updatedJobForm={updateJobForm}
                 jobIndex={jobIndex}
+                handleDeleteJob={handleDeleteJob}
             />
         </>
     )

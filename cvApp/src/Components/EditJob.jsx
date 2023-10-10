@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 /* eslint-disable react/prop-types */
-const EditJob = ({ showModal, hideModal, updatedJobForm, jobs, jobIndex }) => {
+const EditJob = ({ showModal, hideModal, updatedJobForm, jobs, jobIndex, handleDeleteJob }) => {
 
   const [jobInput, setJobInput] = useState({
         title: '',
@@ -76,8 +76,13 @@ const EditJob = ({ showModal, hideModal, updatedJobForm, jobs, jobIndex }) => {
             <input type="text" name="editJobLocation" id="editJobLocation" onChange={handleAddressChange}
             value={jobInput.adress}/>
 
-            <button type="submit" onClick={() => hideModal()}>Submit</button>
-            <button type="button" onClick={() => hideModal()}>Cancel</button>
+            <button className="btn-edit" type="submit" onClick={() => hideModal()}>Submit</button>
+            <button className="btn-edit" type="button" onClick={() => hideModal()}>Cancel</button>
+            <button className="btn-edit btn-delete" 
+            type="button"
+            onClick={() => handleDeleteJob(jobIndex)}>
+              Delete
+            </button>
 
           </form>
         </div>
