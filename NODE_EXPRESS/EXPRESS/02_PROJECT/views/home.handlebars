@@ -1,0 +1,12 @@
+<h1>Message App</h1>
+<ul>
+        {{#each messages}}
+        <li>
+            <p>
+                {{this.text}}
+                <br>
+                {{this.user}} {{this.added}}
+            </p>
+        </li>
+        {{/each}}
+    </ul>
