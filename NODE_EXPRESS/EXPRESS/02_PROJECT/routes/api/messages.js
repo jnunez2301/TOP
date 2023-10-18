@@ -1,11 +1,54 @@
 const express = require('express');
 const router = express.Router();
-const messages = require('../../messages')
-const uuid = require('uuid');
+const Messages = require('../../models/Messages')
 
+//Get the database
 router.get('/', (req, res) =>{
-    res.json(messages)
+    Messages.find({})
+    .then(msgs => {
+        res.status(200).json(msgs);
+    })
+    .catch(error => {
+        console.error(error);
+        res.status(404).json({msg: 'An error ocurred'})
+    })    
 })
+//Get a request by user
+router.get('/:user', (req, res) =>{
+    const user = req.params;
+    Messages.find(user)
+    .then(usr => {
+        res.status(200).json(usr);
+    })
+    .catch(error => {
+        console.error(error);
+        res.status(500).json({msg: 'bad request'})
+    })
+})
+
+router.post('/', (req, res) =>{
+    const newMessage = new Messages({
+        text: req.body.text,
+        user: req.body.user,
+    })
+
+    newMessage.save()
+        .then(savedMessage => {
+            res.json({ 
+                success: true, 
+                message: 'Message saved successfully',
+                savedMessage: savedMessage
+            });
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).json({ success: false, error: 'An error occurred while saving the message' });
+        });
+   
+})
+
+/* 
+
 
 router.get('/:user', (req, res) =>{
     const currentUser = req.params.user;
@@ -16,27 +59,9 @@ router.get('/:user', (req, res) =>{
     }else{
         res.status(400).json({msg: `Member with the username ${currentUser} not found`})
     }
-})
+}) 
+*/
 
-/* {
-        "text": "Hi there!",
-        "user": "Amando",
-        "added": "2023-10-16T17:21:08.004Z"
-    }, */
-router.post('/', (req, res) =>{
-    const newMessage = {
-        text: req.body.text,
-        user: req.body.user,
-        added: Date(),
-    }
-    if(!newMessage.text || !newMessage.user){
-        return res.status(400).json({msg: 'please include a text and user'})
-    }else{
-        messages.push(newMessage);
-        /* res.json(messages) */
-        res.redirect('/')
-    }
-})
 
 
 module.exports = router;
