@@ -12,6 +12,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         minLength: 1,
         required: true,
+
     },
     //Apple
     //We must be able to filter by brand

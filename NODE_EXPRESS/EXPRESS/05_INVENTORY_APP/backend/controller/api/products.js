@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         })
 })
 
-router.get('/id/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const paramID = req.params.id;
     Product.find({ _id: paramID })
         .then(selectedProduct => {
