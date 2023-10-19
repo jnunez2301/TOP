@@ -3,27 +3,51 @@ const router = express.Router();
 const Product = require('../../model/productsSchema');
 
 
-router.get('/', (req, res) =>{
+router.get('/', (req, res) => {
     Product.find({})
-    .then(msgs => {
-        res.status(200).json(msgs);
-    })
-    .catch(error => {
-        console.error(error);
-        res.status(404).json({msg: 'An error ocurred'})
-    })
+        .then(products => {
+            res.status(200).json(products);
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(404).json({ msg: 'An error ocurred' })
+        })
 })
 
-router.post('/', (req, res) =>{
+router.get('/id/:id', (req, res) => {
+    const paramID = req.params.id;
+    Product.find({ _id: paramID })
+        .then(selectedProduct => {
+            res.status(200).json(selectedProduct);
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(404).json({ msg: 'product not found' })
+        })
+})
+
+router.get('/brand/:brand', (req, res) => {
+    const searchedBrand = req.params.brand;
+    Product.find({ brand: searchedBrand })
+        .then(selectedBrand => {
+            res.status(200).json(selectedBrand);
+        })
+        .catch(error => {
+            console.log(error);
+            res.status.json({ msg: 'brand not found' });
+        })
+})
+
+router.post('/', (req, res) => {
     const body = req.body;
-    try{
+    try {
         const newProduct = new Product({
             model: body.model,
             brand: body.brand,
             description: body.description,
             imgURL: body.imgURL,
         })
-    
+
         newProduct.save()
             .then(savedProduct => {
                 res.status(200).json({
@@ -37,10 +61,63 @@ router.post('/', (req, res) =>{
                     msg: 'bad request'
                 })
             })
-    }catch(error){
+    } catch (error) {
         console.log(error);
-        res.status(500).json({msg: 'bad request'})
+        res.status(500).json({ msg: 'bad request' })
     }
 })
+
+router.put('/id/:id', (req, res) => {
+    const paramID = req.params.id;
+
+    const updatedProduct = {
+        model: req.body.model,
+        brand: req.body.brand,
+        description: req.body.description,
+        imgURL: req.body.imgURL
+    }
+
+    Product.findOne({ _id: paramID })
+        .then(selectedProduct => {
+
+            if (!selectedProduct) {
+                res.status(404).json({ msg: 'Product not found' })
+            }
+
+            selectedProduct.model = updatedProduct.model;
+
+            selectedProduct.brand = updatedProduct.brand;
+
+            selectedProduct.description = updatedProduct.description;
+
+            selectedProduct.imgURL = updatedProduct.imgURL;
+
+            return selectedProduct.save();
+        })
+        .then(updatedProduct => {
+            res.status(200).json(updatedProduct);
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(500).json({ msg: 'bad request' })
+        })
+})
+
+router.delete('/id/:id', (req, res) => {
+    const paramID = req.params.id;
+
+    Product.findByIdAndDelete(paramID)
+        .then(deletedProduct => {
+            res.status(200).json({
+                msg: 'Successfully deleted',
+                deletedProduct: deletedProduct
+            })
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(404).json({msg: 'Could not find the object to delete'})
+        })
+})
+
 
 module.exports = router;

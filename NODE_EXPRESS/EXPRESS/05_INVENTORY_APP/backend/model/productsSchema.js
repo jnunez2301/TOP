@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         mingLength: 1,
         default: () => {
-            'https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg'
+            return 'https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg'
         }
     },
 })
