@@ -20,6 +20,14 @@ const productSchema = new mongoose.Schema({
         mingLength: 1,
         required: true,
     },
+    price: {
+        type: String,
+        minLength: 1,
+        default: () => {
+            return '000'
+        },
+        required: true,
+    },
     imgURL: {
         type: String,
         mingLength: 1,

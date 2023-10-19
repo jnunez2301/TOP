@@ -46,6 +46,7 @@ router.post('/', (req, res) => {
             brand: body.brand,
             description: body.description,
             imgURL: body.imgURL,
+            price: body.price
         })
 
         newProduct.save()
@@ -74,7 +75,8 @@ router.put('/id/:id', (req, res) => {
         model: req.body.model,
         brand: req.body.brand,
         description: req.body.description,
-        imgURL: req.body.imgURL
+        imgURL: req.body.imgURL,
+        price: req.body.price
     }
 
     Product.findOne({ _id: paramID })
