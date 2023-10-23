@@ -10,7 +10,7 @@ const useForm = () => {
     price: '',
   });
 
-  const [newData, setNewData] = useState({})
+  const [newData, setNewData] = useState([])
  
 
   
@@ -23,14 +23,14 @@ const useForm = () => {
   const handleSubmit = (event) =>{
     event.preventDefault();
     setNewData(formData);
-    alert('Phone added')
     
   }
 
   return {
     onInputChange,
     handleSubmit,
-    newData
+    newData,
+    formData
   }
 }
 

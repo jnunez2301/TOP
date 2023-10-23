@@ -25,7 +25,7 @@ const NavBar = () => {
                 <li><Link className="btn" to="/products">Products</Link></li>
                 <li><Link className="btn" to="/brands">Brands</Link></li>
                 <li><Link className="btn" to="/addPhone">Add Phone</Link></li>
-                <li><a className="btn" href="#">About</a></li>
+                <li><Link className="btn" to="/about">About</Link></li>
             </ul>
         </nav>
     )

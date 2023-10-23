@@ -4,7 +4,7 @@ import InventoryApp from '../InventoryApp';
 import DisplayBrands from '../components/DisplayBrands';
 import AddPhone from '../components/AddPhone';
 import NavBar from '../components/NavBar';
-
+import About from '../components/About';
 
 const Router = () => {
   return (
@@ -15,6 +15,7 @@ const Router = () => {
           <Route path='/products' element={<DisplayProducts />} />
           <Route path='/brands' element={<DisplayBrands />} />
           <Route path='/addPhone' element={<AddPhone />} />
+          <Route path='/about' element={<About />} />
 
 
           <Route path='/*' element={<InventoryApp />} />

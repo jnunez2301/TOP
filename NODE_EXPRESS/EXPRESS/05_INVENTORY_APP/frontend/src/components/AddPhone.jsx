@@ -3,14 +3,15 @@ import useForm from "../hooks/useForm";
 import { Context } from "../context/InventoryContext";
 
 const AddPhone = () => {
-  const { onInputChange, handleSubmit, newData } = useForm();
+  const { onInputChange, handleSubmit, newData, formData } = useForm();
   const value = useContext(Context);
 
-  const data = value();
+  const {postData} = value();
   
   useEffect(() => {
-    if(newData){
-      data.postData(newData);
+      if(formData.model.length > 0){
+      postData(newData);
+     
     }
   }, [newData])
 
