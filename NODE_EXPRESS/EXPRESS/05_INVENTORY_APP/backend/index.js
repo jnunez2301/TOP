@@ -14,14 +14,18 @@ const PORT = process.env.PORT || 3000;
 
 app.use(requestLogger);
 
+// Process the dist folder
 app.use(express.static(path.join(__dirname, 'dist')));
 
+//Apply CORS
 app.use(cors())
 // NEVER FORGET TO ADD THIS
 app.use(express.json());
 
+//Route the routes
 app.use('/api/products', require('./controller/api/products'));
 
+//show all React routes
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
   });
