@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../context/InventoryContext";
-import NavBar from "./NavBar";
+
 
 
 const DisplayProducts = () => {
@@ -29,6 +29,7 @@ const DisplayProducts = () => {
                  <p>Price: {product.price}€</p>
                   <p>Brand: {product.brand.name} </p>
                   <p>Description: {product.description}</p>
+                  <button className="btn">Delete</button>
                 </div>                
               </li>
             </ul>
