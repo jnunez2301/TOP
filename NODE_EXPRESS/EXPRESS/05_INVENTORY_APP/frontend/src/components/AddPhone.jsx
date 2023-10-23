@@ -18,7 +18,7 @@ const AddPhone = () => {
  
 
   return (
-    <section className="add-phone">
+    <section className="add-phone info-section">
       <form onSubmit={handleSubmit} className="userForm">
         <label htmlFor="model">Model</label>
         <input

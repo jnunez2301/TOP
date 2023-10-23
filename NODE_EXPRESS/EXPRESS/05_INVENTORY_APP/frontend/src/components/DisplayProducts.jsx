@@ -19,7 +19,7 @@ const DisplayProducts = () => {
 
   return (
     <>
-      <section>
+      <section className="info-section">
         {displayedProducts.length > 0 ? displayedProducts.map(product => (
           <React.Fragment key={product._id}>
             <ul>

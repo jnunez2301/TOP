@@ -8,7 +8,7 @@ const DisplayBrands = () => {
 
   return (
    <>
-   <section>
+   <section className="info-section">
         <ul>
             {
                 brands.length > 0 ?
@@ -20,6 +20,7 @@ const DisplayBrands = () => {
                         <div>
                             <p>{brand.name}</p>
                             <p>{brand.description}</p>
+                          
                         </div>
                     </li>
                 ))

@@ -1,15 +1,17 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
-    const [navDisplay, setNavDisplay] = useState('flex');
+    
 
     const handleShowBar = () => {
-        if (navDisplay === 'none' || !navDisplay) {
-            setNavDisplay('grid');
-        } else {
-            setNavDisplay('none');
-        }
+      const navDisplay = document.querySelector('.nav-list').style
+      console.log(navDisplay.display);
+      if(navDisplay.display === ''){
+            navDisplay.display = 'grid'
+      }else{
+            navDisplay.display = ''
+      }
+      
     }
 
     return (
@@ -20,7 +22,7 @@ const NavBar = () => {
                     className="nav-btn">Menu
                 </button>
             </div>
-            <ul className="nav-list" style={{ display: navDisplay }}>
+            <ul className="nav-list">
                 <li><Link className="btn" to="/">Home</Link></li>
                 <li><Link className="btn" to="/products">Products</Link></li>
                 <li><Link className="btn" to="/brands">Brands</Link></li>

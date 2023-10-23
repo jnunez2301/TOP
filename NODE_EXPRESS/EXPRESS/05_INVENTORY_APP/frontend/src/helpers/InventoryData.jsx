@@ -63,7 +63,6 @@ const InventoryData = () => {
                 })
             setProducts(prevProducts => prevProducts.filter(product => product._id !== id));
         }
-
     }
 
     return { products, brands, postData, deleteData }

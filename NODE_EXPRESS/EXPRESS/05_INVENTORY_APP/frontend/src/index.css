@@ -79,6 +79,7 @@ a{
   display: flex;
   gap: 15px;
   align-items: center;
+  margin-bottom: 15px;
 }
 .add-phone{
   display: grid;
@@ -91,10 +92,47 @@ a{
   flex-direction: column;
   gap: 7px;
   min-width: 378px;
+  
 }
 
 .userForm > input{
   padding: 5px 10px;
   border-radius: 5px;
   border: 1px solid rgb(148, 127, 127);
+}
+.info-section{
+  margin: 1rem;
+  display: grid;
+  place-content: center;
+  min-width: 100%;
+}
+
+@media (max-width: 578px){
+  .nav{
+    padding: 2rem 0;
+  }
+  .nav-list{
+    display: none;
+  }
+  .userForm{
+    min-width: 300px;
+  }
+  .nav-btn{
+    display: block;
+  }
+  .info-section{
+    margin: 0;
+  }
+  
+}
+@media(min-width: 579px){
+  .nav-btn{
+    display: none;
+  }
+  .nav-list{
+    display: flex;
+  }
+  .home > p{
+    width: 378px;
+  }
 }
