@@ -8,7 +8,7 @@ const HomePage = () => {
 
   const products = value().products;
 
-    console.log(products);
+   
 
     //You should be using filter to find how many of one type of product you are receiving
     //Or take advantage of the find method we did on the backend
