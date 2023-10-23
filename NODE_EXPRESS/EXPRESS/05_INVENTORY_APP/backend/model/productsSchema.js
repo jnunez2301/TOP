@@ -1,5 +1,22 @@
 const mongoose = require("mongoose");
 
+const BrandSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    brandIMG: {
+        type: String,
+        default: () => {
+            return 'https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg'
+        }
+    },
+    description: {
+        type: String,
+        minLength: 1,
+        required: true
+    }
+})
 
 const productSchema = new mongoose.Schema({
     model: {
@@ -8,12 +25,7 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
     //iPhone X
-    brand: {
-        type: String,
-        minLength: 1,
-        required: true,
-
-    },
+    brand: BrandSchema,
     //Apple
     //We must be able to filter by brand
     description: {

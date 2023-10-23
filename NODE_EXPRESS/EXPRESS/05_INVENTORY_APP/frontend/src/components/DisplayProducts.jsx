@@ -8,14 +8,14 @@ const DisplayProducts = () => {
   const value = useContext(Context);
   
   const products = value().products;
-
-  /* console.log(products); */
   
   
   
   return (
+    <>
+    <NavBar />
     <section>
-      <NavBar />
+      
       {
        products.length > 0 ? products.map(product => 
         (
@@ -28,7 +28,7 @@ const DisplayProducts = () => {
                    Model: {product.model}
                   </p>
                  <p>Price: {product.price}€</p>
-                  <p>Brand: {product.brand} </p>
+                  <p>Brand: {product.brand.name} </p>
                   <p>Description: {product.description}</p>
                 </div>                
               </li>
@@ -39,6 +39,7 @@ const DisplayProducts = () => {
       }
       
     </section>
+    </>
   )
 }
 

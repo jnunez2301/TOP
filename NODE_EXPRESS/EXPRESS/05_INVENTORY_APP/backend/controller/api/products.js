@@ -14,6 +14,18 @@ router.get('/', (req, res) => {
         })
 })
 
+router.get('/brands', (req, res) => {
+    Product.distinct('brand')
+      .then((uniqueBrands) => {
+        res.json(uniqueBrands);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while fetching unique brands.' });
+      });
+  });
+  
+
 router.get('/:id', (req, res) => {
     const paramID = req.params.id;
     Product.find({ _id: paramID })
@@ -25,6 +37,8 @@ router.get('/:id', (req, res) => {
             res.status(404).json({ msg: 'product not found' })
         })
 })
+
+
 
 router.get('/brand/:brand', (req, res) => {
     const searchedBrand = req.params.brand;

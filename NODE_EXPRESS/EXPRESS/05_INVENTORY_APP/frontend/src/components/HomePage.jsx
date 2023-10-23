@@ -6,9 +6,8 @@ const HomePage = () => {
 
   const value = useContext(Context);
 
-  const products = value().products;
+  const products = value();
 
-   
 
     //You should be using filter to find how many of one type of product you are receiving
     //Or take advantage of the find method we did on the backend
@@ -24,7 +23,7 @@ const HomePage = () => {
       As some might call it this project is a MERN Stack</p>
 
      <h2>Database contains the following</h2>
-    <p>Phones: {products.length}</p>
+    <p>Brands: {products.brands.length}</p>
     </>
   )
 }
