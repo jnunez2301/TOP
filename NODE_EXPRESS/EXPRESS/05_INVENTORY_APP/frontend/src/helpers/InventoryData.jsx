@@ -9,7 +9,7 @@ const InventoryData = () => {
 
 
 
-    const baseURL = 'http://localhost:3000/api/products';
+    const baseURL = '/api/products';
 
     useEffect(() => {
         axios.get(baseURL)
@@ -52,7 +52,7 @@ const InventoryData = () => {
 
     function deleteData(id) {
         if (window.confirm('Are you sure you want to delete this Phone?')) {
-            axios.delete(`http://localhost:3000/api/products/id/${id}`)
+            axios.delete(`/id/${id}`)
                 .then(response => {
                     alert('deleted')
                     console.log(response);
