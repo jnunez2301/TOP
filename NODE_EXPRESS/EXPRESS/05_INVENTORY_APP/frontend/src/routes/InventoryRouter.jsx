@@ -1,4 +1,4 @@
-import { BrowserRouter,Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import DisplayProducts from '../components/DisplayProducts';
 import InventoryApp from '../InventoryApp';
 import DisplayBrands from '../components/DisplayBrands';

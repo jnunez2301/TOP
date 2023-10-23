@@ -1,6 +1,5 @@
 import { useContext } from "react"
 import { Context } from "../context/InventoryContext"
-import NavBar from "./NavBar";
 
 const DisplayBrands = () => {
     const value = useContext(Context);

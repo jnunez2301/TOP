@@ -67,11 +67,31 @@ a{
 }
 
 .product-img{
-  width: 140px;
-  height: auto;
+  min-width: 140px;
+  min-height: 150px;
+  max-width: 140px;
+  max-height: 150px;
 }
 .product{
   display: flex;
   gap: 15px;
   align-items: center;
+}
+.add-phone{
+  display: grid;
+  place-content: center;
+  
+}
+
+.userForm{
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 378px;
+}
+
+.userForm > input{
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(148, 127, 127);
 }
