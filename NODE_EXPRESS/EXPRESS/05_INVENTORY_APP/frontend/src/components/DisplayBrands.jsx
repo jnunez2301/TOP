@@ -7,7 +7,6 @@ const DisplayBrands = () => {
 
     const brands = value().brands;
 
-    console.log(brands);
   return (
    <>
    <NavBar />
