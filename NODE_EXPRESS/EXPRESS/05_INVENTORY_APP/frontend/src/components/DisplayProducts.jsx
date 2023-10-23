@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../context/InventoryContext";
 import NavBar from "./NavBar";
 
@@ -17,7 +17,25 @@ const DisplayProducts = () => {
     <section>
       <NavBar />
       {
-       products.length > 0 ? products.map(product => product.model) : 'Loading...'
+       products.length > 0 ? products.map(product => 
+        (
+          <React.Fragment key={product._id}>
+            <ul>
+              <li className="product">
+                <img className="product-img" src={product.imgURL} alt={product.model} />
+                <div>
+                   <p>
+                   Model: {product.model}
+                  </p>
+                 <p>Price: {product.price}€</p>
+                  <p>Brand: {product.brand} </p>
+                  <p>Description: {product.description}</p>
+                </div>                
+              </li>
+            </ul>
+          
+          </React.Fragment>
+        )) : 'Loading...'
       }
       
     </section>

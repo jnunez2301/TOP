@@ -66,3 +66,12 @@ a{
   opacity: 0.6;
 }
 
+.product-img{
+  width: 140px;
+  height: auto;
+}
+.product{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}

@@ -12,3 +12,6 @@ This will be the frontend of the MarketApp where the user should be able to see 
 * On "Add Phone" you should be able to add a phone with an image from your folder or link it.
 * On "About" you should welcome to the Phones Inventory and explain it.
 * ONLY USERS WITH THE SECRET PASSWORD SHOULD BE ABLE TO DELETE AND UPDATE
+
+
+*** REMEMBER TO USEPARAMS TO FIND OBJECTS BY ID

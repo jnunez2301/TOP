@@ -17,6 +17,14 @@ const HomePage = () => {
     <>
      <NavBar />
      <h2>Home Page</h2>
+     Welcome to PhonesInventory, the place where you find and store all your new favorite Phones, Model and Brands.
+     <hr />
+     <p>This is app is using mongoDB, Mongoose, Express and NodeJS 
+      <br />
+      As some might call it this project is a MERN Stack</p>
+
+     <h2>Database contains the following</h2>
+    <p>Phones: {products.length}</p>
     </>
   )
 }
