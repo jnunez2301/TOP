@@ -9,14 +9,15 @@ const DisplayProducts = () => {
   
   const products = value().products;
 
-  console.log(products);
+  /* console.log(products); */
+  
   
   
   return (
     <section>
       <NavBar />
       {
-       products.length > 0 && products.map(product => product.model)
+       products.length > 0 ? products.map(product => product.model) : 'Loading...'
       }
       
     </section>
