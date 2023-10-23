@@ -9,7 +9,6 @@ const DisplayBrands = () => {
 
   return (
    <>
-   <NavBar />
    <section>
         <ul>
             {

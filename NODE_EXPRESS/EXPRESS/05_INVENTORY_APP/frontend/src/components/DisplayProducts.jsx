@@ -13,7 +13,6 @@ const DisplayProducts = () => {
   
   return (
     <>
-    <NavBar />
     <section>
       
       {
