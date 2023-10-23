@@ -1,22 +1,25 @@
 import { useContext } from "react";
 import { Context } from "../context/InventoryContext";
+import NavBar from "./NavBar";
 
 
 const DisplayProducts = () => {
 
   const value = useContext(Context);
   
-  const products = value();
-
-  console.log(typeof products);
-  
+  const products = value().products;
 
   console.log(products);
+  
+  
   return (
-    <div>
-      display
-      {/* {products && products.map(product => {product.model})} */}
-    </div>
+    <section>
+      <NavBar />
+      {
+       products.length > 0 && products.map(product => product.model)
+      }
+      
+    </section>
   )
 }
 

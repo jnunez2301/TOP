@@ -29,7 +29,7 @@ a{
   justify-content: center;
   
 }
-.nav > ul{
+.nav-list{
   display: flex;
   gap: 16px;
 }
@@ -66,19 +66,3 @@ a{
   opacity: 0.6;
 }
 
-@media (max-width: 728px){
-  .nav-btn{
-    display: block;
-  }
-  .nav > ul{
-    display: none;
-  }
-}
-@media (min-width: 729px){
-  .nav-btn{
-    display: none;
-  }
-  .nav > ul{
-    display: flex;
-  }
-}

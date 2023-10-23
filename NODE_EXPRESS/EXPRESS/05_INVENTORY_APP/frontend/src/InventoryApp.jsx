@@ -1,12 +1,9 @@
-
-import DisplayProducts from "./components/DisplayProducts"
-import NavBar from "./components/NavBar"
+import HomePage from "./components/HomePage"
 
 const InventoryApp = () => {
   return (
     <>
-     <NavBar />
-     <DisplayProducts/>
+     <HomePage />
     </>
   )
 }

@@ -8,7 +8,9 @@ const Router = () => {
     <>
       <Routes>
         <Route path='/' element={<InventoryApp />} />
-        <Route path='/products' element={<DisplayProducts />}/>
+        <Route path='/products' element={<DisplayProducts />} />
+
+        <Route path='/*' element={<InventoryApp />} />
       </Routes>
     </>
   )
