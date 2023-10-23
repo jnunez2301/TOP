@@ -1,13 +1,14 @@
+
 import DisplayProducts from "./components/DisplayProducts"
 import NavBar from "./components/NavBar"
 
-const App = () => {
+const InventoryApp = () => {
   return (
     <>
-      <NavBar />
-      <DisplayProducts />
+     <NavBar />
+     <DisplayProducts/>
     </>
   )
 }
 
-export default App
+export default InventoryApp

@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import  { useState } from 'react';
 
 const NavBar = () => {
     const [navDisplay, setNavDisplay] = useState('grid');
@@ -11,20 +11,6 @@ const NavBar = () => {
         }
     }
 
-    const resetNavBar = () => {
-        if (window.innerWidth > 768) {
-            setNavDisplay('flex');
-        } else {
-            setNavDisplay('none');
-        }
-    }
-    useEffect(() => {
-        resetNavBar(); 
-        window.addEventListener('resize', resetNavBar);
-        return () => {
-            window.removeEventListener('resize', resetNavBar);
-        }
-    }, []);
 
     return (
         <nav className="nav">

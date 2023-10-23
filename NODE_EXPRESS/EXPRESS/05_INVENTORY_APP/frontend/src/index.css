@@ -66,7 +66,7 @@ a{
   opacity: 0.6;
 }
 
-@media (max-width: 475px){
+@media (max-width: 728px){
   .nav-btn{
     display: block;
   }
@@ -74,7 +74,7 @@ a{
     display: none;
   }
 }
-@media (min-width: 476px){
+@media (min-width: 729px){
   .nav-btn{
     display: none;
   }
