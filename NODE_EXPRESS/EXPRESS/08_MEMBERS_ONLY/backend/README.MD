@@ -1,6 +1,9 @@
 # Model and Controllers
 
-#### This backend must have
+### This backend
+
+### Passwords
+> Passwords must be encrypted with PassportJS and bcryptjs
 
 #### Must use the MVC where:
 
