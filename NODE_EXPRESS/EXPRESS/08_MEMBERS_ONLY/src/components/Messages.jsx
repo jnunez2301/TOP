@@ -7,19 +7,26 @@ const Messages = () => {
 
   return (
     <>
-      <h2>Messages</h2>
+      <h1 id='title'>Members Only Club</h1>
       <ul className='msg-container'>
         {
           data.map(d => (
             <li key={d.id} className='msg-info'>
               
-                <div>
-                  <p>{d.title}</p>
-                  <p>{d.description}</p>
+                <div className='msg-description'>
+                  <p
+                  >{d.title}</p>
+                  <p
+                  style={{fontSize: '12px'}}
+                  >{d.description}</p>
                 </div>
-                <div>
-                  <p>{d.username}</p>
-                  <p>{d.Date}</p>
+                <div className='msg-username'>
+                  <p
+                  style={{fontSize: '12px'}}
+                  >{d.username}</p>
+                  <p
+                  style={{fontSize: '10px'}}
+                  >{d.Date}</p>
                 </div>
               
             </li>
