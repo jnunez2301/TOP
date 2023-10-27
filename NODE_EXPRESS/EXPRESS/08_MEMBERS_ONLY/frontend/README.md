@@ -10,6 +10,11 @@ On this app you should be able to see messages But only those who are registered
 - USERS MUST NOT HAVE SPACES!!!!!
 - PASSWORDS MUST NOT HAVE SPACES!!!
 
+## How tu run
+
+``` yarn ```
+
+
 ### Create Context
 
 ```
