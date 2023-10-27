@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  min-height: 100vh;
+  padding: 1rem;
+  
+}
+nav > ul{
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}
+a{
+  text-decoration: none;
+  margin-left: 10px;
+}
+li{
+  list-style-type: none;
+}
+
+.container{
+  display: grid;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 3px rgba(138, 53, 73, 0.39);
+}
+
+.msg-container{
+
+  max-height: 400px;
+  overflow-y: auto;
+  
+}
+.msg-container::-webkit-scrollbar{
+  width: 5px;
+  border-radius: 5px;
+}
+.msg-container::-webkit-scrollbar-track {
+  background: rgba(241, 241, 241, 0.7);
+}
+.msg-container::-webkit-scrollbar-thumb {
+  background: #c2a0a0;
+}
+.msg-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(91, 58, 58)0a0;
+}
+
+.msg-info{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 3px;
+  border: 1px solid rgb(211, 196, 196);
+  align-items: center;
+}
+.msg-form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.msg-form > input{
+  border: none;
+  background-color: #f2e9e9;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+.btn-submit{
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+}
