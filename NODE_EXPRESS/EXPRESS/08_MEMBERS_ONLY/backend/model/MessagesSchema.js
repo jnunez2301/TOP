@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
             return !spaceRegex.test(username); // Return true if there are no spaces
         }
     },
-    password: String(bcryptjs),
+    password: String,
     //PASSPORT JS FOR THIS PLS
     email: {
         type: String,

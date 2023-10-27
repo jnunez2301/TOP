@@ -3,7 +3,6 @@ const cors = require('cors');
 const path = require('path');
 const mongoConnect = require('./mongoose');
 
-const mongoConnect = require('./mongoose')
 
 const requestLogger = require('./middleware/requestLogger');
 
