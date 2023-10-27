@@ -1,14 +1,21 @@
+import { useEffect, useRef } from 'react';
 import MessagesData from '../helpers/MessagesData';
 
 const Messages = () => {
   const data = MessagesData();
+  const msgContainerRef = useRef(null);
 
+  useEffect(() => {
+    if(msgContainerRef.current){
+      msgContainerRef.current.scrollTop = msgContainerRef.current.scrollHeight;
+    }
+  },[data])
   
 
   return (
     <>
       <h1 id='title'>Members Only Club</h1>
-      <ul className='msg-container'>
+      <ul className='msg-container' ref={msgContainerRef}>
         {
           data.map(d => (
             <li key={d.id} className='msg-info'>

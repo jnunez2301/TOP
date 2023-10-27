@@ -13,6 +13,8 @@ const MessagesRoutes = () => {
           <Route path='/' element={<MainPage />} />
           <Route path='/login' element={<Login />}/>
           <Route path='/signup' element={<Signup />} />
+
+          <Route path="/*" element={<MainPage/>} />
         </Routes>
     </BrowserRouter>
     </>

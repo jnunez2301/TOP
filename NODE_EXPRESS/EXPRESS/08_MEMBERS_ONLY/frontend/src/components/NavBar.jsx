@@ -5,7 +5,7 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
-          <Link to='/' >Members Only Club</Link>
+          <Link to='/' >MMC</Link>
         </li>
         <li>
         <Link to='login' >Login</Link>
