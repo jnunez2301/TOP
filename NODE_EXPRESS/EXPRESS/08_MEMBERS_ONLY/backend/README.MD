@@ -29,7 +29,6 @@
     }
 
     -> MessagesSchema = {
-        username: userSchema,
         title: String,
         description: String,
         date: String
