@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Messages = require('../../model/MessagesSchema');
 const User = require('../../model/UsersSchema');
+const UsersSchema = require('../../model/UsersSchema');
 
 router.get('/', (req, res) => {
     User.find({})
@@ -14,11 +15,24 @@ router.get('/', (req, res) => {
         })
 })
 
+router.get('/user/:username', (req, res) =>{
+    const userParam = req.params.username;
 
+    User.find({username: userParam})
+        .then(msg => 
+            {
+                res.status(200).json(msg)
+            }
+            )
+        .catch(error => {
+            console.log(error);
+            res.status(500).json({msg: 'bad request'})
+        })
+})
 
 router.post('/register', (req,res) =>{
     const body = req.body;
-    console.log(body);
+    
     try{
         const newUser = new User({
             username: body.username,
