@@ -2,6 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const mongoConnect = require('./mongoose');
+//PassportJS
+const session = require('express-session');
+const passport = require("passport");
+const LocalStrategy = require('passport-local').Strategy;
 
 
 const requestLogger = require('./middleware/requestLogger');
@@ -15,6 +19,12 @@ app.use(express.static(path.join(__dirname, 'dist')))
 //CORS
 app.use(cors())
 app.use(express.json());
+
+//PassportJS
+app.use(session({ secret: 'cats', resave: false, saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
 
 //Router
 app.use('/api/messages', require('./controller/api/messages'));

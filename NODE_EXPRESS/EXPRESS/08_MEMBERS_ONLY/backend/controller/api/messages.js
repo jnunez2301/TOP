@@ -2,7 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Messages = require('../../model/MessagesSchema');
 const User = require('../../model/UsersSchema');
-const UsersSchema = require('../../model/UsersSchema');
+//PassportJS
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+
+
 
 router.get('/', (req, res) => {
     User.find({})
@@ -29,6 +34,8 @@ router.get('/user/:username', (req, res) =>{
             res.status(500).json({msg: 'bad request'})
         })
 })
+
+
 
 router.post('/register', (req,res) =>{
     const body = req.body;
