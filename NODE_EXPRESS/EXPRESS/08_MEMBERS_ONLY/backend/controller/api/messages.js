@@ -9,7 +9,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 
 
-router.get('/', (req, res) => {
+router.get('/users', (req, res) => {
     User.find({})
         .then(users => {
             res.status(200).json(users);
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
         })
 })
 
-router.get('/user/:username', (req, res) =>{
+router.get('/users/:username', (req, res) =>{
     const userParam = req.params.username;
 
     User.find({username: userParam})
@@ -37,7 +37,7 @@ router.get('/user/:username', (req, res) =>{
 
 
 
-router.post('/register', (req,res) =>{
+router.post('/users/register', (req,res) =>{
     const body = req.body;
     
     try{
