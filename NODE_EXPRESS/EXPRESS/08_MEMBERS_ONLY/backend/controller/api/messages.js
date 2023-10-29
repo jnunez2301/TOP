@@ -35,8 +35,57 @@ router.get('/users/:username', (req, res) =>{
         })
 })
 
+// PassportJS.js
+passport.use(
+    new LocalStrategy(async(username, password, done)=>{
+        try{
+            const user = await User.findOne({ username: username })
+            if(!user){
+                console.log('Wrong username');
+                return done(null, false, { message: "Incorrect username" });
+            };
+            if(user.password !== password){
+                console.log('wrong password');
+                return done(null, false, { message: "Incorrect Password" });
+            };
+            console.log("User logged in successfully");
+            return done(null, user);
+        } catch(error){
+            return done(error);
+        }
+    })
+)
 
+passport.serializeUser((user, done) =>{
+    done(null, user.id);
+});
 
+passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await User.findById(id);
+        done(null, user);
+    }catch(error) {
+        done(error);
+    };
+});
+
+// log-in form
+router.post('/users/login', passport.authenticate('local', {
+    successRedirect: '/home',
+    failureRedirect: '/error', 
+}));
+
+router.get("/users/logout", (req, res, next) => {
+    req.logout(error => {
+        if(error){
+            res.status(500).json({msg: 'failed to log out'})
+            return next(error);
+        }
+        res.status(200).json({msg: 'logged out'});
+    })
+})
+
+// sign-up form
 router.post('/users/register', (req,res) =>{
     const body = req.body;
     
