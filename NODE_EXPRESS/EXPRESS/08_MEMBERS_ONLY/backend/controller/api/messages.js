@@ -11,8 +11,8 @@ const LocalStrategy = require('passport-local').Strategy;
 
 router.get('/', (req, res) => {
     User.find({})
-        .then(msgs => {
-            res.status(200).json(msgs);
+        .then(users => {
+            res.status(200).json(users);
         })
         .catch(error => {
             console.log(error);
