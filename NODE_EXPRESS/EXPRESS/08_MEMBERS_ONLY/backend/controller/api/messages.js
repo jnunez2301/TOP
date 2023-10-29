@@ -76,15 +76,18 @@ router.post('/users/login', passport.authenticate('local', {
 }));
 
 router.get("/users/logout", (req, res, next) => {
-    req.logout(error => {
-        if(error){
-            res.status(500).json({msg: 'failed to log out'})
-            return next(error);
-        }
-        res.status(200).json({msg: 'logged out'});
-    })
-})
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/");
+    });
+  });
 
+  router.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+  });
 // sign-up form
 router.post('/users/register', (req,res) =>{
     const body = req.body;
