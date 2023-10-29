@@ -7,11 +7,11 @@ const MessagesData = () => {
   
   const [data, setData] = useState([]);
 
-  const baseURL = '';
+  const baseURL = `http://localhost:3000/api/messages/users/`;
 
   useEffect(() => {
     axios.get(baseURL)
-    .then(response =>  console.log(response))
+    .then(response =>  console.log(response.data))
     .catch(error => console.log(error))
   }, [baseURL])
 
