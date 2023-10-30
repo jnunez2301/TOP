@@ -8,7 +8,7 @@ const MessagesData = () => {
   
   const [data, setData] = useState([]);
 
-  const baseURL = `http://localhost:3000/api/messages/users/`;
+  const baseURL = `http://localhost:3000/api/messages/`;
 
   useEffect(() => {
     axios.get(baseURL)
@@ -16,7 +16,7 @@ const MessagesData = () => {
       setData(...data, response.data)
       )
     .catch(error => console.log(error))
-  }, [baseURL])
+  }, [])
 
   //This must return data instead of newData;
   return {

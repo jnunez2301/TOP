@@ -13,7 +13,7 @@ const Messages = () => {
     if(msgContainerRef.current){
       msgContainerRef.current.scrollTop = msgContainerRef.current.scrollHeight;
     }
-  },[newData])
+  },[data])
   
 
   return (
@@ -21,8 +21,8 @@ const Messages = () => {
       <h1 id='title'>Members Only Club</h1>
       <ul className='msg-container' ref={msgContainerRef}>
         {
-          newData.map(d => (
-            <li key={d.id} className='msg-info'>
+          data.map(d => (
+            <li key={d._id} className='msg-info'>
               
                 <div className='msg-description'>
                   <p
@@ -37,7 +37,7 @@ const Messages = () => {
                   >{d.username}</p>
                   <p
                   style={{fontSize: '10px'}}
-                  >{d.Date}</p>
+                  >{d.date}</p>
                 </div>
               
             </li>
