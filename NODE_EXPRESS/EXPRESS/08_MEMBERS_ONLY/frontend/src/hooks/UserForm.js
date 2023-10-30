@@ -21,6 +21,13 @@ const UserForm = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     setFormData({ ...formData, loginData });
+    const loginURL = `http://localhost:3000/api/messages/users/login`;
+
+    if(loginData.username && loginData.password){
+      axios.post(loginURL, loginData)
+      .then(response => console.log(response.data))
+      .catch(error => console.log(error.response.data))
+    }
   }
 
 
@@ -43,11 +50,7 @@ const UserForm = () => {
         .catch(error => {
           navigate('/error');
           console.log(error);
-        })
-
-
-      alert('success')
-        ;
+        });
       //This should redirect to login
     } else {
       // Display an error message

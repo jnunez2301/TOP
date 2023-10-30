@@ -139,16 +139,28 @@ passport.deserializeUser(async (id, done) => {
 });
 
 // log-in form
-router.post('/users/login', passport.authenticate('local', {
-    successRedirect: '/home',
-    failureRedirect: '/error', 
-}), (req, res) => {
-    // You can access the authenticated user from req.user
-    res.status(200).json({
-        msg: 'Logged In',
-        loggedUserName: req.user.username,
-    });
-});
+router.post('/users/login', (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+      if (err) {
+        return res.status(500).json({ message: "Server error" });
+      }
+      if (!user) {
+        return res.status(401).json({ message: "Incorrect username or password" });
+      }
+      
+      req.logIn(user, (err) => {
+        if (err) {
+          return res.status(500).json({ message: "Server error" });
+        }
+        
+        return res.status(200).json({
+          message: 'Logged In',
+          logged: true,
+          loggedUserName: user.username,
+        });
+      });
+    })(req, res, next);
+  });
 
 router.get("/users/logout", (req, res, next) => {
     req.logout((err) => {
