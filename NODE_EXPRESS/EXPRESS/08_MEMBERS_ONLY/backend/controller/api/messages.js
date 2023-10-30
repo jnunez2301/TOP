@@ -152,7 +152,6 @@ router.post('/users/login', (req, res, next) => {
         if (err) {
           return res.status(500).json({ message: "Server error" });
         }
-        
         return res.status(200).json({
           message: 'Logged In',
           loggedUserName: user.username,

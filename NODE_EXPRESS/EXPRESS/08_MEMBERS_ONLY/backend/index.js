@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'dist')))
 
 //CORS
-app.use(cors())
+app.use(cors({ exposedHeaders: 'Authorization' }));
 app.use(express.json());
 
 //PassportJS
