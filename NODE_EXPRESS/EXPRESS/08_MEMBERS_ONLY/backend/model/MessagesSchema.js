@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 
 
 const MessagesSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users'
+    username: {
+        type: mongoose.Schema.Types.String,
+        ref: 'Users', 
+        required: true,
+        lowercase: true
     },
     title: {
         type: String,

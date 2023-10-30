@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Messages = require('../../model/MessagesSchema');
+const Message = require('../../model/MessagesSchema');
 const User = require('../../model/UsersSchema');
 //PassportJS
 const passport = require('passport');
@@ -17,6 +17,32 @@ router.get('/users', (req, res) => {
         .catch(error => {
             console.log(error);
             res.status(404).json({ msg: 'could not find the data' })
+        })
+})
+
+router.get('/', (req, res) => {
+    Message.find({})
+        .then(msgs => {
+            res.status(200).json(msgs);
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(404).json({msg: 'could not find the data'});
+        })
+})
+
+router.get('/user/:username', (req, res) => {
+    const body = req.params;
+    if(!body.username){
+        res.status(404).json({msg: 'invalid username'});
+    }
+    Message.find({ username: body.username })
+        .then(msgs => {
+            res.status(200).json(msgs);
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(404).json({msg: 'could not find data by user name'})
         })
 })
 
@@ -73,7 +99,13 @@ passport.deserializeUser(async (id, done) => {
 router.post('/users/login', passport.authenticate('local', {
     successRedirect: '/home',
     failureRedirect: '/error', 
-}));
+}), (req, res) => {
+    // You can access the authenticated user from req.user
+    res.status(200).json({
+        msg: 'Logged In',
+        loggedUserName: req.user.username,
+    });
+});
 
 router.get("/users/logout", (req, res, next) => {
     req.logout((err) => {
@@ -117,38 +149,36 @@ router.post('/users/register', (req,res) =>{
     }
 })
 
-
-/* 
-router.post('/', (req, res) => {
+router.post('/', async(req, res) => {
     const body = req.body;
-    try {
-        const newMessages = new Messages({
-            user: body.user,
-            password: body.password,
-            email: body.email,
-            messages: [...messages, {
-                title: body.title,
-                description: body.description,
-            }]
+    try{
+        const user = await User.findOne({ username: body.username });
+
+
+        if (!user) {
+            return res.status(400).json({ msg: 'User not found' });
+        }
+        
+        const newMessage = new Message({
+            username: user.username,
+            title: body.title,
+            description: body.description
         })
 
-        newMessages.save()
-            .then(savedMessage => {
-                res.status(200).json({
-                    msg: 'saved successfully',
-                    savedMessage: savedMessage
-                })
-            })
-            .catch(error => {
-                console.error(error);
-                res.status(500).json({ msg: 'bad request' })
-            })
+        const savedMsg = await newMessage.save();
+
+        res.status(200).json({
+            msg: 'Saved successfully',
+            savedMsg: savedMsg
+        });
     }
-    catch (error) {
+    catch(error){
         console.log(error);
-        res.status(500).json({ msg: 'bad request' })
+        res.status(500).json({ msg: 'could not post' })
     }
-}) */
+
+})
+
 
 
 module.exports = router;
