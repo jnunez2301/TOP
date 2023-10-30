@@ -1,35 +1,52 @@
 import { Link } from "react-router-dom"
-
+import UserForm from "../hooks/userForm";
 const Signup = () => {
+
+  const { onRegisterChange, handleRegister, passwordMatch } = UserForm();
+  
+ 
+
+  
+
   return (
     <section>
       <ul>
-
         <li>
-          <form className="register-form">
+          <form onSubmit={ handleRegister} className="register-form">
             <label htmlFor="username">Username</label>
-            <input type="text" name="username" id="username"
+            <input 
+            onChange={ onRegisterChange }
+            type="text" name="username" id="username"
               placeholder="Type your username..."
               required />
 
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email"
+            <input
+            onChange={ onRegisterChange }
+             type="email" name="email" id="email"
               placeholder="Example: email@mail.com"
               required />
 
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password"
+            <input 
+            onChange={ onRegisterChange }
+            type="password" name="password" id="password"
               placeholder="Type your password"
               required />
 
-            <label htmlFor="confirm-password">Confirm Password</label>
-            <input type="text" name="confirm-password" id="confirm-password"
+            {passwordMatch ? '' : <span className="password-error">passwords must be equal</span>}
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input 
+            onChange={ onRegisterChange }
+            type="password" name="confirmPassword" id="confirmPassword"
               placeholder="Type your password again"
               required />
+            
 
             
 
-            <button className="btn-register" type="submit">Register</button>
+            <button 
+            className="btn-register" type="submit">Register</button>
 
 
           </form>

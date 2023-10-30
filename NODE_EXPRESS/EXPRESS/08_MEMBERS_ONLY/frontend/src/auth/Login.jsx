@@ -1,20 +1,28 @@
 import { Link } from "react-router-dom"
+import UserForm from "../hooks/userForm";
 
 const Login = () => {
+
+  const { onLoginChange, handleLogin } = UserForm();
+
   return (
     <section>
       <ul>
         <li>
-          <form className="login-form">
+          <form onSubmit={ handleLogin } className="login-form">
             <label htmlFor="username">Username</label>
             <input 
+            onChange={onLoginChange}
             type="text" name="username" 
             id="username" 
             placeholder="Your username/nickname"
             required/>
 
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" 
+            <input
+             type="password" name="password" 
+             id="password" 
+             onInput={ onLoginChange }
             placeholder="Your password"
             required/>
 

@@ -136,6 +136,10 @@ li{
   border-radius: 5px;
   margin-bottom: 1rem;
 }
+.password-error{
+  font-size: 10px;
+  color: rgb(196, 49, 49);  
+}
 .btn-register{
   border: none;
   padding: 10px 10px;
@@ -186,6 +190,64 @@ li{
 }
 .btn-submit:hover{
   background-color: #d1c6c6;
+}
+.success-page{
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  gap: 35px;
+}
+.success-circle{
+  background-color: #74AD46;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #EEF1EB;
+  font-weight: 800;
+  font-size: 24px;
+  animation: bounceIn 1s ease;
+}
+.success-text{
+  opacity: 0;
+  animation: success .7s ease-in forwards;
+}
+@keyframes success {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  80%{
+    opacity: 0.8;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  80% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bounce-in {
+  animation: bounceIn 1s ease;
 }
 
 @media (max-width: 578px){
