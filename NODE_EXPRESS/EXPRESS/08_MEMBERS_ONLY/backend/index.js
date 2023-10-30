@@ -29,24 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 //Router
 app.use('/api/messages', require('./controller/api/messages'));
 
-app.get('/api/auth/status', (req, res) => {
-    if (req.isAuthenticated()) {
-      // The user is authenticated
-      res.status(200).json({ isAuthenticated: true, user: req.user });
-    } else {
-      // The user is not authenticated
-      res.status(200).json({ isAuthenticated: false });
-    }
-  });
-  app.get('/api/auth/logout', (req, res) => {
-    req.logout(function (err) {
-      if (err) {
-        return res.status(500).json({ message: 'Error during logout' });
-      }
-      res.status(200).json({ message: 'Logged out successfully' });
-    });
-  });
-  
+
   
 
 app.get('*', (req, res) => {

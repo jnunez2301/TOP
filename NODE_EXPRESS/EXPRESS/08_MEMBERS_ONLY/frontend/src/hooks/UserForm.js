@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+
 const UserForm = () => {
 
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const UserForm = () => {
 
     if(loginData.username && loginData.password){
       axios.post(loginURL, loginData)
-      .then(response => console.log(response.data))
+      .then(response => console.log(response))
       .catch(error => console.log(error.response.data))
     }
   }

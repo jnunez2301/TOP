@@ -161,16 +161,25 @@ router.post('/users/login', (req, res, next) => {
     })(req, res, next);
   });
 
-
-router.get("/users/logout", (req, res, next) => {
-    req.logout((err) => {
-      if (err) {
-        return next(err);
+  //AUTH STATUS
+  router.get('/auth/status', (req, res) => {
+    if(req.isAuthenticated()){
+        res.status(200).json({ isAuthenticated: true, user: req.user });
+    }else {
+        res.status(200).json({ isAuthenticated: false });
       }
-      res.redirect("/");
-    });
-  });
+  })
 
+
+  router.get("/auth/logout", (req, res, next) => {
+    req.logOut(error => {
+        if(error){
+            return res.status(500).json({msg: 'error during logout'});
+        }
+        res.status(200).json({msg: 'logged out successfully'});
+    })
+  });
+  
   router.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();

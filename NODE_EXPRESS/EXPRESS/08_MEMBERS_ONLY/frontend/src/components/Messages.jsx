@@ -18,6 +18,7 @@ const Messages = () => {
       <h1 id='title'>Members Only Club</h1>
       <ul className='msg-container' ref={msgContainerRef}>
         {
+          data &&
           data.map(d => (
             <li key={d._id} className='msg-info'>
               
