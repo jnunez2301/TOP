@@ -5,8 +5,10 @@ const Messages = () => {
   const { newData, data } = MessagesData();
   const msgContainerRef = useRef(null);
 
-  console.log(data);
-  
+  if(data.length > 0){
+    console.log(data);
+  }
+
   useEffect(() => {
     if(msgContainerRef.current){
       msgContainerRef.current.scrollTop = msgContainerRef.current.scrollHeight;
