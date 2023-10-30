@@ -11,7 +11,8 @@ const UserSchema = new mongoose.Schema({
             const spaceRegex = /\s/;
             return !spaceRegex.test(username); // Return true if there are no spaces
         },
-        lowercase: true
+        lowercase: true,
+        unique: true
     },
     password: String,
     //PASSPORT JS FOR THIS PLS

@@ -5,6 +5,7 @@ const User = require('../../model/UsersSchema');
 //PassportJS
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
 
 
 
@@ -29,6 +30,37 @@ router.get('/', (req, res) => {
             console.log(error);
             res.status(404).json({msg: 'could not find the data'});
         })
+})
+
+//Post messages by username
+router.post('/', async(req, res) => {
+    const body = req.body;
+    try{
+        const user = await User.findOne({ username: body.username });
+
+
+        if (!user) {
+            return res.status(400).json({ msg: 'User not found' });
+        }
+        
+        const newMessage = new Message({
+            username: user.username,
+            title: body.title,
+            description: body.description
+        })
+
+        const savedMsg = await newMessage.save();
+
+        res.status(200).json({
+            msg: 'Saved successfully',
+            savedMsg: savedMsg
+        });
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({ msg: 'could not post' })
+    }
+
 })
 
 router.get('/user/:username', (req, res) => {
@@ -140,7 +172,7 @@ router.post('/users/register', (req,res) =>{
             })
             .catch(error =>{
                 console.log(error);
-                res.status(500).json({ msg: 'bad request'})
+                res.status(500).json({ msg: 'user already exists'})
             })
     }
     catch(error){
@@ -149,35 +181,7 @@ router.post('/users/register', (req,res) =>{
     }
 })
 
-router.post('/', async(req, res) => {
-    const body = req.body;
-    try{
-        const user = await User.findOne({ username: body.username });
 
-
-        if (!user) {
-            return res.status(400).json({ msg: 'User not found' });
-        }
-        
-        const newMessage = new Message({
-            username: user.username,
-            title: body.title,
-            description: body.description
-        })
-
-        const savedMsg = await newMessage.save();
-
-        res.status(200).json({
-            msg: 'Saved successfully',
-            savedMsg: savedMsg
-        });
-    }
-    catch(error){
-        console.log(error);
-        res.status(500).json({ msg: 'could not post' })
-    }
-
-})
 
 
 
