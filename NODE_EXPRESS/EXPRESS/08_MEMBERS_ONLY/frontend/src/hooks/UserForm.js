@@ -61,10 +61,9 @@ const UserForm = () => {
 
     const handleMessage = (event) =>{
       event.preventDefault();
-      setFormData([...formData, messageData]);
+      setFormData({...formData, messageData});
     }
-   
-
+    
   return {
     onLoginChange,
     handleLogin,

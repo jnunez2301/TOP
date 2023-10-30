@@ -11,7 +11,7 @@ const MessagesForm = () => {
       <label htmlFor="msg-title">Title</label>
       <input
       onChange={ onMessagesChange }
-       type="text" name="msg-title" id="msg-title" required/>
+       type="text" name="msgTitle" id="msg-title" required/>
 
       <label htmlFor="description">Message</label>
       <input type="text" 

@@ -2,14 +2,16 @@ import { useEffect, useRef } from 'react';
 import MessagesData from '../helpers/MessagesData';
 
 const Messages = () => {
-  const data = MessagesData();
+  const { newData, data } = MessagesData();
   const msgContainerRef = useRef(null);
 
+  console.log(data);
+  
   useEffect(() => {
     if(msgContainerRef.current){
       msgContainerRef.current.scrollTop = msgContainerRef.current.scrollHeight;
     }
-  },[data])
+  },[newData])
   
 
   return (
@@ -17,7 +19,7 @@ const Messages = () => {
       <h1 id='title'>Members Only Club</h1>
       <ul className='msg-container' ref={msgContainerRef}>
         {
-          data.map(d => (
+          newData.map(d => (
             <li key={d.id} className='msg-info'>
               
                 <div className='msg-description'>

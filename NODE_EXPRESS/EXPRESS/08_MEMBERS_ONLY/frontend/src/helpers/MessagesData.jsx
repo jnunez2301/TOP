@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { newData } from './Data'
+import { newData } from './Data';
+
 
 const MessagesData = () => {
   
@@ -11,12 +12,17 @@ const MessagesData = () => {
 
   useEffect(() => {
     axios.get(baseURL)
-    .then(response =>  console.log(response.data))
+    .then(response =>  
+      setData(...data, response.data)
+      )
     .catch(error => console.log(error))
   }, [baseURL])
 
   //This must return data instead of newData;
-  return newData;
+  return {
+    newData,
+    data
+  };
 }
 
 export default MessagesData
