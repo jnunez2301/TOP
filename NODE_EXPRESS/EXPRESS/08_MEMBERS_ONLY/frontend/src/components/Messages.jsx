@@ -2,13 +2,10 @@ import { useEffect, useRef } from 'react';
 import MessagesData from '../helpers/MessagesData';
 
 const Messages = () => {
-  const { newData, data } = MessagesData();
+  const { data } = MessagesData();
   const msgContainerRef = useRef(null);
 
-  if(data.length > 0){
-    console.log(data);
-  }
-
+  
   useEffect(() => {
     if(msgContainerRef.current){
       msgContainerRef.current.scrollTop = msgContainerRef.current.scrollHeight;

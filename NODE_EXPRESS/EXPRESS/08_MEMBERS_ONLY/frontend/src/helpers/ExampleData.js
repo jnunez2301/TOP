@@ -1,4 +1,4 @@
-export const newData = [
+export const ExampleData = [
    {
       "id": 1,
       "username": "JohnDoe",

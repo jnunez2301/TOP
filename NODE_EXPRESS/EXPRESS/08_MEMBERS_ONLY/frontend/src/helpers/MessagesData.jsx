@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { newData } from './Data';
+import { ExampleData } from './ExampleData';
 
 
 const MessagesData = () => {
@@ -20,7 +20,7 @@ const MessagesData = () => {
 
   //This must return data instead of newData;
   return {
-    newData,
+    ExampleData,
     data
   };
 }

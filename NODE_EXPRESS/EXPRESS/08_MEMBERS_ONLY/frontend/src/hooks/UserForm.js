@@ -1,69 +1,86 @@
-import  { useState } from 'react'
+import axios from 'axios';
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const UserForm = () => {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
 
-    const [ formData, setFormData ] = useState([]);
-    const [ loginData, setLoginData ] = useState({});
-    const [ registerData, setRegisterData ] = useState({
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    });
-    const [ messageData, setMessageData ] = useState({});
-    const [ passwordMatch, setPasswordMatch ] = useState(true);
+  const [formData, setFormData] = useState([]);
+  const [loginData, setLoginData] = useState({});
+  const [registerData, setRegisterData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+  const [messageData, setMessageData] = useState({});
+  const [passwordMatch, setPasswordMatch] = useState(true);
 
-    const handleLogin = (event) =>{
-        event.preventDefault();
-        setFormData({...formData, loginData});        
-    }
-   
-   
-    const handleRegister = (event) => {
-      event.preventDefault();
-      const { password, confirmPassword } = registerData;
-      if (password === confirmPassword) {
-        setFormData({...formData, registerData});
-        setPasswordMatch(true)
-        alert('success')
-        navigate('/success');
-        
-        //This should redirect to login
-       } else {
-        // Display an error message
-        setPasswordMatch(!passwordMatch)
-      }
-            
-    }
-    const onRegisterChange =(event) =>{
-      const { name, value } = event.target;
-      setRegisterData({...registerData, [name] : value}); 
-      
-    }
-   
-    
-    
+  const handleLogin = (event) => {
+    event.preventDefault();
+    setFormData({ ...formData, loginData });
+  }
 
-    const onLoginChange = (event) =>{
-        const { name, value } = event.target;
-        setLoginData({...loginData, [name]: value});
-    }
 
-    
-    const onMessagesChange = (event) =>{
-      const { name, value } = event.target;
-      setMessageData( {...messageData, [name] : value} )      
+  const handleRegister = (event) => {
+    event.preventDefault();
+
+    const registerURL = `http://localhost:3000/api/messages/users/register`
+
+    const { password, confirmPassword } = registerData;
+    if (password === confirmPassword) {
+      setFormData({ ...formData, registerData });
+      setPasswordMatch(true)
+
+
+      axios.post(registerURL, registerData)
+        .then(response => {
+          navigate('/success');
+          console.log(response.data);
+        })
+        .catch(error => {
+          navigate('/error');
+          console.log(error);
+        })
+
+
+      alert('success')
+        ;
+      //This should redirect to login
+    } else {
+      // Display an error message
+      setPasswordMatch(!passwordMatch)
     }
 
-    const handleMessage = (event) =>{
-      event.preventDefault();
-      setFormData({...formData, messageData});
-    }
-    
+  }
+
+  const onRegisterChange = (event) => {
+    const { name, value } = event.target;
+    const trimmedValue = value.replace(/\s/g, '');
+    setRegisterData({ ...registerData, [name]: trimmedValue });
+
+  }
+
+  const onLoginChange = (event) => {
+    const { name, value } = event.target;
+    const trimmedValue = value.replace(/\s/g, '');
+    setLoginData({ ...loginData, [name]: trimmedValue });
+  }
+
+
+  const onMessagesChange = (event) => {
+    const { name, value } = event.target;
+    const trimmedValue = value.replace(/\s/g, '');
+    setMessageData({ ...messageData, [name]: trimmedValue });
+  }
+
+  const handleMessage = (event) => {
+    event.preventDefault();
+    setFormData({ ...formData, messageData });
+  }
+
   return {
     onLoginChange,
     handleLogin,
@@ -73,7 +90,7 @@ const UserForm = () => {
     handleMessage,
     passwordMatch
   };
-    
+
 }
 
 export default UserForm
