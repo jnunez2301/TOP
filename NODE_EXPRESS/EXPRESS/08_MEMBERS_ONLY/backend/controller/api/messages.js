@@ -63,12 +63,13 @@ router.post('/', async(req, res) => {
 
 })
 
-router.get('/user/:username', (req, res) => {
+//Find all messages from a username
+router.get('/msg/:username', (req, res) => {
     const body = req.params;
     if(!body.username){
         res.status(404).json({msg: 'invalid username'});
     }
-    Message.find({ username: body.username })
+    Message.findOne({ username: body.username })
         .then(msgs => {
             res.status(200).json(msgs);
         })
@@ -78,13 +79,17 @@ router.get('/user/:username', (req, res) => {
         })
 })
 
+//Find the users info
 router.get('/users/:username', (req, res) =>{
     const userParam = req.params.username;
 
-    User.find({username: userParam})
-        .then(msg => 
+    User.findOne({username: userParam})
+        .then(usr => 
             {
-                res.status(200).json(msg)
+                res.status(200).json({
+                    username: usr.username,
+                    email: usr.email
+                })
             }
             )
         .catch(error => {
@@ -98,11 +103,17 @@ passport.use(
     new LocalStrategy(async(username, password, done)=>{
         try{
             const user = await User.findOne({ username: username })
+
+            
+
             if(!user){
                 console.log('Wrong username');
                 return done(null, false, { message: "Incorrect username" });
             };
-            if(user.password !== password){
+
+            const match = await bcrypt.compare(password, user.password);
+
+            if(!match){
                 console.log('wrong password');
                 return done(null, false, { message: "Incorrect Password" });
             };
@@ -152,33 +163,41 @@ router.get("/users/logout", (req, res, next) => {
     res.locals.currentUser = req.user;
     next();
   });
-// sign-up form
+// sign-up form || REGISTER
 router.post('/users/register', (req,res) =>{
     const body = req.body;
     
-    try{
-        const newUser = new User({
-            username: body.username,
-            password: body.password,
-            email: body.email
-        })
-
-        newUser.save()
-            .then(savedUser =>{
-                res.status(200).json({
-                    msg: 'saved successfully',
-                    savedUser: savedUser.username
+    bcrypt.hash(body.password, 10, async(err, hashedPassword) =>{
+        if(err){
+            console.log(err);
+            return res.status(500).json({msg: 'Error hashing the password'});
+        }
+        try{
+            const newUser = new User({
+                username: body.username,
+                password: hashedPassword,
+                email: body.email
+            })
+    
+            newUser.save()
+                .then(savedUser =>{
+                    res.status(200).json({
+                        msg: 'saved successfully',
+                        savedUser: savedUser.username
+                    })
                 })
-            })
-            .catch(error =>{
-                console.log(error);
-                res.status(500).json({ msg: 'user already exists'})
-            })
-    }
-    catch(error){
-        console.log(error);
-        res.status(500).json({msg: 'can not post'})
-    }
+                .catch(error =>{
+                    console.log(error);
+                    res.status(500).json({ msg: 'user already exists'})
+                })
+        }
+        catch(error){
+            console.log(error);
+            res.status(500).json({msg: 'can not post'})
+        }
+    })
+
+    
 })
 
 
