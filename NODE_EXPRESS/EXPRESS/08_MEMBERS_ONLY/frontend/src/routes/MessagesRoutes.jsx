@@ -5,7 +5,6 @@ import Signup from "../auth/Signup"
 import SuccessRegister from "../auth/SuccessRegister"
 
 
-
 const MessagesRoutes = () => {
   return (
     <>

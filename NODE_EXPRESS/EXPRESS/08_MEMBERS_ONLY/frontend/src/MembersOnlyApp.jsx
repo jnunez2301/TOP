@@ -1,8 +1,12 @@
 import MessagesRoutes from "./routes/MessagesRoutes"
 
 const MembersOnlyApp = () => {
+  
+ 
+
   return (
-    <MessagesRoutes />
+   
+      <MessagesRoutes />
   )
 }
 
