@@ -7,7 +7,7 @@ const MessagesSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.String,
         ref: 'Users', 
         required: true,
-        lowercase: true
+        lowercase: true,
     },
     title: {
         type: String,
