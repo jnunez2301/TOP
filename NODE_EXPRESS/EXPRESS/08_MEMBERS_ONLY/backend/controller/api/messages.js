@@ -155,12 +155,12 @@ router.post('/users/login', (req, res, next) => {
         
         return res.status(200).json({
           message: 'Logged In',
-          logged: true,
           loggedUserName: user.username,
         });
       });
     })(req, res, next);
   });
+
 
 router.get("/users/logout", (req, res, next) => {
     req.logout((err) => {
