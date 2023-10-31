@@ -69,7 +69,7 @@ router.get('/msg/:username', (req, res) => {
     if(!body.username){
         res.status(404).json({msg: 'invalid username'});
     }
-    Message.findOne({ username: body.username })
+    Message.find({ username: body.username })
         .then(msgs => {
             res.status(200).json(msgs);
         })
