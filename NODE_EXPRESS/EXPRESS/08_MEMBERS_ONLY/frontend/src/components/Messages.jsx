@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
 import MessagesData from '../helpers/MessagesData';
+import { useAuth } from '../context/AuthContext';
 
 const Messages = () => {
   const { data } = MessagesData();
   const msgContainerRef = useRef(null);
-
+  const { isAuthenticated } = useAuth();
   
   useEffect(() => {
     if(msgContainerRef.current){
@@ -32,7 +33,7 @@ const Messages = () => {
                 <div className='msg-username'>
                   <p
                   style={{fontSize: '12px'}}
-                  >{d.username}</p>
+                  >{ isAuthenticated ? d.username : '******'}</p>
                   <p
                   style={{fontSize: '10px'}}
                   >{d.date}</p>

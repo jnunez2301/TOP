@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 
 const UserForm = () => {
 
   const navigate = useNavigate();
-
-
+  const { isAuthenticated, checkAuthentication } = useAuth();
+  
   const [formData, setFormData] = useState([]);
   const [loginData, setLoginData] = useState({});
   const [registerData, setRegisterData] = useState({
@@ -23,12 +24,26 @@ const UserForm = () => {
     event.preventDefault();
     setFormData({ ...formData, loginData });
     const loginURL = `http://localhost:3000/api/messages/users/login`;
+    
 
     if(loginData.username && loginData.password){
-      axios.post(loginURL, loginData)
-      .then(response => console.log(response))
-      .catch(error => console.log(error.response.data))
+      axios.post(loginURL, loginData, { withCredentials: true })
+      .then(response => {
+        console.log(response)
+
+        checkAuthentication();
+        
+        if(isAuthenticated){
+          navigate('/')
+        }
+      })
+      .catch(error => {
+        console.log(error.response.data)
+        alert('Incorrect username or password')
+      })
+      
     }
+    
   }
 
 

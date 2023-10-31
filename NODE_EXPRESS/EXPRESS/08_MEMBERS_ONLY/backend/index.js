@@ -17,7 +17,12 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'dist')))
 
 //CORS
-app.use(cors({ exposedHeaders: 'Authorization' }));
+app.use(cors({ 
+    origin: 'http://localhost:3001',
+    credentials: true
+ }));
+/* app.options('/api/messages/users/login', cors()); */
+
 app.use(express.json());
 
 //PassportJS
@@ -30,7 +35,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/messages', require('./controller/api/messages'));
 
 
-  
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));

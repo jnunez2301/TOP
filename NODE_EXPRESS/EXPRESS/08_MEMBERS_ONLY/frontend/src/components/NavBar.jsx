@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom"
+import { useAuth } from "../context/AuthContext";
 
 const NavBar = () => {
+
+  const { isAuthenticated, userData, logOut } = useAuth();
+
+
   return (
     <nav>
       <ul>
@@ -8,11 +13,17 @@ const NavBar = () => {
           <Link to='/' >MMC</Link>
         </li>
         <li>
-        <Link to='login' >Login</Link>
-        {/* If user is logged login and signup should be the userName */}
-        <Link to='signup' >
-        Sign Up
-        </Link>
+        {
+          isAuthenticated ? 
+          <>
+            <p>{ userData }</p>
+            <Link to='logout' onClick={() => logOut()}>Log Out</Link>
+          </> :
+          <>
+          <Link to='login' >Login</Link>
+          <Link to='signup' >Sign Up</Link>
+          </> 
+        }
         </li>
       </ul>
     </nav>
