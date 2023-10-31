@@ -4,20 +4,26 @@ import { useAuth } from '../context/AuthContext';
 
 const Messages = () => {
   const { data } = MessagesData();
-  const msgContainerRef = useRef(null);
+  const messageContainerRef = useRef(null);
   const { isAuthenticated } = useAuth();
   
   useEffect(() => {
-    if(msgContainerRef.current){
-      msgContainerRef.current.scrollTop = msgContainerRef.current.scrollHeight;
+    // Ensure the container and its scrollTop property exist before using it
+    if (messageContainerRef.current) {
+      const container = messageContainerRef.current;
+      // Check if the user has manually scrolled to the top
+      const isAtTop = container.scrollTop === 0;
+      if (isAtTop) {
+        container.scrollTop = container.scrollHeight;
+      }
     }
-  },[])
+  }, [data]);
   
 
   return (
     <>
       <h1 id='title'>Members Only Club</h1>
-      <ul className='msg-container' ref={msgContainerRef}>
+      <ul className='msg-container' ref={messageContainerRef}>
         {
           data &&
           data.map(d => (

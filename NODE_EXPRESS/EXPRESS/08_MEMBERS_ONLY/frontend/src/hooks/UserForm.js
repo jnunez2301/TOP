@@ -8,7 +8,7 @@ import MessagesData from '../helpers/MessagesData';
 const UserForm = () => {
 
   const navigate = useNavigate();
-  const { isAuthenticated, checkAuthentication, userData } = useAuth();
+  const { checkAuthentication, userData } = useAuth();
   const { fetchData } = MessagesData();
   
   const [formData, setFormData] = useState([]);
@@ -19,9 +19,10 @@ const UserForm = () => {
     password: '',
     confirmPassword: ''
   });
-  const [messageData, setMessageData] = useState({});
+  const [messageData, setMessageData] = useState({username: userData, title: '', description: ''});
   const [passwordMatch, setPasswordMatch] = useState(true);
 
+  
   const handleLogin = (event) => {
     event.preventDefault();
     setFormData({ ...formData, loginData });
@@ -31,11 +32,9 @@ const UserForm = () => {
     if(loginData.username && loginData.password){
       axios.post(loginURL, loginData, { withCredentials: true })
       .then(response => {
-        console.log(response)
-
         checkAuthentication();
         
-        if(isAuthenticated){
+        if(response.status === 200){
           navigate('/')
         }
       })
@@ -100,15 +99,13 @@ const UserForm = () => {
 
     const messagesURL = 'http://localhost:3000/api/messages/';
 
-    setFormData({ ...formData, 
+    setMessageData({ ...messageData, 
       username: userData,
       title: messageData.title,
       description: messageData.description
-     });
+     }); 
     
-
-    
-    axios.post(messagesURL, formData, {withCredentials: true})
+    axios.post(messagesURL, messageData, {withCredentials: true})
       .then(response => {
         console.log(response.data)
         fetchData();
@@ -129,6 +126,7 @@ const UserForm = () => {
     onMessagesChange,
     handleMessage,
     passwordMatch,
+    
   };
 
 }

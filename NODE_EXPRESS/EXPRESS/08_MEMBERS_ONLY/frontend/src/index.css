@@ -64,11 +64,12 @@ li{
   max-height: 400px;
   overflow-y: auto;
   
+  
 }
 .msg-container::-webkit-scrollbar{
   width: 4px;
   border-radius: 5px;
-}
+  }
 .msg-container::-webkit-scrollbar-track {
   background: rgba(241, 241, 241, 0.7);
 }
