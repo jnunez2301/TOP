@@ -10,18 +10,22 @@ const MessagesData = () => {
 
   const baseURL = `http://localhost:3000/api/messages/`;
 
-  useEffect(() => {
+  const fetchData = () => {
     axios.get(baseURL)
-    .then(response =>  
-      setData(...data, response.data)
-      )
-    .catch(error => console.log(error))
-  }, [])
+      .then(response => setData(response.data))
+      .catch(error => console.log(error));
+  };
+
+  useEffect(() => {
+    fetchData(); // Fetch initial data
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   //This must return data instead of newData;
   return {
     ExampleData,
-    data
+    data,
+    fetchData
   };
 }
 

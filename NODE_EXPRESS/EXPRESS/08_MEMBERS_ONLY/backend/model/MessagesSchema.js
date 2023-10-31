@@ -16,7 +16,7 @@ const MessagesSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        minLength: 8,
+        minLength: 3,
         required: true
     },
     date: {

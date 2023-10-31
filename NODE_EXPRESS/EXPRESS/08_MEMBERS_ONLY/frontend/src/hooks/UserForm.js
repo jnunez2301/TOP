@@ -2,12 +2,14 @@ import axios from 'axios';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import MessagesData from '../helpers/MessagesData';
 
 
 const UserForm = () => {
 
   const navigate = useNavigate();
-  const { isAuthenticated, checkAuthentication } = useAuth();
+  const { isAuthenticated, checkAuthentication, userData } = useAuth();
+  const { fetchData } = MessagesData();
   
   const [formData, setFormData] = useState([]);
   const [loginData, setLoginData] = useState({});
@@ -84,21 +86,40 @@ const UserForm = () => {
 
   const onLoginChange = (event) => {
     const { name, value } = event.target;
-    const trimmedValue = value.replace(/\s/g, '');
-    setLoginData({ ...loginData, [name]: trimmedValue });
+    setLoginData({ ...loginData, [name]: value.trim() });
   }
 
 
   const onMessagesChange = (event) => {
     const { name, value } = event.target;
-    const trimmedValue = value.replace(/\s/g, '');
-    setMessageData({ ...messageData, [name]: trimmedValue });
+    setMessageData({ ...messageData, [name]: value.trim() });
   }
 
   const handleMessage = (event) => {
     event.preventDefault();
-    setFormData({ ...formData, messageData });
+
+    const messagesURL = 'http://localhost:3000/api/messages/';
+
+    setFormData({ ...formData, 
+      username: userData,
+      title: messageData.title,
+      description: messageData.description
+     });
+    
+
+    
+    axios.post(messagesURL, formData, {withCredentials: true})
+      .then(response => {
+        console.log(response.data)
+        fetchData();
+        event.target.reset();
+      })
+      .catch(error => console.error(error))
+    
+
   }
+
+ 
 
   return {
     onLoginChange,
@@ -107,7 +128,7 @@ const UserForm = () => {
     onRegisterChange,
     onMessagesChange,
     handleMessage,
-    passwordMatch
+    passwordMatch,
   };
 
 }
