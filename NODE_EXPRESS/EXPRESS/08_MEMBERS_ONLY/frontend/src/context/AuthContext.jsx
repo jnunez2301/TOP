@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
     const checkAuthentication = async () => {
         try{
             const response = await axios.get(authURL, {withCredentials: true});
-            
             setIsAuthenticated(response.data.isAuthenticated)
             if (response.data.user) {
                 setUserData(response.data.user.username);
@@ -35,8 +34,8 @@ export const AuthProvider = ({ children }) => {
             axios.get(logOutURL, { withCredentials: true })
             .then(response => { 
                 console.log(response.data);
+                setIsAuthenticated(false);
                 
-                window.location.reload();
              })
             .catch(error => console.log(error));
         }catch(error){
