@@ -32,6 +32,7 @@
     }
 
     -> MessagesSchema = {
+        username: (ref user schema)
         title: String,
         description: String,
         date: String
