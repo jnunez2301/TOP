@@ -17,7 +17,7 @@ const NavBar = () => {
         {
           isAuthenticated ? 
           <div className="user-nav">
-            <p>{ userData }</p>
+            <Link className="main-user" to={`/user/${userData}`}>{ userData }</Link>
             <Link to='logout' onClick={() => logOut()}>Log Out</Link>
           </div> :
           <>

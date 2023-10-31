@@ -261,7 +261,10 @@ li{
   background-color: rgb(220, 217, 189); 
 }
 
-
+.main-user{
+  color: rgb(89, 88, 53);
+  
+}
 
 @keyframes success {
   0%{
