@@ -107,7 +107,7 @@ const UserForm = () => {
     
     axios.post(messagesURL, messageData, {withCredentials: true})
       .then(response => {
-        console.log(response.data)
+       /*  console.log(response.data) */
         fetchData();
         event.target.reset();
       })

@@ -88,7 +88,8 @@ router.get('/users/:username', (req, res) =>{
             {
                 res.status(200).json({
                     username: usr.username,
-                    email: usr.email
+                    email: usr.email,
+                    _id: usr._id
                 })
             }
             )

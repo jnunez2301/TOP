@@ -223,6 +223,46 @@ li{
   opacity: 0;
   animation: success .7s ease-in forwards;
 }
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  background-color: rgb(220, 217, 189);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 376px;
+  margin-bottom: 16px;
+}
+.profile > article{
+  display: flex;
+  flex-direction: column;
+}
+.profile-section{
+  max-width: 375px;
+}
+.all-user-msg{
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+  max-height: 350px;
+  overflow-y: scroll;
+}
+.all-user-msg > li{
+  border-radius: 5px;
+  padding: 1rem;
+  
+  border: 1px solid black;
+  width: 100%;
+  font-size: 12px;
+  background-color: rgb(220, 217, 189); 
+}
+
+
+
 @keyframes success {
   0%{
     opacity: 0;

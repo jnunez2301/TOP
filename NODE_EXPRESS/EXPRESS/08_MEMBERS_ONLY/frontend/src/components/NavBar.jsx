@@ -5,6 +5,7 @@ const NavBar = () => {
 
   const { isAuthenticated, userData, logOut } = useAuth();
 
+  
 
   return (
     <nav>

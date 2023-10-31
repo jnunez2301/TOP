@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import MessagesData from '../helpers/MessagesData';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const Messages = () => {
   const { data } = MessagesData();
@@ -39,7 +40,7 @@ const Messages = () => {
                 <div className='msg-username'>
                   <p
                   style={{fontSize: '12px'}}
-                  >{ isAuthenticated ? d.username : '******'}</p>
+                  >{isAuthenticated ? <Link to={`/user/${d.username}`}>{d.username}</Link> : '******'}</p>
                   <p
                   style={{fontSize: '10px'}}
                   >{d.date}</p>
