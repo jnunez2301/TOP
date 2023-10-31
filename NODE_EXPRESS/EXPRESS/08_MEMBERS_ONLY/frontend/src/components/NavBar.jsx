@@ -15,10 +15,10 @@ const NavBar = () => {
         <li>
         {
           isAuthenticated ? 
-          <>
+          <div className="user-nav">
             <p>{ userData }</p>
             <Link to='logout' onClick={() => logOut()}>Log Out</Link>
-          </> :
+          </div> :
           <>
           <Link to='login' >Login</Link>
           <Link to='signup' >Sign Up</Link>

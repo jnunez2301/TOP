@@ -11,7 +11,7 @@ const Messages = () => {
     if(msgContainerRef.current){
       msgContainerRef.current.scrollTop = msgContainerRef.current.scrollHeight;
     }
-  },[data])
+  },[])
   
 
   return (
