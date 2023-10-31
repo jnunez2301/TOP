@@ -9,7 +9,7 @@ const MessagesData = () => {
   const [data, setData] = useState([]);
 
 
-  const baseURL = `http://localhost:3000/api/messages/`;
+  const baseURL = `/api/messages/`;
 
 
   const fetchData =  useCallback(() => {

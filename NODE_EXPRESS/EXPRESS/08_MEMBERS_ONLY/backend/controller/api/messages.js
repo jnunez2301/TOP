@@ -217,11 +217,7 @@ router.post('/users/register', (req,res) =>{
             res.status(500).json({msg: 'can not post'})
         }
     })
-
-    
 })
-
-
 
 
 

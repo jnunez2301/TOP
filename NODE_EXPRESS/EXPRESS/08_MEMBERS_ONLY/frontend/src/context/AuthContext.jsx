@@ -9,8 +9,8 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }) => {
-    const authURL = 'http://localhost:3000/api/messages/auth/status';
-    const logOutURL = 'http://localhost:3000/api/messages/auth/logout';
+    const authURL = '/api/messages/auth/status';
+    const logOutURL = '/api/messages/auth/logout';
 
   
 

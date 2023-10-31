@@ -11,9 +11,9 @@ const ProfilePage = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [allMsg, setAllMsg] = useState([]);
 
-    const userURL = `http://localhost:3000/api/messages/users/${username}`;
+    const userURL = `/api/messages/users/${username}`;
 
-    const msgURL = `http://localhost:3000/api/messages/msg/${username}`
+    const msgURL = `/api/messages/msg/${username}`
 
     useEffect(() => {
         axios.get(userURL)

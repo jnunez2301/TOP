@@ -26,7 +26,7 @@ const UserForm = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     setFormData({ ...formData, loginData });
-    const loginURL = `http://localhost:3000/api/messages/users/login`;
+    const loginURL = `/api/messages/users/login`;
     
 
     if(loginData.username && loginData.password){
@@ -51,7 +51,7 @@ const UserForm = () => {
   const handleRegister = (event) => {
     event.preventDefault();
 
-    const registerURL = `http://localhost:3000/api/messages/users/register`
+    const registerURL = `/api/messages/users/register`
 
     const { password, confirmPassword } = registerData;
     if (password === confirmPassword) {
@@ -97,7 +97,7 @@ const UserForm = () => {
   const handleMessage = (event) => {
     event.preventDefault();
 
-    const messagesURL = 'http://localhost:3000/api/messages/';
+    const messagesURL = '/api/messages/';
 
     setMessageData({ ...messageData, 
       username: userData,
@@ -106,6 +106,7 @@ const UserForm = () => {
      }); 
     
     axios.post(messagesURL, messageData, {withCredentials: true})
+      // eslint-disable-next-line no-unused-vars
       .then(response => {
        /*  console.log(response.data) */
         fetchData();
