@@ -8,7 +8,7 @@ import MessagesData from '../helpers/MessagesData';
 const UserForm = () => {
 
   const navigate = useNavigate();
-  const { checkAuthentication, userData } = useAuth();
+  const { checkAuthentication, userData, isAuthenticated } = useAuth();
   const { fetchData } = MessagesData();
   
   const [formData, setFormData] = useState([]);
@@ -34,7 +34,7 @@ const UserForm = () => {
       .then(response => {
         checkAuthentication();
         
-        if(response.status === 200){
+        if(isAuthenticated){
           navigate('/')
         }
       })
