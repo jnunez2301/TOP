@@ -29,9 +29,9 @@ const ProfilePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const backToMenu = () => {
+    /* const backToMenu = () => {
       navigate('/')
-    }
+    } */
 
 
   return (
@@ -43,14 +43,7 @@ const ProfilePage = () => {
     }}
      className='profile'>
       <div>
-      <button 
-      style={{
-        position: 'absolute',
-        top: '0',
-        right: '0',
-        margin: '1rem'
-      }}
-      onClick={backToMenu} className='btn-login' >Go Back</button>
+      
     </div>
       <article
       style={{

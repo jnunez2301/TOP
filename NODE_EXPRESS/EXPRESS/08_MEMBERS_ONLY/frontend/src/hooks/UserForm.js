@@ -42,7 +42,7 @@ const UserForm = () => {
           console.log(response);
   
           // Check isAuthenticated again in case it changed
-          if (isLogged.status === 200 && response.status === 200) {
+          if (isLogged.status === 200) {
             await checkAuthentication();
             setIsAuthenticated(true);
             navigate('/');
@@ -136,7 +136,7 @@ const UserForm = () => {
     onMessagesChange,
     handleMessage,
     passwordMatch,
-    
+    messageData
   };
 
 }

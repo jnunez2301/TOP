@@ -4,8 +4,8 @@ import UserForm from "../hooks/userForm"
 const MessagesForm = () => {
 
   const { userData, isAuthenticated } = useAuth();
+  const { onMessagesChange, handleMessage, messageData } = UserForm();
 
-  const { onMessagesChange, handleMessage } = UserForm();
 
   return (
     <form
@@ -53,7 +53,7 @@ const MessagesForm = () => {
         
 
 
-          <input type="text"
+          <textarea type="text"
           className="submit-input"
           placeholder="What are you thinking about?"
           onChange={onMessagesChange}
@@ -63,6 +63,7 @@ const MessagesForm = () => {
       <div
       id="post-btn"
       >
+        <p>{messageData.description.length} / Letters</p>
         <button className="btn-submit" type="submit">Send</button>
       </div>
     </form>

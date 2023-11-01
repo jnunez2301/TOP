@@ -14,7 +14,9 @@ const MessagesData = () => {
 
   const fetchData =  useCallback(() => {
     axios.get(baseURL)
-    .then(response => setData( response.data, ...data))
+    .then(response => {
+      setData( response.data.reverse(), ...data)
+      })
     .catch(error => console.log(error));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -23,15 +25,18 @@ const MessagesData = () => {
   useEffect(() => {
     fetchData(); // Fetch initial data
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, []);
 
- 
+  const refreshData = () => {
+    fetchData();
+  };
 
   //This must return data instead of newData;
   return {
     ExampleData,
     data,
-    fetchData
+    fetchData,
+    refreshData
   };
 }
 

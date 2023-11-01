@@ -5,25 +5,16 @@ import { Link } from 'react-router-dom';
 
 const Messages = () => {
   const { data } = MessagesData();
-  const messageContainerRef = useRef(null);
+ 
   const { isAuthenticated } = useAuth();
   
-  useEffect(() => {
-    // Ensure the container and its scrollTop property exist before using it
-    if (messageContainerRef.current) {
-      const container = messageContainerRef.current;
-      // Check if the user has manually scrolled to the top
-      const isAtTop = container.scrollTop === 0;
-      if (isAtTop) {
-        container.scrollTop = container.scrollHeight;
-      }
-    }
-  }, [data]);
+  
+ 
   
 
   return (
     <>
-      <ul className='msg-container' ref={messageContainerRef}>
+      <ul className='msg-container'>
         {
           data &&
           data.map(d => (

@@ -2,7 +2,6 @@
 import { useAuth } from "../context/AuthContext"
 import Messages from "./Messages"
 import MessagesForm from "./MessagesForm"
-import NavBar from "./NavBar"
 
 const MainPage = () => {
 
@@ -10,7 +9,6 @@ const MainPage = () => {
 
   return (
     <>
-      <NavBar />
       <section className="container">
         {isAuthenticated ? <MessagesForm /> : <p>Sign in to upload contribute</p>}
         <Messages />

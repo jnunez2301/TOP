@@ -11,21 +11,23 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
-          <Link to='/' >MMC</Link>
+          <Link to='/' className="title">MMC</Link>
         </li>
-        <li>
+        
         {
           isAuthenticated ? 
-          <div className="user-nav">
-            <Link className="main-user" to={`/user/${userData}`}>{ userData }</Link>
-            <Link to='logout' onClick={() => logOut()}>Log Out</Link>
-          </div> :
+            <>
+            <li><Link className="main-user" to={`/user/${userData}`}>{ userData }</Link></li>
+            <li><Link to='logout' onClick={() => logOut()}>Log Out</Link></li>
+            </>
+            
+           :
           <>
           <Link to='login' >Login</Link>
           <Link to='signup' >Sign Up</Link>
           </> 
         }
-        </li>
+        
       </ul>
     </nav>
   )

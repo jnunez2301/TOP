@@ -5,6 +5,7 @@ import Signup from "../auth/Signup"
 import SuccessRegister from "../auth/SuccessRegister"
 import ErrorRegister from "../auth/ErrorRegister"
 import ProfilePage from "../auth/ProfilePage"
+import NavBar from "../components/NavBar"
 
 
 
@@ -17,7 +18,9 @@ const MessagesRoutes = () => {
   return (
     <>
     <BrowserRouter>
+        <NavBar />
         <Routes>
+          
           <Route path='/' element={<MainPage />} />
           <Route path='/login' element={<Login />}/>
           <Route path='/signup' element={<Signup />} />
