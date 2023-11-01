@@ -6,7 +6,6 @@ const NavBar = () => {
   const { isAuthenticated, userData, logOut } = useAuth();
 
   
-  
 
   return (
     <nav>
@@ -16,7 +15,7 @@ const NavBar = () => {
         </li>
         <li>
         {
-          isAuthenticated === true ? 
+          isAuthenticated ? 
           <div className="user-nav">
             <Link className="main-user" to={`/user/${userData}`}>{ userData }</Link>
             <Link to='logout' onClick={() => logOut()}>Log Out</Link>

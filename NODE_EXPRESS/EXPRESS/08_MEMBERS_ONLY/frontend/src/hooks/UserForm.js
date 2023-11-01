@@ -8,8 +8,9 @@ import MessagesData from '../helpers/MessagesData';
 const UserForm = () => {
 
   const navigate = useNavigate();
-  const { checkAuthentication, userData, isAuthenticated } = useAuth();
+  const { userData, setIsAuthenticated, checkAuthentication } = useAuth();
   const { fetchData } = MessagesData();
+  
   
   const [formData, setFormData] = useState([]);
   const [loginData, setLoginData] = useState({});
@@ -23,28 +24,37 @@ const UserForm = () => {
   const [passwordMatch, setPasswordMatch] = useState(true);
 
   
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    checkAuthentication();
     setFormData({ ...formData, loginData });
     const loginURL = `/api/messages/users/login`;
-
-    if(loginData.username && loginData.password){
-      axios.post(loginURL, loginData, { withCredentials: true })
-      .then(response => {
-        /* console.log(response.data); */
-        if(isAuthenticated === true){
-            navigate('/')
-        }
+  
+    if (loginData.username && loginData.password) {
+      try {
+        // Wait for checkAuthentication to complete
         
-      })
-      .catch(error => {
-        console.log(error.response.data)
-        alert('Incorrect username or password')
-      })
+          /* await checkAuthentication(); */
+          
+          // Proceed with the login request
+          const response = await axios.post(loginURL, loginData, { withCredentials: true });
+          const isLogged = await axios.get('/api/messages/auth/status')
+          
+          console.log(response);
+  
+          // Check isAuthenticated again in case it changed
+          if (isLogged.status === 200 && response.status === 200) {
+            await checkAuthentication();
+            setIsAuthenticated(true);
+            navigate('/');
+          }
+        
+      } catch (error) {
+        console.log(error.response.data);
+        alert('Incorrect username or password');
+      }
     }
-   
   }
+  
 
 
   const handleRegister = (event) => {

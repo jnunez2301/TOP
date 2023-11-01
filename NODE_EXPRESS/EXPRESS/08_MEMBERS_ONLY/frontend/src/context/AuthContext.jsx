@@ -23,7 +23,9 @@ export const AuthProvider = ({ children }) => {
             axios.get(authURL, {withCredentials: true})
             .then(response => {
                 setIsAuthenticated(response.data.isAuthenticated)
-                setUserData(response.data.user.username)
+                if(response.data.user){
+                    setUserData(response.data.user.username)
+                }
             })
             .catch(error => {
                 console.log(error);
@@ -55,7 +57,7 @@ export const AuthProvider = ({ children }) => {
     
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, checkAuthentication, logOut, userData }}>
+        <AuthContext.Provider value={{ isAuthenticated, checkAuthentication, logOut, userData, setIsAuthenticated }}>
           {children}
         </AuthContext.Provider>
       );
