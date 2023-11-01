@@ -10,7 +10,8 @@ const MainPage = () => {
   return (
     <>
       <section className="container">
-        {isAuthenticated ? <MessagesForm /> : <p>Sign in to upload contribute</p>}
+        {isAuthenticated ? <MessagesForm /> : 
+        <h2 className="no-logged">Sign in to upload <strong>Messages</strong></h2>}
         <Messages />
       </section>
     </>

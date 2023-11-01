@@ -11,7 +11,8 @@ const Login = () => {
    
   
   return (
-    <section>
+    <section
+    className="form-section">
       <ul>
         <li>
           <form onSubmit={ handleLogin } className="login-form">
@@ -32,7 +33,7 @@ const Login = () => {
             required/>
 
             <button
-            className="btn-login"
+            className="btn-submit"
              type="submit">Log In</button>
             
           </form>

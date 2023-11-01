@@ -61,7 +61,7 @@ const MessagesForm = () => {
         
       </div>
       <div
-      id="post-btn"
+      className="post-btn"
       >
         <p>{messageData.description.length} / Letters</p>
         <button className="btn-submit" type="submit">Send</button>

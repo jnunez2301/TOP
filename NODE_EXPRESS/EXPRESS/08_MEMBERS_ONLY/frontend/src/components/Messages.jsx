@@ -24,9 +24,13 @@ const Messages = () => {
                   <div>
                   <h2
                   >{d.title}</h2>
-                  <Link to={`/user/${d.username}`}
+                  {
+                    isAuthenticated ?
+                    <Link to={`/user/${d.username}`}
                   style={{fontSize: '12px'}}
-                  >{`@${d.username}`}</Link>  
+                  >{`@${d.username}`}</Link> :
+                  <p style={{marginLeft: '10px'}}>******</p>
+                  } 
                   </div>
                   <div>
                     <p className='msg'>{d.description}</p>

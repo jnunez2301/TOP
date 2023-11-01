@@ -9,7 +9,8 @@ const Signup = () => {
   
 
   return (
-    <section>
+    <section
+    className="form-section">
       <ul>
         <li>
           <form onSubmit={ handleRegister} className="register-form">
@@ -46,7 +47,7 @@ const Signup = () => {
             
 
             <button 
-            className="btn-register" type="submit">Register</button>
+            className="btn-submit" type="submit">Register</button>
 
 
           </form>

@@ -38,9 +38,11 @@ h2{
 .title{
   color: var(--user-text)
 }
+nav{
+  text-align: center;
+}
 nav > ul{
   display: flex;
-  position: sticky;
   flex-direction: column;
   padding: 1rem;
 }
@@ -78,7 +80,12 @@ li{
   border-bottom: 1px solid var(--thin-gray);
   margin-bottom: 5px;
 }
-
+.no-logged{
+  font-size: 32px;
+  color: var(--btn-background-hover);
+  margin-bottom: 16px;
+  padding: 1rem;
+}
 .container{
   display: grid;
   width: 100%;
@@ -166,7 +173,7 @@ li{
   align-items: center;
   text-align: center;
   height: 100%;
-  width: 350px;
+  width: 100%;
   margin-top: 10px;
   border: 1px solid var(--thin-gray);
   border-radius: 5px;
@@ -220,13 +227,13 @@ li{
   margin-bottom: 26px;
   justify-content: space-between;
 }
-#post-btn{
+.post-btn{
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
 }
-#post-btn > p{
+.post-btn > p{
   font-size: 12px;
   color: var(--text-color);
 }
@@ -281,7 +288,11 @@ textarea{
   background-color: var(--btn-background-disabled);
   color: var(--input-text);
 }
-
+.form-section{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 .success-page{
   display: grid;
   justify-content: center;
@@ -404,3 +415,11 @@ textarea{
   animation: bounceIn 1s ease;
 }
 
+ @media (max-width: 550px){
+    #root{
+      flex-direction: column;
+    }
+    nav > ul{
+      flex-direction: row;
+    }
+ }
