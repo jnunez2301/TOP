@@ -14,20 +14,26 @@ export const AuthProvider = ({ children }) => {
 
   
 
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [ isAuthenticated, setIsAuthenticated ] = useState(false);
     const [ userData, setUserData ] = useState([]);
 
-    const checkAuthentication = async () => {
+ 
+    const checkAuthentication = () =>{
         try{
-            const response = await axios.get(authURL, {withCredentials: true});
-            setIsAuthenticated(response.data.isAuthenticated)
-            if (response.data.user) {
-                setUserData(response.data.user.username);
-            }
+            axios.get(authURL, {withCredentials: true})
+            .then(response => {
+                setIsAuthenticated(response.data.isAuthenticated)
+                setUserData(response.data.user.username)
+            })
+            .catch(error => {
+                console.log(error);
+            })
         }catch(error){
-            console.error('Error checking auth status', error);
+            console.log('failed to get credentials', error)
         }
-    };
+    }
+
+    
 
     const logOut = () => {
         try{
@@ -43,10 +49,10 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    useEffect(() => {
+    useEffect(()=> {
         checkAuthentication();
-      
-      }, []);
+    }, [isAuthenticated])
+    
 
     return (
         <AuthContext.Provider value={{ isAuthenticated, checkAuthentication, logOut, userData }}>

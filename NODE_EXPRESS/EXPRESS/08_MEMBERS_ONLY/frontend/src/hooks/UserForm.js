@@ -25,26 +25,25 @@ const UserForm = () => {
   
   const handleLogin = (event) => {
     event.preventDefault();
+    checkAuthentication();
     setFormData({ ...formData, loginData });
     const loginURL = `/api/messages/users/login`;
-    
 
     if(loginData.username && loginData.password){
       axios.post(loginURL, loginData, { withCredentials: true })
       .then(response => {
-        checkAuthentication();
-        
-        if(isAuthenticated){
-          navigate('/')
+        /* console.log(response.data); */
+        if(isAuthenticated === true){
+            navigate('/')
         }
+        
       })
       .catch(error => {
         console.log(error.response.data)
         alert('Incorrect username or password')
       })
-      
     }
-    
+   
   }
 
 

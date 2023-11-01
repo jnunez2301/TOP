@@ -22,10 +22,9 @@ const MessagesRoutes = () => {
           <Route path='/login' element={<Login />}/>
           <Route path='/signup' element={<Signup />} />
           <Route path='/success' element={<SuccessRegister />} />
-          <Route path='/error' element={<ErrorRegister />}/>
-          
-
+          <Route path='/error' element={<ErrorRegister />}/>       
           <Route path="/user/:username" element={<ProfilePage />} />
+      
 
           <Route path="/*" element={<MainPage/>} />
         </Routes>
