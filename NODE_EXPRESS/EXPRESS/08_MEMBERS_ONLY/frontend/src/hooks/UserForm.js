@@ -9,7 +9,7 @@ const UserForm = () => {
 
   const navigate = useNavigate();
   const { userData, setIsAuthenticated, checkAuthentication } = useAuth();
-  const { fetchData } = MessagesData();
+  const { fetchData, refreshData } = MessagesData();
   
   
   const [formData, setFormData] = useState([]);
@@ -119,6 +119,7 @@ const UserForm = () => {
       .then(response => {
        /*  console.log(response.data) */
         fetchData();
+        refreshData();
         event.target.reset();
       })
       .catch(error => console.error(error))

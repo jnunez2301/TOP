@@ -6,7 +6,7 @@
   font-family: 'Poppins', sans-serif;
 }
 :root{
-  --background: #181818;
+  --background: #000000;
   --text-color: #D0D1D2;
   --shining-white: rgb(255, 255, 255);
   --input-text: #6E7378;
@@ -306,42 +306,66 @@ textarea{
   opacity: 0;
   animation: success .7s ease-in forwards;
 }
-
 .profile{
+  min-width: 100%;
+  min-height: 200px;
+  
+}
+.profile figure img{
+  position: absolute;
+  bottom: 0px;
+  left: 15px;
+  border-radius: 5px;
+  height: 133px;
+  width: 133px;
+}
+
+.profile-section{
+  width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  gap: 15px;
-  background-color: rgb(220, 217, 189);
-  border-radius: 10px;
-  padding: 1rem;
-  width: 376px;
-  margin-bottom: 16px;
+}
+.profile-background{
+  width: 100%;
+  height: 160px;
+  background-image: url('/background.jpg');
+  background-repeat: repeat;
+  
 }
 .profile > article{
   display: flex;
   flex-direction: column;
 }
-.profile-section{
-  max-width: 375px;
-}
+
 .all-user-msg{
   display: flex;
   flex-direction: column;
   gap: 15px; 
-  max-height: 350px;
+  padding: 1rem;
+  width: 100%;
+  max-height: 90vh;
   overflow-y: scroll;
 }
+.all-user-msg::-webkit-scrollbar {
+  width: 0.5rem; /* Adjust the width as needed */
+}
+
+.all-user-msg::-webkit-scrollbar-thumb {
+  background: transparent; /* Hide the thumb */
+}
+
+.all-user-msg::-webkit-scrollbar-track {
+  background: transparent; /* Hide the track */
+}
 .all-user-msg > li{
-  border-radius: 5px;
-  padding: 1rem;
   
-  border: 1px solid black;
+  border-bottom: 1px solid var(--border-outline);
   width: 100%;
+  padding-bottom: 16px;
+  
   font-size: 12px;
-  background-color: rgb(220, 217, 189); 
 }
 
 

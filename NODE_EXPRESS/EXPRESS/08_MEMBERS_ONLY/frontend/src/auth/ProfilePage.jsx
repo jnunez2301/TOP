@@ -42,13 +42,28 @@ const ProfilePage = () => {
       position: 'relative'
     }}
      className='profile'>
-      <div>
+     
+        <div className='profile-background'>
+          {/* background */}
+        </div>
+        <figure>
+          <img 
+          className='profile-pic'
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCxdtUUjdG_2KIXy4mJiue7Jgl7n_nO94Cdg&usqp=CAU" alt="demo-img" />
+          
+          
+        </figure>
+        
+     
       
-    </div>
-      <article
+    </section>
+    <section
+    style={{width: '100%'}}
+    >
+    <article
       style={{
         display: 'flex',
-
+        padding: '1rem'
       }}
       >
         {
@@ -56,16 +71,10 @@ const ProfilePage = () => {
             <p key={user._id}>
               <strong>{user.username}</strong>
              <br />
-            {user.email}</p>            
+            {`@${user.username}`}</p>            
           ))
         }
       </article>
-      <figure>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCxdtUUjdG_2KIXy4mJiue7Jgl7n_nO94Cdg&usqp=CAU" alt="demo-img" />
-      </figure>
-      
-    </section>
-    <section>
         <ul className='all-user-msg'>
           {
             allMsg && allMsg.map(msg => (

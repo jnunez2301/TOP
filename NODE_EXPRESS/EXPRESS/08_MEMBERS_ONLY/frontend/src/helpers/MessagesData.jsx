@@ -26,6 +26,7 @@ const MessagesData = () => {
     fetchData(); // Fetch initial data
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  //This bad boy refreshes the state 24/7
 
   const refreshData = () => {
     fetchData();
