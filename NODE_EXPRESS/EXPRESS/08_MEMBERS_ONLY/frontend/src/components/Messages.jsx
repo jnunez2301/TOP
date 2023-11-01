@@ -23,7 +23,6 @@ const Messages = () => {
 
   return (
     <>
-      <h1 id='title'>Members Only Club</h1>
       <ul className='msg-container' ref={messageContainerRef}>
         {
           data &&
@@ -31,16 +30,18 @@ const Messages = () => {
             <li key={d._id} className='msg-info'>
               
                 <div className='msg-description'>
-                  <p
-                  >{d.title}</p>
-                  <p
+                  <div>
+                  <h2
+                  >{d.title}</h2>
+                  <Link to={`/user/${d.username}`}
                   style={{fontSize: '12px'}}
-                  >{d.description}</p>
+                  >{`@${d.username}`}</Link>  
+                  </div>
+                  <div>
+                    <p className='msg'>{d.description}</p>
+                  </div>
                 </div>
                 <div className='msg-username'>
-                  <p
-                  style={{fontSize: '12px'}}
-                  >{isAuthenticated ? <Link to={`/user/${d.username}`}>{d.username}</Link> : '******'}</p>
                   <p
                   style={{fontSize: '10px'}}
                   >{d.date}</p>

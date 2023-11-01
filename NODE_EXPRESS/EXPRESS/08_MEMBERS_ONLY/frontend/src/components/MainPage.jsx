@@ -12,8 +12,8 @@ const MainPage = () => {
     <>
       <NavBar />
       <section className="container">
-        <Messages />
         {isAuthenticated ? <MessagesForm /> : <p>Sign in to upload contribute</p>}
+        <Messages />
       </section>
     </>
   )
