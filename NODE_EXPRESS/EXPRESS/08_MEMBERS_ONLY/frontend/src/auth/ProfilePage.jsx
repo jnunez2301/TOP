@@ -20,7 +20,7 @@ const ProfilePage = () => {
 
     useEffect(() => {
         axios.get(userURL)
-        .then(response => setUserInfo([...userInfo, response.data]))
+        .then(response => setUserInfo([response.data]))
         .catch(error => console.log(error))
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -51,11 +51,10 @@ const ProfilePage = () => {
         <label htmlFor='user-pic' className='profile-user-pic'>
           <img 
           className={`
-          
           profile-pic
           ${userData === username ?  'sameUser' : ''}
           `}
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCxdtUUjdG_2KIXy4mJiue7Jgl7n_nO94Cdg&usqp=CAU" alt="demo-img" />
+          src={ userInfo.length > 0  ? `${userInfo[0].profilePic}` : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCxdtUUjdG_2KIXy4mJiue7Jgl7n_nO94Cdg&usqp=CAU"} alt="demo-img" />
           </label>
           {
             userData === username ?

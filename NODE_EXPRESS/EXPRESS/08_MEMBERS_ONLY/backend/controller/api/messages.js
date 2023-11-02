@@ -21,16 +21,6 @@ router.get('/users', (req, res) => {
         })
 })
 /* .sort({ _id: -1 }) */
-router.get('/picture', (req, res) =>{
-    Message.find({ profilePic })
-    .then(msg => {
-        res.status(200).json(msg)
-    })
-    .catch(error => {
-        console.log(error);
-        res.status(404).json({msg: 'error looking for img'})
-    })
-})
 router.get('/', (req, res) => {
     Message.find({})
         .limit(20)
@@ -103,7 +93,8 @@ router.get('/users/:username', (req, res) =>{
                 res.status(200).json({
                     username: usr.username,
                     email: usr.email,
-                    _id: usr._id
+                    _id: usr._id,
+                    profilePic: usr.profilePic
                 })
             }
             )
