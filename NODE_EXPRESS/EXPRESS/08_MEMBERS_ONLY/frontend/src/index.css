@@ -23,7 +23,6 @@
 }
 #root {
   display: flex;
-  padding: 1rem;
   position: relative;
 }
 body {
@@ -113,7 +112,7 @@ li {
   justify-content: space-between;
   padding: 1rem;
   margin-bottom: 16px;
-  max-height: 35vh;
+  /* max-height: 35vh; */
   width: 100%;
   gap: 15px;
   align-items: center;
@@ -134,15 +133,28 @@ li {
   color: var(--border-outline);
 }
 .msg-description {
-  overflow-y: auto;
-  max-height: 35vh;
+  /* overflow-y: auto;
+  max-height: 35vh; */
   flex-grow: 1;
   text-align: start;
   word-wrap: normal;
   word-break: break-word;
 }
+.msg-image{
+  height: 240px;
+  border-radius: 5px;
+  margin: 10px 0;
+  width: 240px;
+  display: flex;
+  justify-content: center;
+}
+.msg-image-container{
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
 .msg-description > div > h2 {
-  max-width: 45ch;
+  max-width: 30ch;
 }
 .msg-description > div {
   display: flex;
@@ -237,6 +249,17 @@ li {
   margin-bottom: 26px;
   height: 250px;
   justify-content: space-between;
+}
+.post-img{
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+.letter-count{
+  width: 10ch;
+}
+#postImgInput{
+  display: none;
 }
 .post-btn {
   display: flex;
@@ -464,6 +487,7 @@ textarea {
   opacity: 0.3;
   cursor: pointer;
 }
+
 @keyframes success {
   0% {
     opacity: 0;
@@ -526,6 +550,9 @@ textarea {
   .msg-description > div a{
     display: flex;
     margin: 0;
+  }
+  .msg-description > div > h2 {
+    max-width: 18ch;
   }
   
 }

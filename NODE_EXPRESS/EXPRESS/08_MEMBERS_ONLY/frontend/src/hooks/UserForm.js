@@ -20,7 +20,12 @@ const UserForm = () => {
     password: '',
     confirmPassword: ''
   });
-  const [messageData, setMessageData] = useState({username: userData, title: '', description: ''});
+  const [messageData, setMessageData] = useState({
+    username: userData,
+     title: '', 
+     description: '',
+     messageImg: ''
+    });
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [ userExist, setUserExist ] = useState(false);
   const [failedLogin, setFailedLogin] = useState(false);
@@ -108,6 +113,7 @@ const UserForm = () => {
     setMessageData({ ...messageData, [name]: value.trim() });
   }
 
+  
   const handleMessage = (event) => {
     event.preventDefault();
 
@@ -116,7 +122,8 @@ const UserForm = () => {
     setMessageData({ ...messageData, 
       username: userData,
       title: messageData.title,
-      description: messageData.description
+      description: messageData.description,
+      messageImg: messageData.postImgInput
      }); 
     
     axios.post(messagesURL, messageData, {withCredentials: true})
@@ -128,10 +135,7 @@ const UserForm = () => {
       })
       .catch(error => console.error(error))
     
-
   }
-
- 
 
   return {
     onLoginChange,
@@ -142,6 +146,7 @@ const UserForm = () => {
     handleMessage,
     passwordMatch,
     messageData,
+    setMessageData,
     userExist,
     failedLogin
   };

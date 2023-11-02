@@ -1,12 +1,23 @@
+import { useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import UserForm from "../hooks/userForm"
+
+
 
 const MessagesForm = () => {
 
   const { userData, isAuthenticated } = useAuth();
-  const { onMessagesChange, handleMessage, messageData } = UserForm();
+  const postImgRef =  useRef();
+  const { onMessagesChange, handleMessage, messageData, setMessageData } = UserForm();
 
+  
 
+  const handleFileUpload = async (e) =>{
+      const file = e.target.files[0];
+      const base64 = await convertToBase64(file);
+      setMessageData({...messageData, messageImg: base64})
+  }
+ 
   return (
     <form
       onSubmit={handleMessage}
@@ -21,10 +32,6 @@ const MessagesForm = () => {
         }}>
           <div
           className="profile-msg-form"
-          style={{ 
-            
-            
-          }}
           >
             <img src="/profile-pic.jpg" alt="profile pic"
             className="profile-pic"/>
@@ -58,11 +65,37 @@ const MessagesForm = () => {
       <div
       className="post-btn"
       >
-        <p>{messageData.description.length} / Letters</p>
+        <label htmlFor="postImgInput">
+          <img 
+          
+          className="post-img"
+          src="/add-photo.svg" alt="add-photo button" />
+          <input type="file" name="postImgInput" 
+          ref={postImgRef}
+          onChange={(e) => handleFileUpload(e)}
+          accept=".jpeg, .png, .jpg"
+          id="postImgInput" />
+        </label>
+        <p
+        className="letter-count"
+        >{messageData.description.length} / Letters</p>
         <button className="btn-submit" type="submit">Send</button>
       </div>
     </form>
   )
+}
+
+const convertToBase64 = (file) => {
+  return new Promise((resolve, reject) =>{
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () =>{
+      resolve(fileReader.result)
+    }
+    fileReader.onerror = (error) =>{
+      reject(error)
+    }
+  })
 }
 
 export default MessagesForm

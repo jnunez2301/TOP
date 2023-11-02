@@ -38,7 +38,6 @@ router.post('/', async(req, res) => {
     try{
         const user = await User.findOne({ username: body.username });
 
-
         if (!user) {
             return res.status(400).json({ msg: 'User not found' });
         }
@@ -46,9 +45,12 @@ router.post('/', async(req, res) => {
         const newMessage = new Message({
             username: user.username,
             title: body.title,
-            description: body.description
+            description: body.description,
+            messageImg: '' || body.messageImg
         })
 
+        console.log(messageImg);
+        
         const savedMsg = await newMessage.save();
 
         res.status(200).json({

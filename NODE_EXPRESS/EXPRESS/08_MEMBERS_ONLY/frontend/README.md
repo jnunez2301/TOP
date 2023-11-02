@@ -12,6 +12,7 @@ On this app you should be able to see messages But only those who are registered
 - user should be able to use emojis
 - add images
 - thinking about videos
+- Using base64 to upload images !
 
 
 ## How tu run
