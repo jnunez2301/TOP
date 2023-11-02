@@ -9,6 +9,10 @@ On this app you should be able to see messages But only those who are registered
 - If you click on profile it SHOULD   display the user info and all his messages.
 - USERS MUST NOT HAVE SPACES!!!!!
 - PASSWORDS MUST NOT HAVE SPACES!!!
+- user should be able to use emojis
+- add images
+- thinking about videos
+
 
 ## How tu run
 

@@ -115,7 +115,8 @@ li {
   margin-bottom: 16px;
   max-height: 35vh;
   width: 100%;
-  /* border: 1px solid rgb(211, 196, 196); */
+  gap: 15px;
+  align-items: center;
   border-top: 1px solid var(--border-outline);
   align-items: flex-start;
 }
@@ -135,7 +136,7 @@ li {
 .msg-description {
   overflow-y: auto;
   max-height: 35vh;
-
+  flex-grow: 1;
   text-align: start;
   word-wrap: normal;
   word-break: break-word;
@@ -436,6 +437,15 @@ textarea {
 .page-logo {
   width: 64px;
   height: 64px;
+}
+.profile-pic{
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  
+}
+.profile-msg-pic{
+  flex-shrink: 1;
 }
 .profile-msg-form {
   display: flex;

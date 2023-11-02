@@ -27,9 +27,7 @@ const MessagesForm = () => {
           }}
           >
             <img src="/profile-pic.jpg" alt="profile pic"
-            style={{borderRadius: '100%'}}
-            width={'45px'}
-            height={'45px'}/>
+            className="profile-pic"/>
             {/* {isAuthenticated && 
             <p>
               <strong>

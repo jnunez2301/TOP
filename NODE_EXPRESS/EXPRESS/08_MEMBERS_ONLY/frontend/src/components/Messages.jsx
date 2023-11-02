@@ -18,7 +18,9 @@ const Messages = () => {
           data &&
           data.map(d => (
             <li key={d._id} className='msg-info'>
-              
+                <div className='profile-msg-pic'>
+                  <img src="/profile-pic.jpg" className='profile-pic' alt={`profile-pic from ${d.username}`} />
+                </div>
                 <div className='msg-description'>
                   <div>
                   <h2
@@ -35,9 +37,11 @@ const Messages = () => {
                     <p className='date'>
                     {d.date}
                     </p>
-                    <p className='msg'>
+                    <div>
+                      <p className='msg'>
                       {d.description}
                       </p>
+                    </div>
                   </div>
                 </div>
               
