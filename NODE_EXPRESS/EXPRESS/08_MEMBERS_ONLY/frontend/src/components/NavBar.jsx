@@ -6,7 +6,7 @@ const NavBar = () => {
   const { isAuthenticated, userData, logOut } = useAuth();
 
   
-
+  
   return (
     <nav>
       <ul>
@@ -18,7 +18,10 @@ const NavBar = () => {
           isAuthenticated ? 
             <>
             <li><Link className="main-user" to={`/user/${userData}`}>{ userData }</Link></li>
-            <li><Link to='logout' onClick={() => logOut()}>Log Out</Link></li>
+            <li>
+              <Link to='logout' onClick={() => logOut()}>
+                LOG OUT
+                </Link></li>
             </>
             
            :

@@ -2,13 +2,10 @@ import MessagesData from '../helpers/MessagesData';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 
+
 const Messages = () => {
-  const { data } = MessagesData();
- 
+  const { data } = MessagesData(); 
   const { isAuthenticated } = useAuth();
-  
-  
- 
   
 
   return (
@@ -16,6 +13,7 @@ const Messages = () => {
       <ul className='msg-container'>
         {
           data &&
+          
           data.map(d => (
             <li key={d._id} className='msg-info'>
                 <div className='profile-msg-pic'>

@@ -28,16 +28,14 @@ const MessagesData = () => {
   }, []);
   //This bad boy refreshes the state 24/7
 
-  const refreshData = () => {
-    fetchData();
-  };
+ 
 
   //This must return data instead of newData;
   return {
     ExampleData,
     data,
     fetchData,
-    refreshData
+    
   };
 }
 

@@ -1,12 +1,14 @@
 
 import axios from 'axios';
-import  { useEffect, useState } from 'react';
+import  { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext';
 
 const ProfilePage = () => {
 
     const { username } = useParams();
-    const navigate = useNavigate();
+    const imgRef =  useRef();
+    const { userData } = useAuth();
 
     const [userInfo, setUserInfo] = useState([]);
     const [allMsg, setAllMsg] = useState([]);
@@ -29,10 +31,9 @@ const ProfilePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    /* const backToMenu = () => {
-      navigate('/')
-    } */
-
+    const onImgChange = (e) =>{
+      console.log(e);
+    }
 
   return (
     <div className='profile-section'>
@@ -46,13 +47,26 @@ const ProfilePage = () => {
         <div className='profile-background'>
           {/* background */}
         </div>
-        <figure>
+        <label htmlFor='user-pic' className='profile-user-pic'>
           <img 
-          className='profile-pic'
+          className={`
+          
+          profile-pic
+          ${userData === username ?  'sameUser' : ''}
+          `}
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCxdtUUjdG_2KIXy4mJiue7Jgl7n_nO94Cdg&usqp=CAU" alt="demo-img" />
-          
-          
-        </figure>
+          </label>
+          {
+            userData === username ?
+             <input 
+             ref={imgRef}
+             type="file"
+             id='user-pic'
+             name='user-pic'
+             onChange={onImgChange}
+             accept="image/jpeg, image/png" />
+             : ''
+          }
         
      
       

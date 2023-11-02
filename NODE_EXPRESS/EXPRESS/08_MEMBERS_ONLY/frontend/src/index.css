@@ -146,6 +146,8 @@ li {
 }
 .msg-description > div {
   display: flex;
+ 
+ 
 }
 .msg-username {
   text-align: end;
@@ -230,9 +232,10 @@ li {
 .msg-form {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  min-width: 100%;
   padding: 1rem;
   margin-bottom: 26px;
+  height: 250px;
   justify-content: space-between;
 }
 .post-btn {
@@ -330,7 +333,7 @@ textarea {
   min-width: 100%;
   min-height: 200px;
 }
-.profile figure img {
+.profile-user-pic img {
   position: absolute;
   bottom: 0px;
   left: 15px;
@@ -442,7 +445,9 @@ textarea {
   border-radius: 100%;
   width: 45px;
   height: 45px;
-  
+}
+#user-pic{
+  display: none;
 }
 .profile-msg-pic{
   flex-shrink: 1;
@@ -454,6 +459,10 @@ textarea {
   align-items: center;
   padding-bottom: 15px;
   justify-content: space-between;
+}
+.sameUser:hover{
+  opacity: 0.3;
+  cursor: pointer;
 }
 @keyframes success {
   0% {
@@ -510,4 +519,13 @@ textarea {
   .profile-msg-form {
     flex-wrap: wrap;
   }
+  .msg-description > div{
+    gap: 5px;
+    
+  }
+  .msg-description > div a{
+    display: flex;
+    margin: 0;
+  }
+  
 }

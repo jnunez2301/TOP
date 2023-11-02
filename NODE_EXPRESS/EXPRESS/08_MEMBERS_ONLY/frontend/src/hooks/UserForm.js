@@ -9,7 +9,7 @@ const UserForm = () => {
 
   const navigate = useNavigate();
   const { userData, setIsAuthenticated, checkAuthentication } = useAuth();
-  const { fetchData, refreshData } = MessagesData();
+  const { fetchData } = MessagesData();
   
   
   const [formData, setFormData] = useState([]);
@@ -24,7 +24,9 @@ const UserForm = () => {
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [ userExist, setUserExist ] = useState(false);
   const [failedLogin, setFailedLogin] = useState(false);
+ 
 
+ 
   
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -122,7 +124,6 @@ const UserForm = () => {
       .then(response => {
        /*  console.log(response.data) */
         fetchData();
-        refreshData();
         event.target.reset();
       })
       .catch(error => console.error(error))
