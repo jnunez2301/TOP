@@ -1,18 +1,21 @@
 
 import axios from 'axios';
 import  { useEffect, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext';
 import Loading from '../components/Loading';
+import UserForm from '../hooks/UserForm';
 
 const ProfilePage = () => {
 
     const { username } = useParams();
+    const { newProfilePic, setNewProfilePic, updateProfilePic } = UserForm();
     const imgRef =  useRef();
-    const { userData } = useAuth();
+    const { userData, convertToBase64 } = useAuth();
 
     const [userInfo, setUserInfo] = useState([]);
     const [allMsg, setAllMsg] = useState([]);
+    
 
     const userURL = `/api/messages/users/${username}`;
 
@@ -23,7 +26,7 @@ const ProfilePage = () => {
         .then(response => setUserInfo([response.data]))
         .catch(error => console.log(error))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [newProfilePic])
 
     useEffect(() => {
       axios.get(msgURL)
@@ -32,9 +35,31 @@ const ProfilePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const onImgChange = (e) =>{
-      console.log(e);
-    }
+    const handleFileUpload = async (e) =>{
+      const file = e.target.files[0];
+      const base64 = await convertToBase64(file);
+      setNewProfilePic({profilePic: base64})
+      if(file.size > 250_000){
+        alert('File is too big MAX: 250KB, try to compress it or choose another file');
+      }else{
+        /* setMessageData({...messageData, messageImg: base64}) */
+        /* ADD PUT TO THE BACKEND */
+        if(window.confirm('Do you want to update your profile pic?' )){
+          /* PUT From backend */
+         
+          
+          if(userData === username){
+           
+            updateProfilePic(userData, newProfilePic)
+          }
+          
+        }else{
+          alert('Operation cancelled');
+        }
+      }
+      
+  }
+  
 
   return (
     <div className='profile-section'>
@@ -63,7 +88,7 @@ const ProfilePage = () => {
              type="file"
              id='user-pic'
              name='user-pic'
-             onChange={onImgChange}
+             onChange={(e) =>handleFileUpload(e)}
              accept="image/jpeg, image/png" />
              : ''
           }

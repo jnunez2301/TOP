@@ -6,7 +6,7 @@ import UserForm from "../hooks/userForm"
 
 const MessagesForm = () => {
 
-  const { userData, isAuthenticated, userInfo } = useAuth();
+  const { userInfo, convertToBase64 } = useAuth();
   const postImgRef =  useRef();
   const { onMessagesChange, handleMessage, messageData, setMessageData } = UserForm();
 
@@ -21,7 +21,6 @@ const MessagesForm = () => {
       }else{
         setMessageData({...messageData, messageImg: base64})
       }
-      
   }
  
   return (
@@ -92,17 +91,6 @@ const MessagesForm = () => {
   )
 }
 
-const convertToBase64 = (file) => {
-  return new Promise((resolve, reject) =>{
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () =>{
-      resolve(fileReader.result)
-    }
-    fileReader.onerror = (error) =>{
-      reject(error)
-    }
-  })
-}
+
 
 export default MessagesForm

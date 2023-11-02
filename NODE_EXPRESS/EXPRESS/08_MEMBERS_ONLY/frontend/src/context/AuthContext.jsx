@@ -18,6 +18,18 @@ export const AuthProvider = ({ children }) => {
     const [userData, setUserData] = useState([]);
     const [userInfo, setUserInfo] = useState([]);
 
+    const convertToBase64 = (file) => {
+        return new Promise((resolve, reject) =>{
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+          fileReader.onload = () =>{
+            resolve(fileReader.result)
+          }
+          fileReader.onerror = (error) =>{
+            reject(error)
+          }
+        })
+      }
 
     const checkAuthentication = () => {
         try {
@@ -65,7 +77,8 @@ export const AuthProvider = ({ children }) => {
             logOut,
             userData,
             userInfo,
-            setIsAuthenticated
+            setIsAuthenticated,
+            convertToBase64
         }}>
             {children}
         </AuthContext.Provider>

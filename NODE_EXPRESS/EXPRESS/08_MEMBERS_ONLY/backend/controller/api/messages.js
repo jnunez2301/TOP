@@ -224,6 +224,19 @@ router.post('/users/register', (req,res) =>{
     })
 })
 
+// CHANGE USER IMG
+router.put('/users/:username', async (req, res) => {
+    try {
+      const username = req.params.username;
+      const newProfilePic = req.body.profilePic;
+      
+      const updatedUser = await User.findOneAndUpdate({ username: username }, { profilePic: newProfilePic }, { new: true });
+  
+      res.send(updatedUser);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
 
 
 module.exports = router;

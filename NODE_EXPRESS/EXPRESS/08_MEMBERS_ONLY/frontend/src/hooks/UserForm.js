@@ -29,6 +29,7 @@ const UserForm = () => {
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [ userExist, setUserExist ] = useState(false);
   const [ failedLogin, setFailedLogin ] = useState(false);
+  const [ newProfilePic, setNewProfilePic ] = useState({});
  
 
  
@@ -138,6 +139,19 @@ const UserForm = () => {
     
   }
 
+  const updateProfilePic = (username, newData) =>{
+    const updateURL = `/api/messages/users/${username}`
+    console.log(newProfilePic)
+    axios.put(updateURL, newData, {withCredentials: true})
+    .then((response) => {
+      // Handle the successful update, if needed
+      console.log('Profile picture updated:', response);
+    })
+    .catch((error) => {
+      console.error('Error updating profile picture:', error);
+    });
+  }
+
   
   return {
     onLoginChange,
@@ -150,7 +164,10 @@ const UserForm = () => {
     messageData,
     setMessageData,
     userExist,
-    failedLogin
+    failedLogin,
+    setNewProfilePic,
+    newProfilePic,
+    updateProfilePic
   };
 
 }
