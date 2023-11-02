@@ -6,10 +6,11 @@ import UserForm from "../hooks/userForm"
 
 const MessagesForm = () => {
 
-  const { userData, isAuthenticated } = useAuth();
+  const { userData, isAuthenticated, userInfo } = useAuth();
   const postImgRef =  useRef();
   const { onMessagesChange, handleMessage, messageData, setMessageData } = UserForm();
 
+  /* console.log(userInfo.profilePic); */
   
 
   const handleFileUpload = async (e) =>{
@@ -33,7 +34,8 @@ const MessagesForm = () => {
           <div
           className="profile-msg-form"
           >
-            <img src="/profile-pic.jpg" alt="profile pic"
+            <img
+             src={ userInfo.profilePic ? `${userInfo.profilePic}` : "/profile-pic.jpg"} alt="profile pic"
             className="profile-pic"/>
             {/* {isAuthenticated && 
             <p>
@@ -73,7 +75,7 @@ const MessagesForm = () => {
           <input type="file" name="postImgInput" 
           ref={postImgRef}
           onChange={(e) => handleFileUpload(e)}
-          accept=".jpeg, .png, .jpg"
+          accept="image/jpeg, image/png"
           id="postImgInput" />
         </label>
         <p

@@ -15,7 +15,7 @@ const MessagesData = () => {
   const fetchData =  useCallback(() => {
     axios.get(baseURL)
     .then(response => {
-      setData( response.data.reverse(), ...data)
+      setData([response.data].reverse());
       })
     .catch(error => console.log(error));
   // eslint-disable-next-line react-hooks/exhaustive-deps

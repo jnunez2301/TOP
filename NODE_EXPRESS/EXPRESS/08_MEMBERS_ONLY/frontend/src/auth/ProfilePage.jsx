@@ -3,6 +3,7 @@ import axios from 'axios';
 import  { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext';
+import Loading from '../components/Loading';
 
 const ProfilePage = () => {
 
@@ -91,12 +92,23 @@ const ProfilePage = () => {
       </article>
         <ul className='all-user-msg'>
           {
-            allMsg && allMsg.map(msg => (
+            allMsg.length > 0 ? allMsg.map(msg => (
               <li key={msg._id}>
                 <h2>{msg.title}</h2>
-                <p>{msg.description}</p>
+                <div>
+                  <p>{msg.description}</p>
+                  {
+                    msg.messageImg &&
+                    <img 
+                    className='msg-image'
+                    src={`${msg.messageImg}`} alt={`image from ${msg.username}`} />
+                  }
+                </div>
               </li>
+              
             ))
+            :
+              <Loading />
           }
         </ul>
     </section>

@@ -114,16 +114,16 @@ const UserForm = () => {
   }
 
   
-  const handleMessage = (event) => {
+  const handleMessage = async(event) => {
     event.preventDefault();
-
+    await userData;
     const messagesURL = '/api/messages/';
 
     setMessageData({ ...messageData, 
       username: userData,
       title: messageData.title,
       description: messageData.description,
-      messageImg: messageData.postImgInput
+      messageImg: messageData.messageImg
      }); 
     
     axios.post(messagesURL, messageData, {withCredentials: true})
@@ -137,6 +137,7 @@ const UserForm = () => {
     
   }
 
+  
   return {
     onLoginChange,
     handleLogin,

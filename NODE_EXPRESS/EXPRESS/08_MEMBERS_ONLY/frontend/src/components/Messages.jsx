@@ -1,23 +1,35 @@
-import MessagesData from '../helpers/MessagesData';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 const Messages = () => {
-  const { data } = MessagesData(); 
   const { isAuthenticated } = useAuth();
-  
+  const [data, setData] = useState([])
 
+  useEffect(() => {
+    axios.get('/api/messages/')
+    .then(response => {
+      setData(response.data);
+      })
+    .catch(error => console.log(error));
+  }, [])
+  
+ /*  console.log(data); */
+  
   return (
     <>
       <ul className='msg-container'>
         {
-          data &&
-          
+          data.length > 0  ?
           data.map(d => (
             <li key={d._id} className='msg-info'>
                 <div className='profile-msg-pic'>
-                  <img src={d.profilePic || `/profile-pic.jpg` }className='profile-pic' alt={`profile-pic from ${d.username}`} />
+                  <img 
+                  src={d.profilePic ? `${d.profilePic}` : "/profile-pic.jpg" }
+                   className='profile-pic' alt={`profile-pic from ${d.username}`} />
                 </div>
                 <div className='msg-description'>
                   <div>
@@ -53,7 +65,9 @@ const Messages = () => {
               
             </li>
           ))
-        }
+          : 
+          <Loading />
+       }
       </ul>
     </>
   )

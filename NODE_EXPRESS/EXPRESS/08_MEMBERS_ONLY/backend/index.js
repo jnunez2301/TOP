@@ -23,13 +23,13 @@ app.use(cors({
  }));
 /* app.options('/api/messages/users/login', cors()); */
 
-app.use(express.json());
+app.use(express.json({ limit: '1mb' }));
 
 //PassportJS
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true}));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 //Router
 app.use('/api/messages', require('./controller/api/messages'));

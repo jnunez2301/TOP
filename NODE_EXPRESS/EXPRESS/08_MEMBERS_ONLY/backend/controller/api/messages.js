@@ -20,9 +20,11 @@ router.get('/users', (req, res) => {
             res.status(404).json({ msg: 'could not find the data' })
         })
 })
-
+/* .sort({ _id: -1 }) */
 router.get('/', (req, res) => {
     Message.find({})
+        .limit(20)
+        .sort({ _id: -1 })
         .then(msgs => {
             res.status(200).json(msgs);
         })
@@ -46,10 +48,9 @@ router.post('/', async(req, res) => {
             username: user.username,
             title: body.title,
             description: body.description,
-            messageImg: '' || body.messageImg
+            messageImg: body.messageImg,
+            profilePic: user.profilePic
         })
-
-        console.log(messageImg);
         
         const savedMsg = await newMessage.save();
 
@@ -72,6 +73,7 @@ router.get('/msg/:username', (req, res) => {
         res.status(404).json({msg: 'invalid username'});
     }
     Message.find({ username: body.username })
+        .sort({ _id: -1 })
         .then(msgs => {
             res.status(200).json(msgs);
         })

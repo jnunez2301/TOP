@@ -11,7 +11,9 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
-          <Link to='/' className="title">MMC</Link>
+          <Link to='/' className="title">
+            <img src="/logo.png" alt="page-logo" className="nav-logo" />
+          </Link>
         </li>
         
         {

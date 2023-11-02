@@ -12,53 +12,62 @@ export const AuthProvider = ({ children }) => {
     const authURL = '/api/messages/auth/status';
     const logOutURL = '/api/messages/auth/logout';
 
-  
 
-    const [ isAuthenticated, setIsAuthenticated ] = useState(false);
-    const [ userData, setUserData ] = useState([]);
 
- 
-    const checkAuthentication = () =>{
-        try{
-            axios.get(authURL, {withCredentials: true})
-            .then(response => {
-                setIsAuthenticated(response.data.isAuthenticated)
-                if(response.data.user){
-                    setUserData(response.data.user.username)
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
-        }catch(error){
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [userData, setUserData] = useState([]);
+    const [userInfo, setUserInfo] = useState([]);
+
+
+    const checkAuthentication = () => {
+        try {
+            axios.get(authURL, { withCredentials: true })
+                .then(response => {
+                    setIsAuthenticated(response.data.isAuthenticated)
+                    if (response.data.user) {
+                        setUserData(response.data.user.username)
+                        setUserInfo(response.data.user)
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        } catch (error) {
             console.log('failed to get credentials', error)
         }
     }
 
-    
+
 
     const logOut = () => {
-        try{
+        try {
             axios.get(logOutURL, { withCredentials: true })
-            .then(response => { 
-                console.log(response.data);
-                setIsAuthenticated(false);
-                
-             })
-            .catch(error => console.log(error));
-        }catch(error){
+                .then(response => {
+                    console.log(response.data);
+                    setIsAuthenticated(false);
+
+                })
+                .catch(error => console.log(error));
+        } catch (error) {
             console.log('could not log out', error);
         }
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         checkAuthentication();
     }, [isAuthenticated])
-    
+
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, checkAuthentication, logOut, userData, setIsAuthenticated }}>
-          {children}
+        <AuthContext.Provider value={{
+            isAuthenticated,
+            checkAuthentication,
+            logOut,
+            userData,
+            userInfo,
+            setIsAuthenticated
+        }}>
+            {children}
         </AuthContext.Provider>
-      );
+    );
 }

@@ -28,9 +28,10 @@ const MessagesSchema = new mongoose.Schema({
     messageImg: {
         type: String,
         default: function(){
-            return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTATidRXcxeaZJLiKIpl2N-mba7es9r9IWjwQ&usqp=CAU'
+            return ''
         }
     },
+    profilePic: String
 })
 
 module.exports = mongoose.model('Messages', MessagesSchema);

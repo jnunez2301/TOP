@@ -13,7 +13,7 @@ const JoinTheClub = () => {
     }
   return (
     <section className="join-section">
-        <img src="/vite.svg" alt="page logo" className="page-logo"/>
+        <img src="/logo.png" alt="page logo" className="page-logo"/>
         <h2>Members Only Club</h2>
         <div >
             <p>Join Today.</p>
