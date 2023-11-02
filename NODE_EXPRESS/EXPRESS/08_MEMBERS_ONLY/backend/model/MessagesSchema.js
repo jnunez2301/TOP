@@ -31,7 +31,10 @@ const MessagesSchema = new mongoose.Schema({
             return ''
         }
     },
-    profilePic: String
+    profilePic: {
+        type: mongoose.Schema.Types.String,
+        ref: 'Users',
+    }
 })
 
 module.exports = mongoose.model('Messages', MessagesSchema);

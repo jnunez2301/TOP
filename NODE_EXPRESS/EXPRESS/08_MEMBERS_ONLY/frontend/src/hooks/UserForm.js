@@ -28,13 +28,14 @@ const UserForm = () => {
     });
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [ userExist, setUserExist ] = useState(false);
-  const [failedLogin, setFailedLogin] = useState(false);
+  const [ failedLogin, setFailedLogin ] = useState(false);
  
 
  
   
   const handleLogin = async (event) => {
     event.preventDefault();
+  
     setFormData({ ...formData, loginData });
     const loginURL = `/api/messages/users/login`;
   

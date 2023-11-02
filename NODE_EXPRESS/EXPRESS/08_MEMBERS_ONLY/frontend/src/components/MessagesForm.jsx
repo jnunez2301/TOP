@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useAuth } from "../context/AuthContext";
 import UserForm from "../hooks/userForm"
 
@@ -16,7 +16,12 @@ const MessagesForm = () => {
   const handleFileUpload = async (e) =>{
       const file = e.target.files[0];
       const base64 = await convertToBase64(file);
-      setMessageData({...messageData, messageImg: base64})
+      if(file.size > 250_000){
+        alert('File is too big MAX: 250KB, try to compress it or choose another file');
+      }else{
+        setMessageData({...messageData, messageImg: base64})
+      }
+      
   }
  
   return (

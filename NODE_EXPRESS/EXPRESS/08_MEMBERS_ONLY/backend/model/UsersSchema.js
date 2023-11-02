@@ -29,7 +29,8 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: function(){
             return 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Google_Contacts_logo.png'
-        }
+        },
+        unique: true
     }
 })
 

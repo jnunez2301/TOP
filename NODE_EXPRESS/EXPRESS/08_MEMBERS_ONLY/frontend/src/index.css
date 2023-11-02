@@ -85,7 +85,7 @@ li {
   padding: 1rem;
 }
 .container {
-  display: grid;
+  display: block;
   width: 100%;
   border-radius: 5px;
   /*  box-shadow: 5px 5px 5px 3px var(--shadow-color); */
@@ -144,9 +144,10 @@ li {
   height: auto;
   border-radius: 5px;
   margin: 10px 0;
-  max-width: 480px;
+  max-width: 230px;
   display: flex;
   justify-content: center;
+  background-color: white;
 }
 .msg-image-container{
   display: flex;
@@ -246,6 +247,7 @@ li {
   flex-direction: column;
   min-width: 100%;
   padding: 1rem;
+  
   margin-bottom: 26px;
   height: 250px;
   justify-content: space-between;
@@ -548,9 +550,14 @@ textarea {
     margin: 0;
     padding: 0;
   }
+  nav{
+    height: 90px;
+  }
   nav > ul {
     flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
+    padding: 0;
   }
   .container {
     width: 100%;

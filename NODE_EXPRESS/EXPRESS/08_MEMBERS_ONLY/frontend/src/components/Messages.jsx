@@ -3,21 +3,28 @@ import { Link } from 'react-router-dom';
 import Loading from './Loading';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import UserForm from '../hooks/UserForm';
 
 
 const Messages = () => {
   const { isAuthenticated } = useAuth();
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
+  const { handleMessage } = UserForm(); 
+
 
   useEffect(() => {
+    
     axios.get('/api/messages/')
     .then(response => {
-      setData(response.data);
-      })
-    .catch(error => console.log(error));
-  }, [])
+      setData(response.data)
+    })
+    .catch(error => {
+      console.log(error);
+    })
+
+  }, [handleMessage])
   
- /*  console.log(data); */
+  
   
   return (
     <>
