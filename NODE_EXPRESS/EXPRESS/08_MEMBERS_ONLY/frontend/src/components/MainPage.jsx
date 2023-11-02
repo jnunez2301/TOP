@@ -1,4 +1,5 @@
 
+import JoinTheClub from "../auth/JoinTheClub";
 import { useAuth } from "../context/AuthContext"
 import Messages from "./Messages"
 import MessagesForm from "./MessagesForm"
@@ -10,9 +11,15 @@ const MainPage = () => {
   return (
     <>
       <section className="container">
-        {isAuthenticated ? <MessagesForm /> : 
-        <h2 className="no-logged">Sign in to upload <strong>Messages</strong></h2>}
-        <Messages />
+        {isAuthenticated ?
+        <>
+         <MessagesForm />
+         <Messages />
+         </>
+          : 
+        <JoinTheClub/>
+        }
+        
       </section>
     </>
   )

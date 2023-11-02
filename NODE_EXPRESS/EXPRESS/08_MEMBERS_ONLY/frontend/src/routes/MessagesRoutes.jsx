@@ -6,19 +6,21 @@ import SuccessRegister from "../auth/SuccessRegister"
 import ErrorRegister from "../auth/ErrorRegister"
 import ProfilePage from "../auth/ProfilePage"
 import NavBar from "../components/NavBar"
+import { useAuth } from "../context/AuthContext"
 
 
 
 
 const MessagesRoutes = () => {
 
+  const { isAuthenticated } = useAuth();
  
 
   
   return (
     <>
     <BrowserRouter>
-        <NavBar />
+        {isAuthenticated ? <NavBar /> : ''}
         <Routes>
           
           <Route path='/' element={<MainPage />} />

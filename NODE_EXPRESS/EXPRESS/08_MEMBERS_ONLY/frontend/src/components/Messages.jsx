@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import MessagesData from '../helpers/MessagesData';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
@@ -32,14 +31,14 @@ const Messages = () => {
                   <p style={{marginLeft: '10px'}}>******</p>
                   } 
                   </div>
-                  <div>
-                    <p className='msg'>{d.description}</p>
+                  <div className='msg-msg'>
+                    <p className='date'>
+                    {d.date}
+                    </p>
+                    <p className='msg'>
+                      {d.description}
+                      </p>
                   </div>
-                </div>
-                <div className='msg-username'>
-                  <p
-                  style={{fontSize: '10px'}}
-                  >{d.date}</p>
                 </div>
               
             </li>

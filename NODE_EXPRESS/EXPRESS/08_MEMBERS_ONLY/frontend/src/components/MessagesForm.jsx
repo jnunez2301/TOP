@@ -20,25 +20,22 @@ const MessagesForm = () => {
           paddingBottom: '15px',
         }}>
           <div
+          className="profile-msg-form"
           style={{ 
-            display: 'flex',
-            flexDirection: 'row',
-            gap: '15px',
-            alignItems: 'center',
-            paddingBottom: '15px',
-            justifyContent: 'space-between'
+            
+            
           }}
           >
             <img src="/profile-pic.jpg" alt="profile pic"
             style={{borderRadius: '100%'}}
             width={'45px'}
             height={'45px'}/>
-            {isAuthenticated && 
+            {/* {isAuthenticated && 
             <p>
               <strong>
               {userData}
               </strong>
-            </p>}
+            </p>} */}
           </div>
           <input
           style={{
