@@ -190,9 +190,10 @@ li{
   border-radius: 5px;
   margin-bottom: 1rem;
 }
-.password-error{
+.register-error{
   font-size: 10px;
-  color: rgb(196, 49, 49);  
+  color: rgb(170, 95, 95);  
+  margin-bottom: 16px;
 }
 .btn-register{
   border: none;

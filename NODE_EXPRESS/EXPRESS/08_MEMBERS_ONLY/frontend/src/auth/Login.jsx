@@ -4,7 +4,7 @@ import UserForm from "../hooks/userForm";
 
 const Login = () => {
 
-  const { onLoginChange, handleLogin } = UserForm();
+  const { onLoginChange, handleLogin, failedLogin } = UserForm();
 
  
 
@@ -23,6 +23,13 @@ const Login = () => {
             id="username" 
             placeholder="Your username/nickname"
             required/>
+            
+            { 
+            !failedLogin ? '' : 
+            <span className="register-error">
+              username or password are incorrect
+            </span>
+            }
 
             <label htmlFor="password">Password</label>
             <input
@@ -31,6 +38,14 @@ const Login = () => {
              onInput={ onLoginChange }
             placeholder="Your password"
             required/>
+
+            
+{ 
+            !failedLogin ? '' : 
+            <span className="register-error">
+              username or password are incorrect
+            </span>
+            }
 
             <button
             className="btn-submit"

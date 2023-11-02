@@ -22,6 +22,8 @@ const UserForm = () => {
   });
   const [messageData, setMessageData] = useState({username: userData, title: '', description: ''});
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [ userExist, setUserExist ] = useState(false);
+  const [failedLogin, setFailedLogin] = useState(false);
 
   
   const handleLogin = async (event) => {
@@ -50,7 +52,8 @@ const UserForm = () => {
         
       } catch (error) {
         console.log(error.response.data);
-        alert('Incorrect username or password');
+       /*  alert('Incorrect username or password'); */
+       setFailedLogin(true);
       }
     }
   }
@@ -74,8 +77,8 @@ const UserForm = () => {
           console.log(response.data);
         })
         .catch(error => {
-          navigate('/error');
-          console.log(error);
+          setUserExist(true);
+          console.log(error.response.data);
         });
       //This should redirect to login
     } else {
@@ -137,7 +140,9 @@ const UserForm = () => {
     onMessagesChange,
     handleMessage,
     passwordMatch,
-    messageData
+    messageData,
+    userExist,
+    failedLogin
   };
 
 }
