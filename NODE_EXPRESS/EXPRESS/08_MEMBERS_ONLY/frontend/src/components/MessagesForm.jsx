@@ -85,7 +85,7 @@ const MessagesForm = () => {
         <p
         className="letter-count"
         >{messageData.description.length} / Letters</p>
-        <button className="btn-submit" type="submit">Send</button>
+        <button className="btn-submit" type="submit">POST</button>
       </div>
     </form>
   )

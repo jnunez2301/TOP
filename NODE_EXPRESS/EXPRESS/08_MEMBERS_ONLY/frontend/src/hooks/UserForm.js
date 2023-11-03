@@ -139,12 +139,20 @@ const UserForm = () => {
     
   }
 
-  const updateProfilePic = (username, newData) =>{
-    const updateURL = `/api/messages/users/${username}`
-    console.log(newProfilePic)
-    axios.put(updateURL, newData, {withCredentials: true})
+  const updateProfilePic = (username, newData, userInfo) =>{
+    const updateURL = `/api/messages/users/profilePic/${username}`
+    
+    const newInfo = {
+      username: userInfo.username,
+      password: userInfo.password,
+      email: userInfo.email,
+      profilePic: newData
+    }
+    console.log(newInfo);
+    axios.put(updateURL, newInfo, {withCredentials: true})
     .then((response) => {
       // Handle the successful update, if needed
+      setNewProfilePic(response.data.profile)
       console.log('Profile picture updated:', response);
     })
     .catch((error) => {

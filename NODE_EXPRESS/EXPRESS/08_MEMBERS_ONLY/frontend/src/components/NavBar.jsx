@@ -21,7 +21,7 @@ const NavBar = () => {
             <>
             <li><Link className="main-user" to={`/user/${userData}`}>{ userData }</Link></li>
             <li>
-              <Link to='logout' onClick={() => logOut()}>
+              <Link to='/' onClick={() => logOut()}>
                 Log Out
                 </Link></li>
             </>

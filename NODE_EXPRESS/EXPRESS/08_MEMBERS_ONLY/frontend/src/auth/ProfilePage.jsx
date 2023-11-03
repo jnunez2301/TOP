@@ -9,7 +9,7 @@ import UserForm from '../hooks/UserForm';
 const ProfilePage = () => {
 
     const { username } = useParams();
-    const { newProfilePic, setNewProfilePic, updateProfilePic } = UserForm();
+    const { newProfilePic, updateProfilePic } = UserForm();
     const imgRef =  useRef();
     const { userData, convertToBase64 } = useAuth();
 
@@ -38,7 +38,6 @@ const ProfilePage = () => {
     const handleFileUpload = async (e) =>{
       const file = e.target.files[0];
       const base64 = await convertToBase64(file);
-      setNewProfilePic({profilePic: base64})
       if(file.size > 250_000){
         alert('File is too big MAX: 250KB, try to compress it or choose another file');
       }else{
@@ -46,11 +45,10 @@ const ProfilePage = () => {
         /* ADD PUT TO THE BACKEND */
         if(window.confirm('Do you want to update your profile pic?' )){
           /* PUT From backend */
-         
           
           if(userData === username){
-           
-            updateProfilePic(userData, newProfilePic)
+            /*  */
+            updateProfilePic(userData, base64, userInfo[0])
           }
           
         }else{

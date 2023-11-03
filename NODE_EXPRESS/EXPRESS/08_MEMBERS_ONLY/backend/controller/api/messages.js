@@ -23,7 +23,7 @@ router.get('/users', (req, res) => {
 /* .sort({ _id: -1 }) */
 router.get('/', (req, res) => {
     Message.find({})
-        .limit(20)
+        .limit(10)
         .sort({ _id: -1 })
         .then(msgs => {
             res.status(200).json(msgs);
@@ -116,7 +116,7 @@ passport.use(
                 console.log('Wrong username');
                 return done(null, false, { message: "Incorrect username" });
             };
-
+            
             const match = await bcrypt.compare(password, user.password);
 
             if(!match){
@@ -148,7 +148,8 @@ passport.deserializeUser(async (id, done) => {
 router.post('/users/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
       if (err) {
-        return res.status(500).json({ message: "Server error" });
+        console.log(err);
+        return res.status(500).json({message: "Server error" });
       }
       if (!user) {
         return res.status(401).json({ message: "Incorrect username or password" });
@@ -225,18 +226,36 @@ router.post('/users/register', (req,res) =>{
 })
 
 // CHANGE USER IMG
-router.put('/users/:username', async (req, res) => {
-    try {
-      const username = req.params.username;
+router.put('/users/profilePic/:username',  (req, res) => {
+    
+      const usernameParam = req.params.username;
       const newProfilePic = req.body.profilePic;
+
+      const updatedUser = {
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        profilePic: req.body.profilePic
+      }
       
-      const updatedUser = await User.findOneAndUpdate({ username: username }, { profilePic: newProfilePic }, { new: true });
+      User.findOne({ username: usernameParam })
+      .then(selectedUser => {
+        if(!selectedUser){
+            res.status(401).json({ msg: 'user not found' })
+        }
+        selectedUser.profilePic = updatedUser.profilePic;
+
+        return selectedUser.save();
+      })
+      .then(updateData => {
+        res.status(200).json(updateData);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).json({ msg: 'could not update' })
+      })
   
-      res.send(updatedUser);
-    } catch (err) {
-      res.status(500).send(err);
-    }
-  });
+     })
 
 
 module.exports = router;
