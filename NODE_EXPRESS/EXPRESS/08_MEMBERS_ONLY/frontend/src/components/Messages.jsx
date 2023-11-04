@@ -25,7 +25,7 @@ const Messages = () => {
           console.log(error);
         });
     }
-  }, [isLoading, limit, handleMessage]);
+  }, [isLoading, limit]);
   
   const addMore = () =>{
     setLimit(limit + 5)

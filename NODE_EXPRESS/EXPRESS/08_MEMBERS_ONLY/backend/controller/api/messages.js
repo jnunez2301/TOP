@@ -23,9 +23,10 @@ router.get('/users', (req, res) => {
 /* .sort({ _id: -1 }) */
 router.get('/:limit', (req, res) => {
     const limitParam = req.params;
+    console.log(limitParam);
     Message.find({})
         .limit(limitParam.limit)
-        .sort({ _id: -1 })
+        /* .sort({ _id: -1 }) */
         .then(msgs => {
             res.status(200).json(msgs);
         })
