@@ -27,7 +27,6 @@ const Messages = () => {
     }
   }, [isLoading, limit, handleMessage]);
   
-  
   const addMore = () =>{
     setLimit(limit + 5)
     setIsLoading(true)    
