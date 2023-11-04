@@ -23,7 +23,7 @@ router.get('/users', (req, res) => {
 /* .sort({ _id: -1 }) */
 router.get('/:limit', (req, res) => {
     const limitParam = req.params;
-    console.log(limitParam);
+    /* console.log(limitParam); */
     Message.find({})
         .limit(limitParam.limit)
         .sort({ _id: -1 })
@@ -57,7 +57,7 @@ router.post('/', async(req, res) => {
         const savedMsg = await newMessage.save();
 
         res.status(200).json({
-            msg: 'Saved successfully',
+            msg: 'saved',
             savedMsg: savedMsg
         });
     }

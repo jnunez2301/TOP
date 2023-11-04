@@ -11,7 +11,7 @@ const UserForm = () => {
   const { userData, setIsAuthenticated, checkAuthentication } = useAuth();
   const { fetchData } = MessagesData();
   
-  
+
   const [formData, setFormData] = useState([]);
   const [loginData, setLoginData] = useState({});
   const [registerData, setRegisterData] = useState({
@@ -30,13 +30,15 @@ const UserForm = () => {
   const [ userExist, setUserExist ] = useState(false);
   const [ failedLogin, setFailedLogin ] = useState(false);
   const [ newProfilePic, setNewProfilePic ] = useState({});
+  const [ limit, setLimit ] = useState(5);
+  const [ isLoading, setIsLoading ] = useState(false);
  
 
  
   
   const handleLogin = async (event) => {
     event.preventDefault();
-  
+    
     setFormData({ ...formData, loginData });
     const loginURL = `/api/messages/users/login`;
   
@@ -67,7 +69,11 @@ const UserForm = () => {
     }
   }
   
-
+  const addMore = () =>{
+    setLimit(limit + 5)
+    setIsLoading(true)    
+  }
+  
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -119,21 +125,19 @@ const UserForm = () => {
   const handleMessage = async(event) => {
     event.preventDefault();
     await userData;
-    console.log(userData.length);
     const messagesURL = '/api/messages/';
-
     setMessageData({ ...messageData, 
       username: userData,
       title: messageData.title,
       description: messageData.description,
       messageImg: messageData.messageImg
      }); 
-    
+     
     axios.post(messagesURL, messageData, {withCredentials: true})
       // eslint-disable-next-line no-unused-vars
       .then(response => {
-       /*  console.log(response.data) */
         fetchData();
+        
         setMessageData({...messageData, messageImg: ''});
         event.target.reset();
       })
@@ -150,7 +154,6 @@ const UserForm = () => {
       email: userInfo.email,
       profilePic: newData
     }
-    console.log(newInfo);
     axios.put(updateURL, newInfo, {withCredentials: true})
     .then((response) => {
       // Handle the successful update, if needed
@@ -162,7 +165,9 @@ const UserForm = () => {
     });
   }
 
-  
+ 
+
+ 
   return {
     onLoginChange,
     handleLogin,
@@ -177,7 +182,13 @@ const UserForm = () => {
     failedLogin,
     setNewProfilePic,
     newProfilePic,
-    updateProfilePic
+    updateProfilePic,
+    limit,
+    setLimit,
+    addMore,
+    isLoading,
+    setIsLoading,
+   
   };
 
 }

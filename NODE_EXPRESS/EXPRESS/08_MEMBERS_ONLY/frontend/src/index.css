@@ -579,6 +579,7 @@ textarea {
   font-weight: 800;
   color: var(--text-color);
 }
+
 @media (max-width: 550px) {
   body {
     margin: 0;

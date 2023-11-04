@@ -1,8 +1,8 @@
-
 import JoinTheClub from "../auth/JoinTheClub";
 import { useAuth } from "../context/AuthContext"
 import Messages from "./Messages"
 import MessagesForm from "./MessagesForm"
+
 
 const MainPage = () => {
 

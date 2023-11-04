@@ -4,6 +4,7 @@ import UserForm from "../hooks/userForm"
 
 
 
+
 const MessagesForm = () => {
 
   const { userInfo, convertToBase64 } = useAuth();
@@ -27,6 +28,7 @@ const MessagesForm = () => {
   const handleRemoveImg = () =>{
       setMessageData({...messageData, messageImg: ''})
   }
+
   return (
     <form
       onSubmit={handleMessage}
@@ -74,10 +76,12 @@ const MessagesForm = () => {
           messageData.messageImg.length > 0 && 
           <div className="upload-container">
            <div>
-           <img className="upload-img" src={messageData.messageImg} alt="" />
+            <img className="upload-img" src={messageData.messageImg} alt="" />
             <button className="remove-upload-img" onClick={handleRemoveImg}>X</button>
+            
            </div>
           </div> }
+          
       </div>
       <div
       className="post-btn"

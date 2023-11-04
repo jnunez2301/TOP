@@ -77,7 +77,7 @@ const ProfilePage = () => {
           profile-pic
           ${userData === username ?  'sameUser' : ''}
           `}
-          src={ userInfo.length > 0  ? `${userInfo[0].profilePic}` : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCxdtUUjdG_2KIXy4mJiue7Jgl7n_nO94Cdg&usqp=CAU"} alt="demo-img" />
+          src={ userInfo.length > 0  ? `${userInfo[0].profilePic}` : "https://upload.wikimedia.org/wikipedia/commons/b/b7/Google_Contacts_logo.png"} alt="demo-img" />
           </label>
           {
             userData === username ?

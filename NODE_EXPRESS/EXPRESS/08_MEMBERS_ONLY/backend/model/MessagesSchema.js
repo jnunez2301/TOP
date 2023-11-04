@@ -11,12 +11,12 @@ const MessagesSchema = new mongoose.Schema({
     },
     title: {
         type: String,
-        minLength: 3,
+        minLength: 1,
         required: true
     },
     description: {
         type: String,
-        minLength: 3,
+        minLength: 1,
         required: true
     },
     date: {
