@@ -10,25 +10,33 @@ const Messages = () => {
   const { isAuthenticated } = useAuth();
   const [data, setData] = useState([]);
   const { handleMessage } = UserForm(); 
-
+  const [limit, setLimit] = useState(5);
+  const [ isLoading, setIsLoading ] = useState(false);
 
   useEffect(() => {
-    
-    axios.get('/api/messages/')
-    .then(response => {
-      setData(response.data)
-    })
-    .catch(error => {
-      console.log(error);
-    })
-
-  }, [handleMessage])
+    if (data.length !== limit) {
+      axios
+        .get(`/api/messages/${limit}`)
+        .then((response) => {
+          setData(response.data);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [isLoading, limit, handleMessage]);
   
+  
+  const addMore = () =>{
+    setLimit(limit + 5)
+    setIsLoading(true)    
+  }
   
   
   return (
     <>
-      <ul className='msg-container'>
+      
         {
           data.length > 0  ?
           data.map(d => (
@@ -69,12 +77,23 @@ const Messages = () => {
                     </div>
                   </div>
                 </div>
-              
             </li>
           ))
+          
+     
           : 
           <Loading />
        }
+       <ul className='msg-container'>
+      <div className='add-more-msg'>
+          {
+          isLoading ? 
+          <p>Loading...</p> 
+          : 
+          <button className='btn-login' onClick={addMore}>Load More</button> 
+          }
+          
+       </div>
       </ul>
     </>
   )
