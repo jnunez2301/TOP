@@ -34,7 +34,9 @@ const MessagesSchema = new mongoose.Schema({
     profilePic: {
         type: mongoose.Schema.Types.String,
         ref: 'Users',
-    }
+    },
+    Likes: Number,
+    
 })
 
 module.exports = mongoose.model('Messages', MessagesSchema);

@@ -24,7 +24,7 @@ router.get('/users', (req, res) => {
 router.get('/', (req, res) => {
     Message.find({})
         .limit(10)
-        .sort({ _id: -1 })
+        /* .sort({ _id: -1 }) */
         .then(msgs => {
             res.status(200).json(msgs);
         })

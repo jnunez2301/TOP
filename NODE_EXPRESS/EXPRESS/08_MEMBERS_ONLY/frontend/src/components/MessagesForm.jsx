@@ -12,6 +12,7 @@ const MessagesForm = () => {
 
   /* console.log(userInfo.profilePic); */
   
+ 
 
   const handleFileUpload = async (e) =>{
       const file = e.target.files[0];
@@ -23,6 +24,9 @@ const MessagesForm = () => {
       }
   }
  
+  const handleRemoveImg = () =>{
+      setMessageData({...messageData, messageImg: ''})
+  }
   return (
     <form
       onSubmit={handleMessage}
@@ -59,14 +63,21 @@ const MessagesForm = () => {
           required />
         </div>
         
-
+          
 
           <textarea type="text"
           className="submit-input"
           placeholder="What are you thinking about?"
           onChange={onMessagesChange}
           name="description" id="description" required />
-        
+          { 
+          messageData.messageImg.length > 0 && 
+          <div className="upload-container">
+           <div>
+           <img className="upload-img" src={messageData.messageImg} alt="" />
+            <button className="remove-upload-img" onClick={handleRemoveImg}>X</button>
+           </div>
+          </div> }
       </div>
       <div
       className="post-btn"
