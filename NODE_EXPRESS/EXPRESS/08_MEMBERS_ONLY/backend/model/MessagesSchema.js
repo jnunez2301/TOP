@@ -36,6 +36,10 @@ const MessagesSchema = new mongoose.Schema({
         ref: 'Users',
     },
     Likes: Number,
+    messages: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Messages'
+    }]
     
 })
 
