@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [userData, setUserData] = useState([]);
+    const [userData, setUserData] = useState('');
     const [userInfo, setUserInfo] = useState([]);
 
     const convertToBase64 = (file) => {
@@ -69,6 +69,8 @@ export const AuthProvider = ({ children }) => {
         checkAuthentication();
     }, [isAuthenticated])
 
+
+    
 
     return (
         <AuthContext.Provider value={{

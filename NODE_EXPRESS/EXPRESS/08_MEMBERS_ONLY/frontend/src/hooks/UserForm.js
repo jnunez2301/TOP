@@ -119,6 +119,7 @@ const UserForm = () => {
   const handleMessage = async(event) => {
     event.preventDefault();
     await userData;
+    console.log(userData.length);
     const messagesURL = '/api/messages/';
 
     setMessageData({ ...messageData, 
@@ -133,6 +134,7 @@ const UserForm = () => {
       .then(response => {
        /*  console.log(response.data) */
         fetchData();
+        setMessageData({...messageData, messageImg: ''});
         event.target.reset();
       })
       .catch(error => console.error(error))

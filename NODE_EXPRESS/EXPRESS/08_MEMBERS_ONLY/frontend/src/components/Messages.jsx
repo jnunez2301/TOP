@@ -26,6 +26,12 @@ const Messages = () => {
         });
     }
   }, [isLoading, limit]);
+
+  /* console.log(handleMessage); */
+  /* console.log(data); */
+  useEffect(() => {
+    
+  })
   
   const addMore = () =>{
     setLimit(limit + 5)
