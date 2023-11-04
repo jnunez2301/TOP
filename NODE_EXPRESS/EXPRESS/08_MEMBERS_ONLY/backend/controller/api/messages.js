@@ -111,8 +111,6 @@ passport.use(
         try {
             const user = await User.findOne({ username: username })
 
-
-
             if (!user) {
                 console.log('Wrong username');
                 return done(null, false, { message: "Incorrect username" });
