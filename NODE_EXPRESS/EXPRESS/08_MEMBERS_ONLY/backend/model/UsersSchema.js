@@ -29,8 +29,7 @@ const UserSchema = new mongoose.Schema({
         default: function(){
             return 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Google_Contacts_logo.png'
         }
-    },
-    
+    }
 })
 
 module.exports = mongoose.model('Users', UserSchema)
