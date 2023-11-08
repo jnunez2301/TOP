@@ -94,7 +94,7 @@ const Tarea2 = () => {
                     <p>En este apartado se muestran todas las publicaciones que se han creado</p>
                     <button 
                     onClick={handleOpen}
-                    type="submit">Agregar una publicación</button>
+                    type="submit">Agregar</button>
                 </div>
             </div>
             <div>

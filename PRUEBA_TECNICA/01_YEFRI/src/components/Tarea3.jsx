@@ -2,39 +2,39 @@ import { useEffect } from "react";
 import useData from "../hooks/useData"
 
 const Tarea3 = () => {
-  const { data, getData } =  useData();
+  const { data, getData } = useData();
 
   useEffect(() => {
     getData();
   }, [])
-  console.log(data);
-  console.log(data);
+
   return (
     <section className="tarea3-container">
-      <div>
+      
         <h2>Mis publicaciones</h2>
-        <hr />
-      </div>
-      <div>
         <table>
           <thead>
-            <td>
-              <tr>Title</tr>
-            </td>
-            <td>
-              <tr>Body</tr>
-            </td>
+            <tr>
+              <th>Number</th>
+              <th>Title</th>
+              <th>Body</th>
+            </tr>
           </thead>
-          <tbody>
-            <td>
-              <tr>Nombre</tr>
-            </td>
-            <td>
-              <tr>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nemo officiis suscipit consequatur. Repellat dolor sed magnam recusandae nostrum voluptate ab. Tempora culpa, iusto quae deleniti corporis alias et dignissimos.</tr>
-            </td>
+          <tbody >
+
+            {
+              data && data.map(d => (
+                <tr className="table-msg" key={d.id}>
+                  <td>{d.id}</td>
+                  <td>{d.title}</td>
+                  <td>{d.body}</td>
+                </tr>
+              ))
+            }
+
           </tbody>
         </table>
-      </div>
+
     </section>
   )
 }

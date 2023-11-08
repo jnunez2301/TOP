@@ -13,14 +13,14 @@ const MensajeId = () => {
     
   return (
     <div className="publicaciones">
+            
+            <h2>Mis publicaciones</h2>
+            <hr />
             <div>
-                <h2>Mis publicaciones</h2>
-            </div>
-            <div>
-                <div>
+                
                     {
-                        dataId
-                        &&
+                        dataId.id
+                        ?
                         <>
                         {
                             
@@ -31,10 +31,11 @@ const MensajeId = () => {
                            
                         }
                         </>
-                        
+                        :
+                        '404 Message does not exist'
                     }
                   
-                </div>
+                
             </div>
         </div>
   )
