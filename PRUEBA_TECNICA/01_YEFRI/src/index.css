@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+:root{
+  --background-clock-color: #f2f2f2;
+  --clock-font-color: #727272;
+  --btn-color: #3E3E3E;
+  --btn-text-color: #F5F5F5;
+}
+
+body{
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background-color: var(--background-clock-color);
+}
+.clock-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 680px;
+  height: 163px;
+  border-radius: 8px;
+  gap: 45px;
+  color: var(--clock-font-color);
+}
+.clock-title{
+  text-align: center;
+  color: var(--clock-font-color);
+  font-weight: 300;
+}
+.date{
+  display: flex;
+  text-align: center;
+  gap: 15px;
+}
+.time{
+  display: flex;
+  text-align: center;
+  gap: 15px;
+}
+.date-text{
+  font-weight: 500;
+  font-size: 48px;
+}
+.tarea2-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+  padding: 2rem;
+  z-index: 1;
+}
+.form-modal{
+  display: none;
+  flex-direction: column;
+  text-align: start;
+  background-color: white;
+  border-radius: 5px;
+  padding: 1rem;
+  gap: 15px;
+  width: 462px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  z-index: 10;
+  /* Positioning */
+  position: absolute;
+  opacity: 0;
+}
+label{
+  color: var(--clock-font-color);
+}
+.form-modal > input{
+  border: none;
+  border-radius: 5px;
+  outline: 1px solid rgb(197, 183, 183);
+  padding: .5rem;
+  
+}
+textarea{
+  resize: none;
+  border-radius: 5px;
+  border: none;
+  padding: .5rem;
+  outline: 1px solid rgb(197, 183, 183);
+}
+button[type="submit"]{
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: var(--btn-color);
+  color: var(--btn-text-color);
+  transition: opacity .2s ease-in;
+}
+button[type="submit"]:hover{
+  opacity: 0.8;
+}
+button[type="button"]{
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: var(--clock-font-color);
+  color: var(--btn-text-color);
+  transition: opacity .2s ease-in;
+}
+button[type="button"]:hover{
+  opacity: 0.8;
+}
+.add-post{
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+ 
+  justify-content: space-between;
+}
+.add-post > p {
+  font-size: 12px;
+}
+.publicaciones{
+  text-align: start ;
+}
+.msg{
+  padding-bottom: 1rem;
+}
