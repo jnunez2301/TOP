@@ -1,40 +1,52 @@
-const mysql = require('mysql');
-const config = require('./utils/config');
+let mysql = require('mysql');
+const config = require('./utils/config')
 
-const connection = mysql.createConnection({
+
+let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: `${config.PASSWORD}`,
-    database: 'todoapp', 
-});
+    password: `${config.MYSQL_PASSWORD}`,
+    database: 'todoapp'
+})
 
-// connect to the MySQL server
-// In case it doesnt work do read the README.MD
 
-connection.connect(function (err) {
+// To limit how many connections are made
+// called "Pool"
+/* 
+    const pool = mysql.createPool({
+    connectionLimit: 5,
+    host: 'localhost',
+    user: 'root',
+    password: `${config.MYSQL_PASSWORD}`,
+    database: 'todoapp'
+})
+ */
+/* pool.getConnection((err) => {
     if (err) {
-        console.error('Error connecting to the MySQL server:', err.message);
-        return;
+        return console.error('error: ' + err.message)
     }
-    
-    console.log('Connected to the MySQL server on database');
+    console.log(`Connected to the MySQL Server.`);
+});
+ */
 
-    let createTodos = `
-    create table if not exists todos(
-            id int primary key auto_increment,
-            title varchar(255) not null,
-            completed tinyint(1) not null default 0
-        )`;
-
-    connection.query(createTodos, (err, results, fields)=>{
-        if(err){
-            console.log(err.message);
-        }
-    })
-    connection.end(err =>{
-        if(err){
-            return console.log(err.message);
-        }
-    })
+ connection.connect((err) => {
+    if (err) {
+        return console.error('error: ' + err.message)
+    }
+    console.log(`Connected to the MySQL Server.`);
 });
 
+
+
+/* 
+connection.end(err => {
+    if (err) {
+        return console.log('error: ' + err.message)
+    };
+    console.log('Close the database connection');
+}) */
+
+/* 
+To force end of connection
+connection.destroy()
+*/

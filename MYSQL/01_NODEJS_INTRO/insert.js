@@ -1,9 +1,14 @@
-const mysql = require('mysql');
-const config = require('./config.js');
-const connection = mysql.createConnection(config);
+let mysql = require('mysql');
+let mySQLConfig = require('./mySQLConfig');
+let connection = mysql.createConnection(mySQLConfig);
 
-let sql = `INSERT INTO todos(title, completed) VALUES('Learn how to insert a new row', true)`;
+// Query para SQL
+let sql = `INSERT INTO todos(title, completed) VALUES('Learn how to insert to a new row', true)`;
 
+
+// Ejecuta el query Insert en la BDD
 connection.query(sql);
 
+// Termina la conexión
 connection.end();
+

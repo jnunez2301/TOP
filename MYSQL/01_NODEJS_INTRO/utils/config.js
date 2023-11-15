@@ -1,8 +1,7 @@
-require('dotenv').config();
+require('dotenv').config()
 
-const PASSWORD = process.env.PASSWORD;
-
+const MYSQL_PASSWORD = `${process.env.MYSQL_PASSWORD}`;
 
 module.exports = {
-    PASSWORD
+    MYSQL_PASSWORD
 }

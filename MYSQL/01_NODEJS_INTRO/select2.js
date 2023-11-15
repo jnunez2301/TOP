@@ -1,15 +1,14 @@
 let mysql = require('mysql');
-let config = require('./config');
-
+let config = require('./mySQLConfig');
 let connection = mysql.createConnection(config);
 
-let sql = `SELECT * FROM todos WHERE completed=?`;
+let sql = `SELECT * FROM todos WHERE completed = ?`
 
-connection.query(sql,[true],(error, results, fields) => {
+connection.query(sql, [true], (error, results, fields) => {
     if(error){
-        return console.error(error.message);
+        return console.log(error)
     }
     console.log(results);
-});
+})
 
 connection.end();

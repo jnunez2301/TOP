@@ -1,18 +1,7 @@
-## Example of MySQL connection
+# MySQL Practice for NodeJS
 
-### Connection didn't work?
+Here will be examples of the
 
-Execute the following query in MYSQL Workbench
+[MySQL-Tutorial](https://www.mysqltutorial.org/mysql-nodejs/insert/)
 
-```ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';```
-
-Where root as your user localhost as your URL and password as your password
-
-Then run this query to refresh privileges:
-
-```flush privileges;```
-
-Try connecting using node after you do so.
-If that doesn't work, try it without @'localhost' part.
-
-[Source of solution](https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server)
+Where config will be the config.js file.

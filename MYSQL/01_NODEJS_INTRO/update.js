@@ -1,16 +1,14 @@
 let mysql = require('mysql');
-let config = require('./config');
-
+let config = require('./mySQLConfig');
 let connection = mysql.createConnection(config);
 
-let sql = `UPDATE todos
-           SET completed = ?
-           WHERE id = ?`;
-let data = [ true, 1 ];
+let sql = `UPDATE todos SET completed = ? WHERE id = ?`
 
-connection.query(sql, data, (error, results, fields) => {
-    if(error){
-        return console.error(error.message);
+let data = [false, 1];
+
+connection.query(sql, data, (err, results, fields) => {
+    if(err){
+        return console.log(error);
     }
     console.log('Rows affected: ', results.affectedRows);
 })
