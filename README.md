@@ -1,2 +1,3 @@
 # TOP
-The Odin Project Exercises that i consider worth trying.
+
+Welcome to my Personal Projects, here i upload all my skills learning, pages and projects.
