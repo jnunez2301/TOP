@@ -1,2 +1,3 @@
 # TOP
-The Odin Project Exercises that i consider worth trying.
+
+Here i upload my projects where i learn new things. Like the MySQL, MongoDB, React, Express and Node.js stack that i have learned.
