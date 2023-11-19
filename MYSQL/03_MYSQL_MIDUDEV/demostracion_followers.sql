@@ -26,3 +26,34 @@ JOIN users ON users.user_id = tweets.tweet_id;
 SELECT user_id, COUNT(*) AS tweet_count
 FROM tweets
 GROUP BY user_id;
+
+
+-- SUB QUERYS 
+-- OBTENER LOS TWEETS DE LOS USUARIOS QUE TIENE MÁS DE 2 SEGUIDORES
+
+SELECT tweet_id, tweet_text, user_id
+FROM tweets
+WHERE user_id IN (
+	SELECT following_id
+    FROM followers
+    GROUP BY following_id
+    HAVING COUNT(*) > 2);
+    
+-- DELETE
+
+DELETE FROM tweets
+where tweet_id = 1;
+
+DELETE FROM tweets WHERE user_id = 1;
+
+DELETE FROM tweets WHERE tweet_text LIKE '%Elon Musk';
+
+-- UPDATE
+
+UPDATE tweets SET num_comments = num_comments + 1 WHERE tweet_id = 1;
+
+-- REREMPLAZAR TEXTO
+
+UPDATE tweets
+SET tweet_text = REPLACE(tweet_text, 'Twitter', 'Threads')
+WHERE tweet_text LIKE '%Twitter%';

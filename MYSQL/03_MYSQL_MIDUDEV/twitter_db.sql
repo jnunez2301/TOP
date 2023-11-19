@@ -47,6 +47,8 @@ VALUES
 (4, 1),
 (4, 2);
 
+DROP TABLE IF EXISTS tweets;
+
 CREATE TABLE tweets(
 	tweet_id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
@@ -66,3 +68,15 @@ VALUES
 (3, 'What iss your favorite book? I am looking for recommendations'),
 (4, 'Enjoying a cup of coffee while working on my latest project. #Productivity');
 
+DROP TABLE IF EXISTS  tweet_likes;
+
+CREATE TABLE tweet_likes(
+	user_id INT NOT NULL,
+    tweet_id INT NOT NULL,
+    foreign key(user_id) REFERENCES users(user_id),
+    foreign key(tweet_id) references tweets(tweet_id),
+    primary key (user_id, tweet_id)
+);
+
+INSERT INTO tweet_likes (user_id, tweet_id)
+VALUES (1,3), (1,4);
