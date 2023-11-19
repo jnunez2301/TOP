@@ -80,3 +80,18 @@ CREATE TABLE tweet_likes(
 
 INSERT INTO tweet_likes (user_id, tweet_id)
 VALUES (1,3), (1,4);
+
+
+-- TRIGGERS LIKE LISTENERS
+DELIMITER $$
+DROP TRIGGER IF EXISTS increase_follower_count;
+
+CREATE TRIGGER increase_follower_count
+	AFTER INSERT ON followers
+    FOR EACH ROW
+    BEGIN
+		UPDATE users SET follower_count = follower_count + 1
+        WHERE user_id = NEW.following_id;
+    END $$
+DELIMITER ;
+
