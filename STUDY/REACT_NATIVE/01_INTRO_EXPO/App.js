@@ -1,44 +1,29 @@
 import { useState } from 'react';
-import { View, Text, Image, Button, Pressable, Modal } from 'react-native';
+import { View, Text, Button, Modal, StatusBar } from 'react-native';
 const logoImg = require('./assets/adaptive-icon.png');
 
 export default App = () => {
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  
-  
+  const [showStatusBar, setShowStatusBar] = useState(true);
+
+
   return (
     <View style={{
       flex: 1,
       backgroundColor: "plum",
       padding: 60,
-      
-    }}>
-      <Button
-      title='open modal'
-      onPress={() => setIsModalVisible(true)}>
 
-      </Button>
-    <Modal 
-    presentationStyle="pageSheet"
-      visible={isModalVisible}
-      onRequestClose={() => setIsModalVisible(false)}
-      animationType='slide'
-      
-      >
-      <View style={{
-      flex: 1,
-      backgroundColor: "midnightblue",
-      padding: 60,
-      
     }}>
-      <Text>Modal Content</Text>
-      <Button 
-      onPress={() =>  setIsModalVisible(false)}
-      title='Close'
-      color={'lightblue'}></Button>
-    </View>
-      </Modal>
+      <StatusBar 
+      backgroundColor={"midnightblue"}
+      barStyle={'light-content'}
+      hidden={showStatusBar}
+      />
+      {
+        showStatusBar ? 
+        <Button title='Show StatusBar' onPress={()=> setShowStatusBar(false)}/>
+        : <Button title='Hide Status Bar' onPress={()=> setShowStatusBar(true)}/>
+      }
     </View>
   )
 }
