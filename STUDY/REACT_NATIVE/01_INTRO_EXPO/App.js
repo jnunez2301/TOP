@@ -1,28 +1,27 @@
 import { useState } from 'react';
-import { View, Text, Button, Modal, StatusBar } from 'react-native';
+import { View, ActivityIndicator, Text, Button} from 'react-native';
 const logoImg = require('./assets/adaptive-icon.png');
 
 export default App = () => {
-
-  const [showStatusBar, setShowStatusBar] = useState(true);
-
-
+  const [loading, setLoading] = useState(false);
   return (
     <View style={{
       flex: 1,
       backgroundColor: "plum",
       padding: 60,
-
     }}>
-      <StatusBar 
-      backgroundColor={"midnightblue"}
-      barStyle={'light-content'}
-      hidden={showStatusBar}
-      />
       {
-        showStatusBar ? 
-        <Button title='Show StatusBar' onPress={()=> setShowStatusBar(false)}/>
-        : <Button title='Hide Status Bar' onPress={()=> setShowStatusBar(true)}/>
+        loading ?
+      <View style={{flex: 1}}>
+        <ActivityIndicator
+      size={200}
+      color={"#fff"} 
+      animating={loading}
+      />
+      <Button title='Stop' onPress={()=>setLoading(false)}/>
+      </View>
+      :
+      <Button onPress={() => setLoading(true)} title='Load'/>
       }
     </View>
   )
