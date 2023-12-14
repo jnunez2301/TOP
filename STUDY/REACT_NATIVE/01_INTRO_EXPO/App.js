@@ -30,10 +30,6 @@ export default App = () => {
         {
           text: 'Third one',
           onPress: () => console.log('third one pressed')
-        },
-        {
-          text: 'Third one',
-          onPress: () => console.log('third one pressed')
         }
         ])
         }/>
