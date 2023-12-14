@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, ActivityIndicator, Text, Button} from 'react-native';
+import { View, Alert, Text, Button} from 'react-native';
 const logoImg = require('./assets/adaptive-icon.png');
 
 export default App = () => {
@@ -10,19 +10,33 @@ export default App = () => {
       backgroundColor: "plum",
       padding: 60,
     }}>
-      {
-        loading ?
-      <View style={{flex: 1}}>
-        <ActivityIndicator
-      size={200}
-      color={"#fff"} 
-      animating={loading}
-      />
-      <Button title='Stop' onPress={()=>setLoading(false)}/>
-      </View>
-      :
-      <Button onPress={() => setLoading(true)} title='Load'/>
-      }
+      <Button title='Alert' onPress={() => 
+        Alert.alert("Invalid data!")
+        }/>
+      <Button title='Alert2' onPress={() => 
+        Alert.alert("Invalid data!", "DOB Incorrect")
+        }/>
+      <Button title='Alert3' onPress={() => 
+        Alert.alert("Invalid data!", "DOB Incorrect",
+        [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('cancel pressed')
+        },
+        {
+          text: 'OK',
+          onPress: ()=> console.log('Ok Pressed')
+        },
+        {
+          text: 'Third one',
+          onPress: () => console.log('third one pressed')
+        },
+        {
+          text: 'Third one',
+          onPress: () => console.log('third one pressed')
+        }
+        ])
+        }/>
     </View>
   )
 }
