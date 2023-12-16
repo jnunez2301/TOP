@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet} from 'react-native'
+import MultipleStyling from './MultipleStyling'
 
 export const StylingRN = () => {
   return (
     <>
-        <Text style={styles.title}>Hi there</Text>
+        <MultipleStyling/>
     </>
   )
 }
