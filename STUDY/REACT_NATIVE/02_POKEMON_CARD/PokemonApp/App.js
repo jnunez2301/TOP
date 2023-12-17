@@ -1,14 +1,14 @@
-import  { View, StyleSheet } from 'react-native'
+import  { View, StyleSheet, SafeAreaView, StatusBar } from 'react-native'
+import { RNForms } from './components/RNForms';
 
-import { PokeCard } from './components/PokeCard';
+
 
 export default function App() {
   
-  
   return (
-    <View style={styles.container}>
-      <PokeCard/>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <RNForms />
+    </SafeAreaView>
   );
 }
 
@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-    padding: 20,
-    marginTop: 50
+    paddingTop: StatusBar.currentHeight + 5,
   },
 });
