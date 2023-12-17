@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { View, Text, StatusBar, TextInput, StyleSheet } from 'react-native'
+import { View, Text, StatusBar, TextInput, StyleSheet, Switch } from 'react-native'
 
 export const RNForms = () => {
 
     const [name, setName] = useState("");
+    const [isDarkMode, setIsDarkMode] = useState(false);
     
   return (
     <View>
@@ -20,6 +21,17 @@ export const RNForms = () => {
         style={[styles.input, styles.multilineText]}
         placeholder='message'
         multiline/>
+        <View style={styles.switchContainer}>
+            <Text style={styles.text}>Dark Mode</Text>
+            <Switch
+            value={isDarkMode}
+            onValueChange={() => setIsDarkMode((prevState) => !prevState)} 
+            trackColor={{
+                false: 'lightgray',
+                true: 'orangered'
+            }}
+            thumbColor={"#f3f4f3"}/>
+        </View>
         <Text style={styles.text} > My name is {name}</Text>
         
     </View>
@@ -41,5 +53,11 @@ const styles = StyleSheet.create({
     multilineText: {
         minHeight: 100,
         textAlignVertical: 'top'
+    },
+    switchContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 10
     }
 });
