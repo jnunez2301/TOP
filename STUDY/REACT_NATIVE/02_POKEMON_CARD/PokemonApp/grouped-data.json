@@ -1,0 +1,46 @@
+[
+    {
+        "type": "Grass",
+        "data": ["Bulbasaur", "Ivysaur", "Venusaur"]
+    },
+    {
+        "type": "Fire",
+        "data": ["Charmander", "Charmeleon", "Charizard"]
+    },
+    {
+        "type": "Water",
+        "data": ["Squirtle", "Wartortle", "Blastoise"]
+    },
+    {
+        "type": "Electric",
+        "data": ["Pikachu", "Raichu", "Jolteon"]
+    },
+    {
+        "type": "Bug",
+        "data": ["Caterpie", "Metapod", "Butterfree"]
+    },
+    {
+        "type": "Psychic",
+        "data": ["Abra", "Kadabra", "Alakazam"]
+    },
+    {
+        "type": "Ground",
+        "data": ["Sandshrew", "Sandslash", "Diglett"]
+    },
+    {
+        "type": "Rock",
+        "data": ["Geodude", "Graveler", "Golem"]
+    },
+    {
+        "type": "Flying",
+        "data": ["Pidgey", "Pidgeotto", "Pidgeot"]
+    },
+    {
+        "type": "Poison",
+        "data": ["Ekans", "Arbok", "Nidoran♀"]
+    },
+    {
+        "type": "Normal",
+        "data": ["Rattata", "Raticate", "Meowth"]
+    }
+]

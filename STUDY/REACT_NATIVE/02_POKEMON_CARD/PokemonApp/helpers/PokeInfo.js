@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 export const PokeInfo = () => {
     const [data, setData] = useState([]);
-    const baseURL = `https://pokeapi.co/api/v2/pokemon/?limit=10`
+    const baseURL = `https://rickandmortyapi.com/api/character`
     
     useEffect(() => {
         axios
