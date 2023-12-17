@@ -5,7 +5,7 @@ import { RestAPI } from './components/RestAPI';
 
 
 export default function App() {
-  const baseURL = 'https://jsonplaceholder.typicode.com/posts?limit=10'
+  
   return (
     <SafeAreaView style={styles.container}>
       <RestAPI />
@@ -14,15 +14,15 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  /* container: {
+  container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-    paddingTop: StatusBar.currentHeight + 5,
-  }, */
-  container: {
+    paddingTop: StatusBar.currentHeight,
+  },
+  /* container: {
     flex: 1,
     justifyContent: "center",
     paddingHorizontal: 20,
     backgroundColor: "#f5f5f5"
-  }
+  } */
 });
