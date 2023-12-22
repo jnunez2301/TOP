@@ -40,11 +40,11 @@ const App = () => {
                 }
               }
             }>
-            <Stack.Screen name="Home" component={HomeScreen} options={{/* Same as its parent screenOptions */}}
-            />
-            <Stack.Screen name="About" component={AboutScreen} initialParams={
-              {name: 'guest'}
-            }/>
+            <Stack.Screen name="Home" component={HomeScreen} options={{/* Same as its parent screenOptions*/}}/>
+            <Stack.Screen name="About" component={AboutScreen} initialParams={{name: 'guest'}}
+            /* options={({route}) => ({
+              title: route.params.name
+            })} *//>
         </Stack.Navigator>
     </NavigationContainer>
   )

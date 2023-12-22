@@ -1,10 +1,18 @@
 import { View, Text, Button, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { styles } from './HomeScreen'
+import { useLayoutEffect } from 'react'
+
 export const AboutScreen = ({ route }) => {
 
   const { name } = route.params;
   const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: name
+    })
+  }, [navigation])
 
   return (
     <View style={styles.container}>

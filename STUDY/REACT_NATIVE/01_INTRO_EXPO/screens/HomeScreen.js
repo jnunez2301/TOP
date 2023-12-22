@@ -7,9 +7,9 @@ export const HomeScreen = ({ navigation, route }) => {
         <Text
         style={styles.text}
         >HomeScreen</Text>
-        <Button title='Go to About' onPress={() => navigation.navigate("About", /* {
-          name: "Jhonatan"
-        } */)}/>
+        <Button title='Go to About' onPress={() => navigation.navigate("About", {
+          name: "Vishas"
+        })}/>
     </View>
   )
 }
