@@ -1,0 +1,8 @@
+# Crear un nuevo libro
+POST http://localhost:3000/api/libros
+Content-Type: application/json
+
+{
+  "name": "Nombre del libro",
+  "description": "Descripción del libro"
+}
